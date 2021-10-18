@@ -1,0 +1,56 @@
+group 'fr.redxil.api'
+version '4.0.0'
+
+apply plugin: 'java-library'
+apply plugin: 'maven-publish'
+
+compileJava.options.encoding = 'UTF-8'
+
+configurations.implementation.setCanBeResolved(true)
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+
+    flatDir {
+        dir "libs"
+    }
+
+    maven {
+        url 'https://repo.velocitypowered.com/snapshots/'
+    }
+
+    maven {
+        url = "https://repo.cloudnetservice.eu/repository/snapshots/"
+    }
+
+    maven {
+        url "https://repo.codemc.io/repository/maven-snapshots/"
+    }
+
+    maven {
+        url "https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client"
+    }
+
+}
+
+dependencies {
+    implementation group: 'com.velocitypowered', name: 'velocity-api', version: '3.0.0'
+    implementation group: 'com.zaxxer', name: 'HikariCP', version: '4.0.3'
+    implementation group: 'net.wesjd', name: 'anvilgui', version: '1.5.2-SNAPSHOT'
+    implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.7.3'
+    implementation group: 'de.dytanic.cloudnet', name: 'cloudnet-bridge', version: '3.4.0-SNAPSHOT'
+    implementation group: 'de.dytanic.cloudnet', name: 'cloudnet-driver', version: '3.4.0-SNAPSHOT'
+    implementation name: 'PluginMessageSystem-1.0-SNAPSHOT'
+    compileOnly name: 'spigot-1.12.2'
+}
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Jar File',
+                'Main-Class': 'fr.redxil.api.CorePlugin'
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from { configurations.implementation.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
