@@ -24,7 +24,7 @@ public interface APIPlayer extends APIOfflinePlayer {
 
     IpInfo getIpInfo();
 
-    void disconnectPlayer();
+    void unloadPlayer();
 
     boolean isLogin();
 
