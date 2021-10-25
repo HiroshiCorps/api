@@ -9,7 +9,7 @@
 package fr.redxil.api.spigot.gui;
 
 import fr.redxil.api.common.API;
-import fr.redxil.api.common.data.SanctionType;
+import fr.redxil.api.common.utils.SanctionType;
 import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.player.data.SanctionInfo;
 import fr.redxil.api.common.time.DateUtility;

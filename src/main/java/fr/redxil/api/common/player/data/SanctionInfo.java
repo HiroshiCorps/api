@@ -8,7 +8,7 @@
 
 package fr.redxil.api.common.player.data;
 
-import fr.redxil.api.common.data.SanctionType;
+import fr.redxil.api.common.utils.SanctionType;
 import fr.redxil.api.common.message.TextComponentBuilder;
 
 public interface SanctionInfo {

@@ -6,7 +6,7 @@
  *
  */
 
-package fr.redxil.api.common.data;
+package fr.redxil.api.common.utils;
 
 public enum SanctionType {
 
