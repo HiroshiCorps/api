@@ -8,9 +8,8 @@
 
 package fr.redxil.api.common.message;
 
-import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.API;
-import fr.redxil.api.common.utils.ServerAccessEnum;
+import fr.redxil.api.common.player.APIPlayer;
 
 import java.util.Collection;
 import java.util.UUID;
@@ -88,10 +87,7 @@ public abstract class TextComponentBuilder {
     public void sendTo(APIPlayer apiPlayer) {
         if (apiPlayer == null)
             return;
-        if(API.get().getServerAccessEnum() == ServerAccessEnum.CRACK)
-            sendTo(apiPlayer.getName(true));
-        else
-            sendTo(apiPlayer.getUUID());
+        sendTo(apiPlayer.getUUID());
     }
 
     public abstract void sendTo(String name);

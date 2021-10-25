@@ -14,7 +14,7 @@ import java.util.List;
 
 public class KitsManager {
 
-    private List<KitExecutor> kits = new ArrayList<>();
+    private final List<KitExecutor> kits = new ArrayList<>();
 
     public KitsManager() {
 

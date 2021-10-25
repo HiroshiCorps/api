@@ -80,6 +80,7 @@ public enum RankList {
      */
     private final String chatRankString, tabString, chatSeparator, scoreboardString;
     private final Boolean mod;
+
     RankList(final Integer id, final Long power, Boolean mod, final String chatRankString, final String chatSeparator, final String tabString, final String scoreboardString) {
         this.power = power;
         this.chatRankString = chatRankString;

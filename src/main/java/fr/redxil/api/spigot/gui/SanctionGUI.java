@@ -9,10 +9,10 @@
 package fr.redxil.api.spigot.gui;
 
 import fr.redxil.api.common.API;
-import fr.redxil.api.common.utils.SanctionType;
 import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.player.data.SanctionInfo;
 import fr.redxil.api.common.time.DateUtility;
+import fr.redxil.api.common.utils.SanctionType;
 import fr.redxil.api.spigot.inventory.InventoryGUI;
 import fr.redxil.api.spigot.itemstack.APIItemStack;
 import org.bukkit.Material;

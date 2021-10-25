@@ -95,7 +95,7 @@ public class Reflection {
         if (constructor == null) throw new RuntimeException("No such constructor");
         constructor.setAccessible(true);
         try {
-            return (T) constructor.newInstance(paramaters);
+            return constructor.newInstance(paramaters);
         } catch (InvocationTargetException ex) {
             throw new RuntimeException(ex.getCause());
         } catch (Exception ex) {
@@ -587,7 +587,7 @@ public class Reflection {
          *
          * @param path Path of the package
          */
-        private PackageType(String path) {
+        PackageType(String path) {
             this.path = path;
         }
 
@@ -597,7 +597,7 @@ public class Reflection {
          * @param parent Parent package of the package
          * @param path   Path of the package
          */
-        private PackageType(PackageType parent, String path) {
+        PackageType(PackageType parent, String path) {
             this(parent + "." + path);
         }
 
@@ -675,7 +675,7 @@ public class Reflection {
          * @param primitive Primitive class of this data type
          * @param reference Reference class of this data type
          */
-        private DataType(Class<?> primitive, Class<?> reference) {
+        DataType(Class<?> primitive, Class<?> reference) {
             this.primitive = primitive;
             this.reference = reference;
         }

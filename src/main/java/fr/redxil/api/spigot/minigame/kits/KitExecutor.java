@@ -23,17 +23,13 @@ public abstract class KitExecutor {
     public static final int LEGGINGS = 37;
     public static final int BOOTS = 36;
 
-    private String name, displayName;
-
-    private ItemStack itemStack;
-
+    private final String name;
+    private final ItemStack itemStack;
+    private final HashMap<Integer, ItemStack> items = new HashMap<>();
+    private String displayName;
     private boolean food = false;
-
     private boolean combo = false;
-
     private int power = 0;
-
-    private HashMap<Integer, ItemStack> items = new HashMap<>();
 
     public KitExecutor(String name, String displayName, ItemStack itemStack) {
         this.name = name;

@@ -12,11 +12,11 @@ import java.util.HashMap;
 
 public class ResultSetMetaData {
 
-    private String tableName;
+    private final String tableName;
 
-    private int columnCount;
+    private final int columnCount;
 
-    private HashMap<Integer, String> columnNames;
+    private final HashMap<Integer, String> columnNames;
 
     public ResultSetMetaData(String tableName, int columnCount, HashMap<Integer, String> columnsNames) {
         this.tableName = tableName;

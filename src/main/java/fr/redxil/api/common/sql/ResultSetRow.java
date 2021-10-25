@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class ResultSetRow {
 
-    private HashMap<String, ResultSetElement> columns;
+    private final HashMap<String, ResultSetElement> columns;
 
     public ResultSetRow(HashMap<String, ResultSetElement> columns) {
         this.columns = columns;

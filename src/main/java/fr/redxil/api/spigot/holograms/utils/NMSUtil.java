@@ -19,6 +19,7 @@ public class NMSUtil {
 
     private static Method sendPacket = null;
     private static Method a = null;
+
     private NMSUtil() {
     }
 

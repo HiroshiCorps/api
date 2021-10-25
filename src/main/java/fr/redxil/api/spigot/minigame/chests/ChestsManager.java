@@ -19,9 +19,9 @@ import java.util.*;
 
 public class ChestsManager {
 
-    private HashMap<ItemStack, ChestsType> items = new HashMap<>();
+    private final HashMap<ItemStack, ChestsType> items = new HashMap<>();
 
-    private List<Chests> loadedChests = new ArrayList<>();
+    private final List<Chests> loadedChests = new ArrayList<>();
 
     public static boolean isInteger(String s) {
         try {

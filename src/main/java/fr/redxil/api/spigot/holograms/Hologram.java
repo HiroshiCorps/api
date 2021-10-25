@@ -83,7 +83,7 @@ public class Hologram {
             }
             this.id = (int) getId.invoke(armorStand);
             this.packetPlayOutSpawnEntityLiving = PacketPlayOutSpawnEntityLivingConstructor.newInstance(armorStand);
-            this.packetPlayOutEntityDestroy = PacketPlayOutEntityDestroyConstructor.newInstance((Object) new int[]{id});
+            this.packetPlayOutEntityDestroy = PacketPlayOutEntityDestroyConstructor.newInstance(new int[]{id});
         } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException | InstantiationException e) {
             throw new RuntimeException("An error occurred while creating the hologram.", e);
         }

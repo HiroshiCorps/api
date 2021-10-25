@@ -8,40 +8,34 @@
 
 package fr.redxil.api.common;
 
+import fr.redxil.api.common.game.Games;
 import fr.redxil.api.common.game.GamesManager;
 import fr.redxil.api.common.game.Hosts;
 import fr.redxil.api.common.moderators.ModeratorManager;
 import fr.redxil.api.common.party.PartyManager;
-import fr.redxil.api.common.player.APIOfflinePlayer;
 import fr.redxil.api.common.player.APIPlayerManager;
+import fr.redxil.api.common.player.nick.NickGestion;
 import fr.redxil.api.common.redis.RedisManager;
 import fr.redxil.api.common.server.Server;
 import fr.redxil.api.common.server.ServerManager;
 import fr.redxil.api.common.server.type.ServerType;
 import fr.redxil.api.common.sql.SQLConnection;
 import fr.redxil.api.common.team.TeamManager;
-import fr.redxil.api.common.utils.ServerAccessEnum;
-import fr.redxil.api.common.game.Games;
-import fr.redxil.api.common.player.nick.NickGestion;
-
-import java.util.UUID;
 
 public abstract class API {
 
     private static API instance;
     private static boolean enabled = false;
     private final PluginEnabler plugin;
-    private final ServerAccessEnum sae;
 
     /**
      * Constructor
      *
      * @param plugin Root plugin
      */
-    public API(PluginEnabler plugin, ServerAccessEnum serverAccessEnum) {
+    public API(PluginEnabler plugin) {
         instance = this;
         this.plugin = plugin;
-        this.sae = serverAccessEnum;
     }
 
     /**
@@ -137,18 +131,6 @@ public abstract class API {
 
     public static void setEnabled(boolean enabled) {
         API.enabled = enabled;
-    }
-
-    public ServerAccessEnum getServerAccessEnum(){
-        return this.sae;
-    }
-
-    public String getDataForGetAndSet(APIOfflinePlayer aop){
-        return getServerAccessEnum() == ServerAccessEnum.CRACK ? aop.getName() : aop.getUUID().toString();
-    }
-
-    public String getDataForGetAndSet(String name, UUID uuid){
-        return getServerAccessEnum() == ServerAccessEnum.CRACK ? name : uuid.toString();
     }
 
 }

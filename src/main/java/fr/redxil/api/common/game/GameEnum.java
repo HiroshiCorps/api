@@ -18,6 +18,7 @@ public enum GameEnum {
     final int minP;
     final int maxP;
     final int maxNPSpec;
+
     GameEnum(String name, boolean modSpecOnlyv, int maxNPSpec, boolean canHost, boolean hostOnly, int minP, int maxP) {
         this.name = name;
         this.modSpecOnly = modSpecOnlyv;

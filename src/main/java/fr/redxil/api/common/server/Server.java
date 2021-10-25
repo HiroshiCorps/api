@@ -9,11 +9,11 @@
 package fr.redxil.api.common.server;
 
 import fr.redline.pms.utils.IpInfo;
+import fr.redxil.api.common.game.Games;
 import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.server.type.ServerStatus;
 import fr.redxil.api.common.server.type.ServerTasks;
 import fr.redxil.api.common.server.type.ServerType;
-import fr.redxil.api.common.game.Games;
 
 import java.util.Collection;
 import java.util.List;

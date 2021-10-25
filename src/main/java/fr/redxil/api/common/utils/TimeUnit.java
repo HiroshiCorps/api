@@ -26,7 +26,7 @@ public enum TimeUnit {
         return time;
     }
 
-    public java.util.concurrent.TimeUnit toJavaTimeUnit(){
+    public java.util.concurrent.TimeUnit toJavaTimeUnit() {
         switch (this) {
             case SECONDS:
                 return java.util.concurrent.TimeUnit.SECONDS;

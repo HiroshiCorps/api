@@ -69,7 +69,7 @@ public enum ServerTasks {
     private enum TasksType {
 
         MINECRAFT_SERVER,
-        BUNGEECORD;
+        BUNGEECORD
 
     }
 

@@ -21,7 +21,7 @@ public abstract class Scoreboard {
     }};
 
     private final String name;
-    private HashMap<UUID, ScoreboardBuilder> players = new HashMap<>();
+    private final HashMap<UUID, ScoreboardBuilder> players = new HashMap<>();
     private int update = -1;
 
     private int animateFooter = 1;

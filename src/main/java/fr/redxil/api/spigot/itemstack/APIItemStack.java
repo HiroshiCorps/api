@@ -155,7 +155,7 @@ public class APIItemStack extends org.bukkit.inventory.ItemStack {
         return this;
     }
 
-    public APIItemStack addItemEnchantment(Enchantment enchantment, int integer){
+    public APIItemStack addItemEnchantment(Enchantment enchantment, int integer) {
         this.addEnchantment(enchantment, integer);
         return this;
     }

@@ -10,6 +10,7 @@ package fr.redxil.api.spigot.minigame;
 
 import fr.redxil.api.common.API;
 import fr.redxil.api.common.game.GameEnum;
+import fr.redxil.api.common.game.Games;
 import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.server.Server;
 import fr.redxil.api.common.team.Team;
@@ -17,10 +18,9 @@ import fr.redxil.api.common.team.TeamManager;
 import fr.redxil.api.common.time.TimerGest;
 import fr.redxil.api.common.utils.TextUtils;
 import fr.redxil.api.spigot.minigame.chests.ChestsManager;
+import fr.redxil.api.spigot.minigame.kits.KitsManager;
 import fr.redxil.api.spigot.minigame.managers.FilesAPI;
 import fr.redxil.api.spigot.minigame.pmmanager.PMListen;
-import fr.redxil.api.common.game.Games;
-import fr.redxil.api.spigot.minigame.kits.KitsManager;
 import fr.redxil.api.spigot.utils.ActionBar;
 import fr.redxil.api.spigot.utils.Title;
 import org.bukkit.Sound;
@@ -38,6 +38,7 @@ public abstract class GameBuilder {
     private final GameEnum gameEnum;
     private final TimerGest timerGest;
     private String prefix = TextUtils.getPrefix("SERVER");
+
     public GameBuilder(JavaPlugin plugin, GameEnum gameEnum) {
         gameBuilder = this;
         this.plugin = plugin;

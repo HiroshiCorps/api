@@ -12,7 +12,7 @@ import org.bukkit.Bukkit;
 
 public class ServerVersion {
 
-    private static String version;
+    private static final String version;
 
     static {
         String[] versionArray = Bukkit.getServer().getClass().getName().replace('.', ',').split(",");

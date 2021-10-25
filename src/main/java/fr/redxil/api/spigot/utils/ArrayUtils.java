@@ -184,7 +184,7 @@ public class ArrayUtils {
         if (list == null) {
             return "";
         }
-        StringBuilder string = new StringBuilder("");
+        StringBuilder string = new StringBuilder();
         if (list.size() > 1) {
             for (int i = 0; i < list.size(); i++) {
                 if (i == 0) {

@@ -18,8 +18,8 @@ public class PlayerConnectedEvent extends Event implements Cancellable {
 
     private static final HandlerList handlers = new HandlerList();
 
-    private org.bukkit.entity.Player player;
-    private APIPlayer apiPlayer;
+    private final org.bukkit.entity.Player player;
+    private final APIPlayer apiPlayer;
 
     public PlayerConnectedEvent(org.bukkit.entity.Player player) {
         this.player = player;

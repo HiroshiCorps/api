@@ -66,7 +66,7 @@ public class TextUtils {
 
         int a = 0;
         for (String string : splitlore) {
-            i+=5*string.toCharArray().length;
+            i += 5 * string.toCharArray().length;
             str.append(string).append(" ");
             if (i >= size && a < splitlore.length - 1) {
                 str.append("\n").append(color);

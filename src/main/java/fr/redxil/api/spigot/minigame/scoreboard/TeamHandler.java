@@ -22,8 +22,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class TeamHandler {
+    private final List<OfflinePlayer> receivers;
     public ConcurrentLinkedQueue<VTeam> teams;
-    private List<OfflinePlayer> receivers;
 
     /**
      * Constructor
@@ -374,14 +374,13 @@ public class TeamHandler {
     }
 
     public class VTeam {
+        private final CopyOnWriteArrayList<String> players = new CopyOnWriteArrayList<>();
         private String name = "";
         private String realName = "";
         private String display = "";
         private String prefix = ChatColor.GRAY + "";
         private String suffix = "";
         private boolean hideToOtherTeams = false;
-
-        private CopyOnWriteArrayList<String> players = new CopyOnWriteArrayList<>();
 
         public VTeam(String name, String display) {
             this.name = name;

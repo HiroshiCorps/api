@@ -8,8 +8,8 @@
 
 package fr.redxil.api.common.team;
 
-import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.message.Color;
+import fr.redxil.api.common.player.APIPlayer;
 import org.redisson.api.RMap;
 
 import java.util.List;

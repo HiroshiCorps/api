@@ -18,6 +18,7 @@ public enum GameState {
 
     private final boolean state;
     private final String name;
+
     GameState(String name, boolean state) {
         this.name = name;
         this.state = state;

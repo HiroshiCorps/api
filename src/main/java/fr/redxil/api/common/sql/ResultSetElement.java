@@ -10,9 +10,8 @@ package fr.redxil.api.common.sql;
 
 public class ResultSetElement {
 
+    private final boolean signed;
     private Object value;
-
-    private boolean signed;
 
     public ResultSetElement(Object value, boolean isSigned) {
         this.value = value;

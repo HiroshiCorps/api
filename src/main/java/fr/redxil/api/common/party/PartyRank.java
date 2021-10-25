@@ -18,6 +18,7 @@ public enum PartyRank {
     final String rankName;
     final int rankPower;
     final ChatColor chatColor;
+
     PartyRank(String name, ChatColor chatColor, int rankPower) {
         this.rankPower = rankPower;
         this.chatColor = chatColor;
