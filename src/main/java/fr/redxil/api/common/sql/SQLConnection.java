@@ -8,6 +8,7 @@
 
 package fr.redxil.api.common.sql;
 
+import fr.redline.pms.utils.IpInfo;
 import fr.redxil.api.common.Callback;
 
 import java.sql.Connection;
@@ -16,7 +17,7 @@ import java.sql.ResultSet;
 
 public interface SQLConnection {
 
-    void initConnection();
+    void connect(IpInfo ipInfo, String database, String user, String password);
 
     boolean isConnected();
 
