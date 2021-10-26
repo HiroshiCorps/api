@@ -17,8 +17,7 @@ import fr.redxil.api.common.team.Team;
 import fr.redxil.api.common.team.TeamManager;
 import fr.redxil.api.common.time.TimerGest;
 import fr.redxil.api.common.utils.TextUtils;
-import fr.redxil.api.spigot.minigame.chests.ChestsManager;
-import fr.redxil.api.spigot.minigame.kits.KitsManager;
+import fr.redxil.api.spigot.minigame.chest.ChestSystem;
 import fr.redxil.api.spigot.minigame.managers.FilesAPI;
 import fr.redxil.api.spigot.minigame.pmmanager.PMListen;
 import fr.redxil.api.spigot.utils.ActionBar;
@@ -33,8 +32,7 @@ public abstract class GameBuilder {
 
     private static GameBuilder gameBuilder = null;
     private final JavaPlugin plugin;
-    private final KitsManager kitsManager;
-    private final ChestsManager chestsManager;
+    private final ChestSystem chestsManager;
     private final GameEnum gameEnum;
     private final TimerGest timerGest;
     private String prefix = TextUtils.getPrefix("SERVER");
@@ -43,8 +41,7 @@ public abstract class GameBuilder {
         gameBuilder = this;
         this.plugin = plugin;
         this.gameEnum = gameEnum;
-        this.kitsManager = new KitsManager();
-        this.chestsManager = new ChestsManager();
+        this.chestsManager = new ChestSystem();
         this.timerGest = new TimerGest();
 
         String config = FilesAPI.CONFIG.getFileName();
@@ -169,11 +166,7 @@ public abstract class GameBuilder {
         return API.get().getTeamManager();
     }
 
-    public KitsManager getKitsManager() {
-        return kitsManager;
-    }
-
-    public ChestsManager getChestsManager() {
+    public ChestSystem getChestSystem() {
         return chestsManager;
     }
 

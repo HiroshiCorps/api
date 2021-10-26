@@ -6,22 +6,7 @@
  *
  */
 
-package fr.redxil.api.spigot.minigame.chests;
+package fr.redxil.api.spigot.minigame.chest;
 
-public enum ChestsType {
-
-    LOW(1),
-    MEDIUM(2),
-    HIGH(3),
-    LEGENDARY(4);
-
-    final int luck;
-
-    ChestsType(int luck) {
-        this.luck = luck;
-    }
-
-    public int getLuck() {
-        return luck;
-    }
+public enum ChestLegendary {
 }
