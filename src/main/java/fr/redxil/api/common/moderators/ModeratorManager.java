@@ -1,8 +1,8 @@
 /*
  *  Copyright (C) GIMENEZ Nino and PHILIPPE Nelson - All Rights Reserved
- *  * Unauthorized copying or modification of this file, via any medium is strictly prohibited
- *  * Proprietary and confidential
- *  * Written by GIMENEZ Nino and PHILIPPE Nelson, ninogmz33@gmail.com | philippenelson59@gmail.com - 2021
+ *  Unauthorized copying or modification of this file, via any medium is strictly prohibited
+ *  Proprietary and confidential
+ *  Written by GIMENEZ Nino and PHILIPPE Nelson, ninogmz33@gmail.com | philippenelson59@gmail.com - 2021
  *
  */
 
@@ -62,7 +62,7 @@ public interface ModeratorManager {
     /**
      * Check if a APIPlayer is a server moderator
      *
-     * @param APIPlayer Of course the APIPlayer
+     * @param apiPlayer Of course the APIPlayer
      * @return True if the APIPlayer is a moderator
      */
     boolean isModerator(APIPlayer apiPlayer);

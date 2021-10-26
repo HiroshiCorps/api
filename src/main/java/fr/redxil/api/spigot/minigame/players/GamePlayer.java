@@ -1,15 +1,14 @@
 /*
  *  Copyright (C) GIMENEZ Nino and PHILIPPE Nelson - All Rights Reserved
- *  * Unauthorized copying or modification of this file, via any medium is strictly prohibited
- *  * Proprietary and confidential
- *  * Written by GIMENEZ Nino and PHILIPPE Nelson, ninogmz33@gmail.com | philippenelson59@gmail.com - 2021
+ *  Unauthorized copying or modification of this file, via any medium is strictly prohibited
+ *  Proprietary and confidential
+ *  Written by GIMENEZ Nino and PHILIPPE Nelson, ninogmz33@gmail.com | philippenelson59@gmail.com - 2021
  *
  */
 
 package fr.redxil.api.spigot.minigame.players;
 
 import fr.redxil.api.common.team.Team;
-import fr.redxil.api.spigot.minigame.kits.KitExecutor;
 
 import java.util.UUID;
 
@@ -25,20 +24,10 @@ public class GamePlayer {
 
     private int deaths = 0;
 
-    private KitExecutor kitExecutor = null;
-
     private Team team = null;
 
     public GamePlayer(UUID uuid) {
         this.uuid = uuid;
-    }
-
-    public KitExecutor getKitExecutor() {
-        return kitExecutor;
-    }
-
-    public void setKitExecutor(KitExecutor kitExecutor) {
-        this.kitExecutor = kitExecutor;
     }
 
     public Team getTeam() {
