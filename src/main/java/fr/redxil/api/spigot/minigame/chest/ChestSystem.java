@@ -8,6 +8,8 @@
 
 package fr.redxil.api.spigot.minigame.chest;
 
+import fr.redxil.api.common.utils.randomizer.ListRandomizer;
+
 import java.util.*;
 
 public class ChestSystem {
@@ -15,6 +17,18 @@ public class ChestSystem {
     public final HashMap<ChestLegendary, List<Chest>> chestByLegendary = new HashMap<>();
     public final HashMap<ChestLegendary, List<Items>> itemsByLegendary = new HashMap<>();
     public final Random random = new Random();
+
+    public List<Chest> getChests(ChestLegendary chestLegendary){
+
+        return chestByLegendary.get(chestLegendary);
+
+    }
+
+    public List<Items> getItems(ChestLegendary chestLegendary){
+
+        return itemsByLegendary.get(chestLegendary);
+
+    }
 
     public void addChest(Collection<Chest> chests){
 
@@ -36,19 +50,25 @@ public class ChestSystem {
 
     public void fillChest(ChestLegendary chestLegendary){
 
-        chestByLegendary.get(chestLegendary).forEach((chest) -> {
+        for(Chest chest : getChests(chestLegendary)){
 
             org.bukkit.block.Chest bukkitChest = chest.getChest();
 
-            if(bukkitChest != null)
-            itemsByLegendary.get(chestLegendary).forEach((item) -> {
+            if(bukkitChest == null) continue;
 
-                if(hadChance(item))
-                    bukkitChest.getBlockInventory().addItem(item.getItemStack());
+            bukkitChest.getBlockInventory().clear();
+            ListRandomizer<Integer> integerRandomizer = new ListRandomizer<>();
+            for(int i = 0; i<bukkitChest.getInventory().getSize(); i++)
+                integerRandomizer.addItem(i);
+
+            getItems(chestLegendary).forEach((item) -> {
+
+                if (hadChance(item))
+                    bukkitChest.getBlockInventory().setItem(integerRandomizer.getRandomAndRemove(), item.getItemStack());
 
             });
 
-        });
+        }
 
     }
 
