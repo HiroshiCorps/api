@@ -23,6 +23,7 @@ import fr.redxil.api.spigot.minigame.pmmanager.PMListen;
 import fr.redxil.api.spigot.utils.ActionBar;
 import fr.redxil.api.spigot.utils.Title;
 import org.bukkit.Sound;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.*;
@@ -141,21 +142,35 @@ public abstract class GameBuilder {
     public abstract void forceWin(Team team, String reason);
 
     public void broadcastTitle(String title, String subtitle) {
-        for (org.bukkit.entity.Player player : plugin.getServer().getOnlinePlayers()) {
-            Title.sendTitle(player, title, subtitle, 10, 20, 10);
-        }
+        Title.sendTitleToAllPlayers(title, subtitle, 10, 20,10);
     }
 
     public void broadcastMessage(String message) {
-        for (org.bukkit.entity.Player player : plugin.getServer().getOnlinePlayers()) {
-            player.sendMessage(message);
-        }
+        plugin.getServer().getOnlinePlayers().forEach(player -> player.sendMessage(message));
     }
 
     public void broadcastActionBar(String message) {
-        for (org.bukkit.entity.Player player : plugin.getServer().getOnlinePlayers()) {
-            ActionBar.sendActionBar(player, message);
-        }
+        plugin.getServer().getOnlinePlayers().forEach(player -> ActionBar.sendActionBar(player, message));
+    }
+
+    public void broadcastSound(Sound sound) {
+        plugin.getServer().getOnlinePlayers().forEach(player -> player.playSound(player.getLocation(), sound, 0f, 0f));
+    }
+
+    public void broadcastTitle(List<Player> players, String title, String subtitle) {
+        players.forEach(player -> Title.sendTitle(player, title, subtitle, 10, 20, 10));
+    }
+
+    public void broadcastMessage(List<Player> players, String message) {
+        players.forEach(player -> player.sendMessage(message));
+    }
+
+    public void broadcastActionBar(List<Player> players, String message) {
+        players.forEach(player -> ActionBar.sendActionBar(player, message));
+    }
+
+    public void broadcastSound(List<Player> players, Sound sound) {
+        players.forEach(player -> player.playSound(player.getLocation(), sound, 0f, 0f));
     }
 
     public JavaPlugin getPlugin() {
@@ -180,25 +195,6 @@ public abstract class GameBuilder {
 
     public TimerGest getTimerGest() {
         return timerGest;
-    }
-
-    public void sendTitle(List<org.bukkit.entity.Player> playerList, String title, String subTitle, int fadeIn, int stay, int fadeOut) {
-        for (org.bukkit.entity.Player target : playerList) {
-            Title.sendTitle(target, title, subTitle, fadeIn, stay, fadeOut);
-        }
-    }
-
-    public void sendSound(List<org.bukkit.entity.Player> playerList, Sound sound, int v1, int v2) {
-        for (org.bukkit.entity.Player target : playerList) {
-            target.playSound(target.getLocation(), sound, v1, v2);
-        }
-    }
-
-    public void sendTitleAndSound(List<org.bukkit.entity.Player> playerList, String title, String subTitle, int fadeIn, int stay, int fadeOut, Sound sound, int v1, int v2) {
-        for (org.bukkit.entity.Player target : playerList) {
-            Title.sendTitle(target, title, subTitle, fadeIn, stay, fadeOut);
-            target.playSound(target.getLocation(), sound, v1, v2);
-        }
     }
 
 }
