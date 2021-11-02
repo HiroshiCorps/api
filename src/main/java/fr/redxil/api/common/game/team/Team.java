@@ -6,7 +6,7 @@
  *
  */
 
-package fr.redxil.api.common.team;
+package fr.redxil.api.common.game.team;
 
 import fr.redxil.api.common.message.Color;
 import fr.redxil.api.common.player.APIPlayer;

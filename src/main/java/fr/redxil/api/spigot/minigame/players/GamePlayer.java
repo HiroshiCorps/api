@@ -8,7 +8,7 @@
 
 package fr.redxil.api.spigot.minigame.players;
 
-import fr.redxil.api.common.team.Team;
+import fr.redxil.api.common.game.team.Team;
 
 import java.util.UUID;
 

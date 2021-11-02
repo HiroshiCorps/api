@@ -8,7 +8,7 @@
 
 package fr.redxil.api.spigot.minigame.event;
 
-import fr.redxil.api.common.team.Team;
+import fr.redxil.api.common.game.team.Team;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;

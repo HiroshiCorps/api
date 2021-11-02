@@ -11,6 +11,7 @@ package fr.redxil.api.common;
 import fr.redxil.api.common.game.Games;
 import fr.redxil.api.common.game.GamesManager;
 import fr.redxil.api.common.game.Hosts;
+import fr.redxil.api.common.game.team.TeamManager;
 import fr.redxil.api.common.moderators.ModeratorManager;
 import fr.redxil.api.common.party.PartyManager;
 import fr.redxil.api.common.player.APIPlayerManager;
@@ -20,7 +21,6 @@ import fr.redxil.api.common.server.Server;
 import fr.redxil.api.common.server.ServerManager;
 import fr.redxil.api.common.server.type.ServerType;
 import fr.redxil.api.common.sql.SQLConnection;
-import fr.redxil.api.common.team.TeamManager;
 
 public abstract class API {
 

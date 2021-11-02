@@ -8,8 +8,8 @@
 
 package fr.redxil.api.spigot.minigame.teams;
 
-import fr.redxil.api.common.team.Team;
-import fr.redxil.api.common.team.TeamManager;
+import fr.redxil.api.common.game.team.Team;
+import fr.redxil.api.common.game.team.TeamManager;
 import fr.redxil.api.spigot.inventory.InventoryGUI;
 import fr.redxil.api.spigot.itemstack.APIItemStack;
 import fr.redxil.api.spigot.minigame.GameBuilder;

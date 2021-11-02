@@ -8,9 +8,9 @@
 
 package fr.redxil.api.common.game;
 
+import fr.redxil.api.common.game.team.Team;
 import fr.redxil.api.common.moderators.APIPlayerModerator;
 import fr.redxil.api.common.player.APIPlayer;
-import fr.redxil.api.common.team.Team;
 
 import java.util.List;
 import java.util.Map;
