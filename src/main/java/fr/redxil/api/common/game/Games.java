@@ -9,8 +9,8 @@
 package fr.redxil.api.common.game;
 
 import fr.redxil.api.common.game.team.Team;
-import fr.redxil.api.common.moderators.APIPlayerModerator;
 import fr.redxil.api.common.player.APIPlayer;
+import fr.redxil.api.common.player.moderators.APIPlayerModerator;
 
 import java.util.List;
 import java.util.Map;
@@ -60,6 +60,14 @@ public interface Games {
     boolean isGameState(GameState... gameState);
 
     GameEnum getGame();
+
+    String getSubGames();
+
+    void setSubGames(String subGames);
+
+    String getMap();
+
+    void setMap(String map);
 
     boolean hasTeam();
 

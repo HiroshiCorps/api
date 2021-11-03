@@ -9,9 +9,9 @@
 package fr.redxil.api.common.player;
 
 import fr.redline.pms.utils.IpInfo;
-import fr.redxil.api.common.moderators.APIPlayerModerator;
 import fr.redxil.api.common.party.Party;
 import fr.redxil.api.common.player.data.SanctionInfo;
+import fr.redxil.api.common.player.moderators.APIPlayerModerator;
 import fr.redxil.api.common.server.Server;
 
 import java.util.UUID;

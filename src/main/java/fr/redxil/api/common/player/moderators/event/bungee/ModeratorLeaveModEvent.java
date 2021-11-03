@@ -6,25 +6,16 @@
  *
  */
 
-package fr.redxil.api.common.moderators.event.bungee;
+package fr.redxil.api.common.player.moderators.event.bungee;
 
-import fr.redxil.api.common.moderators.APIPlayerModerator;
+import fr.redxil.api.common.player.moderators.APIPlayerModerator;
 
-public class ModeratorJoinModEvent {
+public class ModeratorLeaveModEvent {
 
     private final APIPlayerModerator moderator;
-    private boolean cancelled = false;
 
-    public ModeratorJoinModEvent(APIPlayerModerator moderator) {
+    public ModeratorLeaveModEvent(APIPlayerModerator moderator) {
         this.moderator = moderator;
-    }
-
-    public boolean isCancelled() {
-        return this.cancelled;
-    }
-
-    public void setCancelled(boolean b) {
-        this.cancelled = b;
     }
 
     public APIPlayerModerator getModerator() {

@@ -6,9 +6,11 @@
  *
  */
 
-package fr.redxil.api.common.moderators;
+package fr.redxil.api.common.player.moderators;
 
+import fr.redxil.api.common.player.APIOfflinePlayer;
 import fr.redxil.api.common.player.APIPlayer;
+import fr.redxil.api.common.utils.SanctionType;
 
 import java.util.UUID;
 
@@ -45,5 +47,9 @@ public interface APIPlayerModerator {
 
 
     boolean isVanish();
+
+    void printSanction(APIOfflinePlayer aop, SanctionType sanctionType);
+
+    void printInfo(APIOfflinePlayer aop);
 
 }

@@ -6,9 +6,9 @@
  *
  */
 
-package fr.redxil.api.common.moderators.event.spigot;
+package fr.redxil.api.common.player.moderators.event.spigot;
 
-import fr.redxil.api.common.moderators.APIPlayerModerator;
+import fr.redxil.api.common.player.moderators.APIPlayerModerator;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 

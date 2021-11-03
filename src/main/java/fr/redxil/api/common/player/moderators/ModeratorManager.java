@@ -6,7 +6,7 @@
  *
  */
 
-package fr.redxil.api.common.moderators;
+package fr.redxil.api.common.player.moderators;
 
 import fr.redxil.api.common.message.TextComponentBuilder;
 import fr.redxil.api.common.player.APIPlayer;

@@ -8,9 +8,9 @@
 
 package fr.redxil.api.common.player;
 
-import fr.redxil.api.common.moderators.APIPlayerModerator;
 import fr.redxil.api.common.player.data.SanctionInfo;
 import fr.redxil.api.common.player.data.Setting;
+import fr.redxil.api.common.player.moderators.APIPlayerModerator;
 import fr.redxil.api.common.rank.RankList;
 import fr.redxil.api.common.utils.SanctionType;
 

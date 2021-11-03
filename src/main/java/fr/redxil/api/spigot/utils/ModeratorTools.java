@@ -9,9 +9,8 @@
 package fr.redxil.api.spigot.utils;
 
 import fr.redxil.api.common.API;
-import fr.redxil.api.common.moderators.APIPlayerModerator;
 import fr.redxil.api.common.player.APIPlayer;
-import fr.redxil.api.common.utils.TextUtils;
+import fr.redxil.api.common.player.moderators.APIPlayerModerator;
 import fr.redxil.api.spigot.gui.SanctionGUI;
 import fr.redxil.api.spigot.gui.ServerGUI;
 import fr.redxil.api.spigot.itemstack.APIItemStack;
@@ -19,14 +18,13 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.event.block.Action;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public enum ModeratorTools {
 
-    RANDOM_TP(0, new APIItemStack(Material.COMPASS).setName("§6Téléportation aléatoire §7(Clique droit)").setOFFInvAction(
+    RANDOM_TP(0, new APIItemStack(Material.COMPASS).setName("§6Téléportation aléatoire §7(Clique droit)")/*.setOFFInvAction(
             (player, event) -> {
                 event.setCancelled(true);
                 if (event.getPlayer().hasCooldown(event.getItem().getType())) return;
@@ -54,7 +52,7 @@ public enum ModeratorTools {
                 event.getPlayer().sendMessage(TextUtils.getPrefix("CIBLE") + "Lancement du voyage intersidéral vers: " + targetName);
                 event.getPlayer().teleport(target);
             }
-    )),
+    )*/),
 
     INFORMATION(1, new APIItemStack(Material.PAPER).setName("§bInformations §7(Clique droit)").setOFFInvAction((player, event) -> {
         event.setCancelled(true);
@@ -145,7 +143,7 @@ public enum ModeratorTools {
         });
 
         if (players.isEmpty()) {
-            modPlayer.sendMessage(TextUtils.getPrefix("CIBLE") + "Aucune cible disponible sur ce server");
+            modPlayer.sendMessage("Cible) Aucune cible disponible sur ce server");
             return;
         }
 
@@ -154,7 +152,7 @@ public enum ModeratorTools {
         APIPlayer apiPlayer = API.get().getPlayerManager().getPlayer(target.getUniqueId());
 
         mod.setCible(apiPlayer.getName());
-        modPlayer.sendMessage(TextUtils.getPrefix("CIBLE") + "Vous avez une nouvelle cible: " + apiPlayer.getName());
+        modPlayer.sendMessage("Cible) Vous avez une nouvelle cible: " + apiPlayer.getName());
         modPlayer.teleport(target);
 
     }

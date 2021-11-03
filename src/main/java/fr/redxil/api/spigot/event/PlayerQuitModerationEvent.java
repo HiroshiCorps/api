@@ -8,7 +8,7 @@
 
 package fr.redxil.api.spigot.event;
 
-import fr.redxil.api.common.moderators.APIPlayerModerator;
+import fr.redxil.api.common.player.moderators.APIPlayerModerator;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 

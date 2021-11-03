@@ -6,7 +6,7 @@
  *
  */
 
-package fr.redxil.api.common.moderators;
+package fr.redxil.api.common.player.moderators;
 
 public enum Actions {
 
