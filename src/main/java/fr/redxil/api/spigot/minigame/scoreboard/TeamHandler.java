@@ -9,8 +9,8 @@
 package fr.redxil.api.spigot.minigame.scoreboard;
 
 import fr.redxil.api.spigot.utils.Reflection;
-import net.minecraft.server.v1_12_R1.ChatComponentText;
-import net.minecraft.server.v1_12_R1.PacketPlayOutScoreboardTeam;
+import net.minecraft.server.v1_8_R3.ChatComponentText;
+import net.minecraft.server.v1_8_R3.PacketPlayOutScoreboardTeam;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;

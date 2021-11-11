@@ -42,7 +42,7 @@ dependencies {
     implementation group: 'de.dytanic.cloudnet', name: 'cloudnet-bridge', version: '3.4.0-SNAPSHOT'
     implementation group: 'de.dytanic.cloudnet', name: 'cloudnet-driver', version: '3.4.0-SNAPSHOT'
     implementation name: 'PluginMessageSystem-1.0-SNAPSHOT'
-    compileOnly name: 'spigot-1.12.2'
+    compileOnly name: 'spigot-1.8.8'
 }
 
 task fatJar(type: Jar) {

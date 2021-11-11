@@ -11,11 +11,8 @@ package fr.redxil.api.spigot.utils;
 import fr.redxil.api.common.API;
 import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.player.moderators.APIPlayerModerator;
-import fr.redxil.api.spigot.gui.SanctionGUI;
-import fr.redxil.api.spigot.gui.ServerGUI;
 import fr.redxil.api.spigot.itemstack.APIItemStack;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 
@@ -54,68 +51,19 @@ public enum ModeratorTools {
             }
     )*/),
 
-    INFORMATION(1, new APIItemStack(Material.PAPER).setName("§bInformations §7(Clique droit)").setOFFInvAction((player, event) -> {
-        event.setCancelled(true);
-        if (event.getPlayer().hasCooldown(event.getItem().getType())) return;
-        event.getPlayer().setCooldown(event.getItem().getType(), 20);
-        org.bukkit.entity.Player target = Targeter.getTargetPlayer(event.getPlayer());
-        if (target == null) {
-            event.getPlayer().sendMessage(ChatColor.RED + "S'il vous plait, veillez à viser un joueur");
-            return;
-        }
-        player.performCommand("info " + target.getName());
-    })),
+    INFORMATION(1, new APIItemStack(Material.PAPER).setName("§bInformations §7(Clique droit)")),
 
-    HISTORY_SANCTION(2, new APIItemStack(Material.ENCHANTED_BOOK).setName("§dHistorique sanctions §7(Clique droit)").setOFFInvAction((player, event) -> {
-        event.setCancelled(true);
-        if (event.getPlayer().hasCooldown(event.getItem().getType())) return;
-        event.getPlayer().setCooldown(event.getItem().getType(), 20);
-        org.bukkit.entity.Player target = Targeter.getTargetPlayer(event.getPlayer());
-        if (target == null) {
-            event.getPlayer().sendMessage(ChatColor.RED + "S'il vous plait, veillez à viser un joueur");
-            return;
-        }
-        new SanctionGUI(target).openGUI(event.getPlayer());
-    })),
+    HISTORY_SANCTION(2, new APIItemStack(Material.ENCHANTED_BOOK).setName("§dHistorique sanctions §7(Clique droit)")),
 
     ANTI_KB(3, new APIItemStack(Material.STICK).setName("§6Anti-KB").addItemEnchantment(Enchantment.KNOCKBACK, 2)),
 
-    SWITCH_SERVER(4, new APIItemStack(Material.SKULL_ITEM).setName("§aChanger de serveur").setOFFInvAction((player, event) -> {
-        event.setCancelled(true);
-        if (event.getPlayer().hasCooldown(event.getItem().getType())) return;
-        event.getPlayer().setCooldown(event.getItem().getType(), 20);
-        new ServerGUI(player).openGUI(player);
-    })),
+    SWITCH_SERVER(4, new APIItemStack(Material.SKULL_ITEM).setName("§aChanger de serveur")),
 
     ANTI_CHEAT(6, new APIItemStack(Material.ENCHANTMENT_TABLE).setName("§cAntiCheat §7(Clique droit)")),
 
-    INVENTORY(7, new APIItemStack(Material.CHEST).setName("§eInventaires §7(Clique droit)").setOFFInvAction(
-            (player, event) -> {
-                event.setCancelled(true);
-                if (event.getPlayer().hasCooldown(event.getItem().getType())) return;
-                event.getPlayer().setCooldown(event.getItem().getType(), 20);
-                org.bukkit.entity.Player target = Targeter.getTargetPlayer(player);
-                if (target == null) {
-                    player.sendMessage(ChatColor.RED + "S'il vous plait, veillez à viser un joueur");
-                    return;
-                }
-                player.openInventory(target.getInventory());
-            }
-    )),
+    INVENTORY(7, new APIItemStack(Material.CHEST).setName("§eInventaires §7(Clique droit)")),
 
-    FREEZE(8, new APIItemStack(Material.PACKED_ICE).setName("§3Freeze le joueur §7(Clique droit)").setOFFInvAction(
-            (player, event) -> {
-                event.setCancelled(true);
-                if (event.getPlayer().hasCooldown(event.getItem().getType())) return;
-                event.getPlayer().setCooldown(event.getItem().getType(), 20);
-                org.bukkit.entity.Player target = Targeter.getTargetPlayer(event.getPlayer());
-                if (target == null) {
-                    event.getPlayer().sendMessage(ChatColor.RED + "S'il vous plait, veillez à viser un joueur");
-                    return;
-                }
-                event.getPlayer().performCommand("freeze " + target.getName());
-            }
-    ));
+    FREEZE(8, new APIItemStack(Material.PACKED_ICE).setName("§3Freeze le joueur §7(Clique droit)"));
 
     private final APIItemStack APIItemStack;
     private final int slot;

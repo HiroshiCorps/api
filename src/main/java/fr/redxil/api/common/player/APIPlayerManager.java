@@ -10,6 +10,7 @@ package fr.redxil.api.common.player;
 
 import fr.redline.pms.utils.IpInfo;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface APIPlayerManager {
@@ -87,5 +88,7 @@ public interface APIPlayerManager {
      * @return True if the player is loaded on Redis
      */
     boolean isLoadedPlayer(UUID uuid);
+
+    List<Long> getLoadedPlayer();
 
 }
