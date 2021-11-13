@@ -8,10 +8,6 @@
 
 package fr.redxil.api.common.rank;
 
-import de.dytanic.cloudnet.driver.CloudNetDriver;
-import de.dytanic.cloudnet.driver.permission.IPermissionGroup;
-import de.dytanic.cloudnet.driver.permission.IPermissionManagement;
-
 public enum RankList {
 
     ADMINISTRATEUR(7, 777L, true,
@@ -91,19 +87,6 @@ public enum RankList {
         this.scoreboardString = scoreboardString;
     }
 
-    public static void enableCloudPerms() {
-        IPermissionManagement pmha = CloudNetDriver.getInstance().getPermissionManagement();
-        for (RankList rankList : values()) {
-
-            if (pmha.getGroup(rankList.getRankName()) == null)
-                pmha.addGroup(rankList.getRankName(), rankList.getId());
-
-        }
-
-        pmha.reload();
-
-    }
-
     public static RankList getRank(long power) {
         for (RankList rank : RankList.values())
             if (rank.getRankPower() == power)
@@ -141,10 +124,6 @@ public enum RankList {
 
     public final Boolean isModeratorRank() {
         return mod;
-    }
-
-    public final IPermissionGroup getIPermGroup() {
-        return CloudNetDriver.getInstance().getPermissionManagement().getGroup(getRankName());
     }
 
 }

@@ -9,7 +9,6 @@
 package fr.redxil.api.common.server;
 
 import fr.redline.pms.utils.IpInfo;
-import fr.redxil.api.common.server.type.ServerTasks;
 import fr.redxil.api.common.server.type.ServerType;
 
 import java.util.List;
@@ -33,7 +32,5 @@ public interface ServerManager {
     Server getServer(long serverID);
 
     Server initServer(String name, IpInfo ipInfo);
-
-    String createServer(ServerTasks serverTasks);
 
 }

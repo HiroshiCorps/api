@@ -12,7 +12,6 @@ import fr.redline.pms.utils.IpInfo;
 import fr.redxil.api.common.game.Games;
 import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.server.type.ServerStatus;
-import fr.redxil.api.common.server.type.ServerTasks;
 import fr.redxil.api.common.server.type.ServerType;
 
 import java.util.Collection;
@@ -25,8 +24,6 @@ public interface Server {
 
     void setMaxPlayers(int players);
 
-    void changeMaintenance(boolean value);
-
     String getServerName();
 
     Collection<APIPlayer> getPlayerList();
@@ -37,19 +34,17 @@ public interface Server {
 
     Object getServerResponseMessage(int value);
 
-    boolean isInMaintenance();
-
     boolean isOnline();
 
     IpInfo getServerIP();
-
-    int getPowerAcces();
 
     boolean shutdown();
 
     boolean canConnectTo(APIPlayer apiPlayer);
 
     ServerStatus getServerStatus();
+
+    void setServerStatus(ServerStatus serverStatus);
 
     ServerType getServerType();
 
@@ -58,10 +53,6 @@ public interface Server {
     void setPlayerInServer(APIPlayer apiPlayer);
 
     void removePlayerInServer(UUID uuid);
-
-    ServerTasks getTasks();
-
-    void changeTask(ServerTasks serverTasks);
 
     void sendShutdownOrder();
 
