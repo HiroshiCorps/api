@@ -47,6 +47,8 @@ public interface Server {
 
     boolean shutdown();
 
+    boolean canConnectTo(APIPlayer apiPlayer);
+
     ServerStatus getServerStatus();
 
     ServerType getServerType();
