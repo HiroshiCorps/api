@@ -4,6 +4,9 @@ version '4.0.0'
 apply plugin: 'java-library'
 apply plugin: 'maven-publish'
 
+sourceCompatibility = 1.8
+
+
 compileJava.options.encoding = 'UTF-8'
 
 configurations.implementation.setCanBeResolved(true)

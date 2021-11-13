@@ -24,4 +24,6 @@ public abstract class Velocity {
 
     public abstract ProxyServer getProxyServer();
 
+    public abstract void registerCommands();
+
 }
