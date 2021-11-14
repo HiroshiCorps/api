@@ -10,6 +10,7 @@ package fr.redxil.api.common.server;
 
 import fr.redline.pms.utils.IpInfo;
 import fr.redxil.api.common.game.Games;
+import fr.redxil.api.common.player.APIOfflinePlayer;
 import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.server.type.ServerStatus;
 import fr.redxil.api.common.server.type.ServerType;
@@ -40,7 +41,7 @@ public interface Server {
 
     boolean shutdown();
 
-    boolean canConnectTo(APIPlayer apiPlayer);
+    boolean canConnectTo(APIOfflinePlayer apiPlayer);
 
     ServerStatus getServerStatus();
 
