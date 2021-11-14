@@ -11,7 +11,6 @@ package fr.redxil.api.common.server.type;
 public enum ServerStatus {
 
     ONLINE,
-    MAINTENANCE,
     OFFLINE
 
 }

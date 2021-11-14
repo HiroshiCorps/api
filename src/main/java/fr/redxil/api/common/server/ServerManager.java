@@ -31,6 +31,6 @@ public interface ServerManager {
 
     Server getServer(long serverID);
 
-    Server initServer(String name, IpInfo ipInfo);
+    Server initServer(ServerType serverType, String name, IpInfo ipInfo);
 
 }
