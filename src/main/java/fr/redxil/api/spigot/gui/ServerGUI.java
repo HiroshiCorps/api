@@ -72,7 +72,7 @@ public class ServerGUI extends InventoryGUI {
             serverMaterial = Material.BOOK;
         else if (serverType == ServerType.PRIVATE)
             serverMaterial = Material.DIAMOND_HELMET;
-        else if (serverType == ServerType.UNKNOWN)
+        else
             serverMaterial = Material.BARRIER;
 
         APIItemStack APIItemStack = new APIItemStack(serverMaterial, 1);

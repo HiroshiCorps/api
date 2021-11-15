@@ -10,18 +10,18 @@ package fr.redxil.api.common.server.type;
 
 public enum ServerType {
 
-    HUB("HUB"),
-    LOBBY("LOBBY"),
-    HOST("HOST"),
-    PRIVATE("PRIVATE"),
-    GAME("GAME"),
-    UNKNOWN("UNKNOWN"),
-    BUNGEE("BUNGEE");
+    HUB("HUB", ServerAccess.OPEN),
+    HOST("HOST", ServerAccess.GAME),
+    PRIVATE("PRIVATE", ServerAccess.RANK_SPECIFIC),
+    GAME("GAME", ServerAccess.GAME),
+    BUNGEE("BUNGEE", ServerAccess.OPEN);
 
     String name;
+    ServerAccess serverAccess;
 
-    ServerType(String name) {
+    ServerType(String name, ServerAccess serverAccess) {
         this.name = name;
+        this.serverAccess = serverAccess;
     }
 
     public static ServerType fromString(String string) {
@@ -34,6 +34,10 @@ public enum ServerType {
 
     public String toString() {
         return name;
+    }
+
+    public ServerAccess getRelatedServerAccess() {
+        return serverAccess;
     }
 
 }

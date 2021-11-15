@@ -11,6 +11,8 @@ package fr.redxil.api.common.server;
 import fr.redline.pms.utils.IpInfo;
 import fr.redxil.api.common.game.Games;
 import fr.redxil.api.common.player.APIPlayer;
+import fr.redxil.api.common.rank.RankList;
+import fr.redxil.api.common.server.type.ServerAccess;
 import fr.redxil.api.common.server.type.ServerStatus;
 import fr.redxil.api.common.server.type.ServerType;
 
@@ -40,11 +42,16 @@ public interface Server {
 
     boolean shutdown();
 
-    boolean canConnectTo(APIPlayer apiPlayer);
 
     ServerStatus getServerStatus();
 
     void setServerStatus(ServerStatus serverStatus);
+
+
+    ServerAccess getServerAccess();
+
+    void setServerAccess(ServerAccess serverAccess);
+
 
     ServerType getServerType();
 
@@ -65,5 +72,9 @@ public interface Server {
     Games getGames();
 
     List<Long> getTeamLinked();
+
+    RankList getReservedRank();
+
+    void setReservedRank(RankList rank);
 
 }

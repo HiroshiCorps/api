@@ -94,6 +94,13 @@ public enum RankList {
         return null;
     }
 
+    public static RankList getRank(String name) {
+        for (RankList rank : RankList.values())
+            if (rank.getRankName().equals(name))
+                return rank;
+        return null;
+    }
+
     public String getScoreboardString() {
         return scoreboardString;
     }
