@@ -1,8 +1,6 @@
 package fr.redxil.api.velocity;
 
-import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
@@ -12,9 +10,7 @@ import com.velocitypowered.api.command.BrigadierCommand;
 import com.velocitypowered.api.command.CommandSource;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public abstract class BrigadierAPI {
 
@@ -29,7 +25,7 @@ public abstract class BrigadierAPI {
 
     public abstract int execute(CommandContext<CommandSource> context);
 
-    public abstract void registerArgs();
+    public abstract void registerArgs(LiteralCommandNode<CommandSource> commandNode);
 
     public  LiteralCommandNode<CommandSource> buildCommands(){
 
@@ -90,8 +86,11 @@ public abstract class BrigadierAPI {
     }
 
     public BrigadierCommand getBrigadierCommand(){
-        registerArgs();
-        this.brigadierCommand = new BrigadierCommand(buildCommands());
+
+        LiteralCommandNode<CommandSource> literalCommandNode = this.buildCommands();
+
+        registerArgs(literalCommandNode);
+        this.brigadierCommand = new BrigadierCommand(literalCommandNode);
         return this.brigadierCommand;
     }
 }

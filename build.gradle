@@ -23,9 +23,6 @@ repositories {
         url 'https://repo.velocitypowered.com/snapshots/'
     }
 
-    maven {
-        url = "https://repo.cloudnetservice.eu/repository/snapshots/"
-    }
 
     maven {
         url "https://repo.codemc.io/repository/maven-snapshots/"
