@@ -46,7 +46,8 @@ public class MathMain {
     }
 
     public static Double calcAngle(Vector v1, Vector v2, boolean highAtZ, boolean keepNegative) {
-        double dot, det;
+        double dot;
+        double det;
         if (!highAtZ) {
             dot = v1.getX() * v2.getX() + v1.getZ() * v2.getZ();
             det = v1.getX() * v2.getZ() - v1.getZ() * v2.getX();

@@ -7,8 +7,8 @@
  */
 
 package fr.redxil.api.spigot.scoreboard;
-import net.minecraft.server.v1_8_R3.*;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
+import net.minecraft.server.v1_12_R1.*;
+import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.Field;
@@ -148,7 +148,6 @@ public class ScoreboardBuilder {
         return ((CraftPlayer) player).getHandle().playerConnection;
     }
 
-    @SuppressWarnings("rawtypes")
     private void sendLine(int line) {
         if (line > 14)
             return;
@@ -159,7 +158,7 @@ public class ScoreboardBuilder {
 
         int score = (15 - line);
         VirtualTeam val = getOrCreateTeam(line);
-        for (Packet packet : val.sendLine())
+        for (PacketPlayOutScoreboardTeam packet : val.sendLine())
             getPlayer().sendPacket(packet);
         getPlayer().sendPacket(sendScore(val.getCurrentPlayer(), score));
         val.reset();
