@@ -6,7 +6,7 @@
  *
  */
 
-package fr.redxil.api.spigot.minigame.math;
+package fr.redxil.api.spigot.utils;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -20,38 +20,13 @@ public class MathMain {
 
     public static double calculDiff(Location from, Location to, boolean high) {
 
-        double x = to.getX() - from.getX(), y = to.getY() - from.getY(), z = to.getZ() - from.getZ();
-        double firstCalc = java.lang.Math.sqrt(java.lang.Math.pow(x, 2) + java.lang.Math.pow(y, 2));
+        double x = to.getX() - from.getX(),
+                y = to.getY() - from.getY(),
+                z = to.getZ() - from.getZ();
 
-        if (!high) return firstCalc;
-
-        return java.lang.Math.sqrt(java.lang.Math.pow(firstCalc, 2) + java.lang.Math.pow(z, 2));
-
-    }
-
-    public static double vectorAngle(Vector v) {
-
-        /// Found on https://stackoverflow.com/questions/6247153/angle-from-2d-unit-vector
-
-        double x = v.getX();
-        double y = v.getY();
-
-        if (x == 0) // special cases
-            return (y > 0) ? 90
-                    : (y == 0) ? 0
-                    : 270;
-        else if (y == 0) // special cases
-            return (x >= 0) ? 0
-                    : 180;
-        double ret = radToDeg(Math.atan((float) y / x));
-        if (x < 0 && y < 0) // quadrant Ⅲ
-            ret = 180 + ret;
-        else if (x < 0) // quadrant Ⅱ
-            ret = 180 + ret; // it actually substracts
-        else if (y < 0) // quadrant Ⅳ
-            ret = 270 + (90 + ret); // it actually substracts
-
-        return ret;
+        return !high ? Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2))
+                :
+                Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));
 
     }
 

@@ -6,7 +6,7 @@
  *
  */
 
-package fr.redxil.api.spigot.minigame.math;
+package fr.redxil.api.spigot.utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,14 +14,14 @@ import java.util.List;
 
 public enum Direction {
 
-    NORD(337.5, 22.5, "⬆"),
-    SUD(157.5, 202.5, "⬇"),
-    OUEST(247.5, 292.5, "⬅"),
-    EST(67.5, 112.5, "➡"),
-    NORD_OUEST(292.5, 337.5, "⬉"),
-    NORD_EST(22.5, 67.5, "⬈"),
-    SUD_OUEST(202.5, 247.5, "⬋"),
-    SUD_EST(112.5, 157.5, "⬊");
+    NORTH(337.5, 22.5, "⬆"),
+    SOUTH(157.5, 202.5, "⬇"),
+    WEST(247.5, 292.5, "⬅"),
+    EAST(67.5, 112.5, "➡"),
+    NORTH_WEST(292.5, 337.5, "⬉"),
+    NORTH_EAST(22.5, 67.5, "⬈"),
+    SOUTH_WEST(202.5, 247.5, "⬋"),
+    SOUTH_EAST(112.5, 157.5, "⬊");
 
     double min, max;
     String symbol;
@@ -34,7 +34,7 @@ public enum Direction {
 
     private static List<Direction> calcList() {
         List<Direction> dirList = new ArrayList<>(Arrays.asList(Direction.values()));
-        dirList.remove(Direction.NORD);
+        dirList.remove(Direction.NORTH);
         return dirList;
     }
 
@@ -47,7 +47,7 @@ public enum Direction {
 
         }
 
-        return Direction.NORD;
+        return Direction.NORTH;
 
     }
 
