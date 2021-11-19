@@ -26,7 +26,7 @@ public enum ModeratorTools {
                 event.setCancelled(true);
                 if (event.getPlayer().hasCooldown(event.getItem().getType())) return;
                 event.getPlayer().setCooldown(event.getItem().getType(), 20);
-                APIPlayerModerator playerMod = API.get().getModeratorManager().getModerator(player.getUniqueId());
+                APIPlayerModerator playerMod = API.getInstance().getModeratorManager().getModerator(player.getUniqueId());
                 if (playerMod == null) return;
                 String targetName = playerMod.getCible();
 
@@ -86,7 +86,7 @@ public enum ModeratorTools {
         List<org.bukkit.entity.Player> players = new ArrayList<>();
 
         Bukkit.getOnlinePlayers().forEach((player) -> {
-            if (!API.get().getModeratorManager().isModerator(player.getUniqueId()))
+            if (!API.getInstance().getModeratorManager().isModerator(player.getUniqueId()))
                 players.add(player);
         });
 
@@ -97,7 +97,7 @@ public enum ModeratorTools {
 
         int rand = Double.valueOf(Math.random() * (players.size())).intValue();
         org.bukkit.entity.Player target = players.get(rand);
-        APIPlayer apiPlayer = API.get().getPlayerManager().getPlayer(target.getUniqueId());
+        APIPlayer apiPlayer = API.getInstance().getPlayerManager().getPlayer(target.getUniqueId());
 
         mod.setCible(apiPlayer.getName());
         modPlayer.sendMessage("Cible) Vous avez une nouvelle cible: " + apiPlayer.getName());

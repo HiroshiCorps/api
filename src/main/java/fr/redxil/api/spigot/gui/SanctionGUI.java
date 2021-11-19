@@ -33,7 +33,7 @@ public class SanctionGUI extends InventoryGUI {
     @Override
     public void buildGUI() {
 
-        APIPlayer apiPlayer = API.get().getPlayerManager().getPlayer(getPlayerRelated().getUniqueId());
+        APIPlayer apiPlayer = API.getInstance().getPlayerManager().getPlayer(getPlayerRelated().getUniqueId());
 
         List<SanctionInfo> bans = apiPlayer.getSanction(SanctionType.BAN);
         List<SanctionInfo> mutes = apiPlayer.getSanction(SanctionType.MUTE);

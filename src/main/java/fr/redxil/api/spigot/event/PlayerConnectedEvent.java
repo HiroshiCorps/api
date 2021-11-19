@@ -23,7 +23,7 @@ public class PlayerConnectedEvent extends Event implements Cancellable {
 
     public PlayerConnectedEvent(org.bukkit.entity.Player player) {
         this.player = player;
-        this.apiPlayer = API.get().getPlayerManager().getPlayer(player.getUniqueId());
+        this.apiPlayer = API.getInstance().getPlayerManager().getPlayer(player.getUniqueId());
     }
 
     public static HandlerList getHandlerList() {

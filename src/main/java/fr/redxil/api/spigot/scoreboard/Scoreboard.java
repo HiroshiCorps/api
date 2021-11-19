@@ -46,7 +46,7 @@ public abstract class Scoreboard {
 
                         ArrayList<UUID> disconnectedUUID = new ArrayList<>();
                         for (Map.Entry<UUID, ScoreboardBuilder> entry : players.entrySet()) {
-                            APIPlayer apiPlayer = API.get().getPlayerManager().getPlayer(entry.getKey());
+                            APIPlayer apiPlayer = API.getInstance().getPlayerManager().getPlayer(entry.getKey());
                             if (apiPlayer != null)
                                 updateScoreboard(apiPlayer, entry.getValue());
                             else disconnectedUUID.add(entry.getKey());
@@ -62,7 +62,7 @@ public abstract class Scoreboard {
         ScoreboardBuilder scoreboardBuilder = new ScoreboardBuilder(player, this.name);
         HashMap<Integer, String> lignes = new HashMap<>();
 
-        this.buildScoreboard(API.get().getPlayerManager().getPlayer(player.getUniqueId()), lignes);
+        this.buildScoreboard(API.getInstance().getPlayerManager().getPlayer(player.getUniqueId()), lignes);
 
         scoreboardBuilder.create();
 

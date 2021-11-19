@@ -41,7 +41,7 @@ public enum ServerAccess {
 
             case GAME: {
 
-                Games game = API.get().getGame();
+                Games game = API.getInstance().getGame();
                 if (game == null)
                     return false;
 

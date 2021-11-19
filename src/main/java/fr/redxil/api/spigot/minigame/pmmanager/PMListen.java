@@ -17,7 +17,7 @@ import org.redisson.api.RedissonClient;
 public class PMListen implements PMReceiver {
 
     public PMListen() {
-        RedissonClient rc = API.get().getRedisManager().getRedissonClient();
+        RedissonClient rc = API.getInstance().getRedisManager().getRedissonClient();
         PMManager.addRedissonPMListener(rc, "forceSTART", String.class, this);
         PMManager.addRedissonPMListener(rc, "forceSTOPSTART", String.class, this);
         PMManager.addRedissonPMListener(rc, "forceEND", String.class, this);

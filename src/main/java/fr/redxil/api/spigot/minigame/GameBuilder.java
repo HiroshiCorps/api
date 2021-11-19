@@ -56,23 +56,23 @@ public abstract class GameBuilder {
     }
 
     public void initGame() {
-        Server server = API.get().getServer();
+        Server server = API.getInstance().getServer();
         if (gameEnum.isCanHost() && server.isHostDedicated()) {
-            APIPlayer apiPlayer = API.get().getPlayerManager().getPlayer(server.getServerName());
+            APIPlayer apiPlayer = API.getInstance().getPlayerManager().getPlayer(server.getServerName());
             if (apiPlayer != null) {
-                API.get().getGamesManager().initHostServer(API.get().getPluginEnabler().getServerName(), API.get().getPlayerManager().getPlayer(server.getHostAuthor()), gameEnum);
+                API.getInstance().getGamesManager().initHostServer(API.getInstance().getPluginEnabler().getServerName(), API.getInstance().getPlayerManager().getPlayer(server.getHostAuthor()), gameEnum);
                 apiPlayer.switchServer(server.getServerName());
                 return;
             } else if (gameEnum.isHostOnly()) {
-                API.get().getPluginEnabler().shutdownServer("Missing host");
+                API.getInstance().getPluginEnabler().shutdownServer("Missing host");
                 return;
             }
         }
-        API.get().getGamesManager().initGameServer(server.getServerName(), gameEnum);
+        API.getInstance().getGamesManager().initGameServer(server.getServerName(), gameEnum);
     }
 
     public Games getGame() {
-        return API.get().getGame();
+        return API.getInstance().getGame();
     }
 
     public boolean hasTeams() {
@@ -177,7 +177,7 @@ public abstract class GameBuilder {
     }
 
     public TeamManager getTeamManager() {
-        return API.get().getTeamManager();
+        return API.getInstance().getTeamManager();
     }
 
     public ChestSystem getChestSystem() {

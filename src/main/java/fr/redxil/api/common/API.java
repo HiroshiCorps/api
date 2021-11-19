@@ -43,7 +43,7 @@ public abstract class API {
      *
      * @return Instance
      */
-    public static API get() {
+    public static API getInstance() {
         return instance;
     }
 

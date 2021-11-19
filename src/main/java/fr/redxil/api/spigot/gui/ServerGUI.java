@@ -41,7 +41,7 @@ public class ServerGUI extends InventoryGUI {
         int minList = totalServerAff * (page - 1);
         int maxList = totalServerAff * page - 1;
 
-        List<Server> serverList = API.get().getServerManager().getListServer();
+        List<Server> serverList = API.getInstance().getServerManager().getListServer();
 
         for (int invPos = 0, posList = minList; posList <= maxList && posList < serverList.size(); posList += 1, invPos += 1) {
             Server server = serverList.get(posList);
@@ -84,7 +84,7 @@ public class ServerGUI extends InventoryGUI {
 
         lore.add("Type: " + serverType.name());
         lore.add("Joueurs: " + server.getPlayerList().size() + "/" + server.getMaxPlayers());
-        Server actualServer = API.get().getServer();
+        Server actualServer = API.getInstance().getServer();
         if (actualServer != null)
             if (actualServer.getServerName().equals(server.getServerName()))
                 lore.add("CURRENT SERVER");
@@ -94,7 +94,7 @@ public class ServerGUI extends InventoryGUI {
         APIItemStack.setItemMeta(itemMeta);
 
         APIItemStack.setInvAction(((player, inventoryClickEvent) -> {
-            APIPlayer apiPlayer = API.get().getPlayerManager().getPlayer(player.getUniqueId());
+            APIPlayer apiPlayer = API.getInstance().getPlayerManager().getPlayer(player.getUniqueId());
             if (apiPlayer == null) return;
             apiPlayer.switchServer(server.getServerName());
         }));

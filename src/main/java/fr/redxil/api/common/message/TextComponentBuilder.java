@@ -19,19 +19,19 @@ public abstract class TextComponentBuilder {
     TextComponentBuilder previous = null;
 
     public static TextComponentBuilder createTextComponent() {
-        if (API.get().isBungee())
+        if (API.getInstance().isBungee())
             return new TextComponentBuilderVelocity();
         else return new TextComponentBuilderSpigot();
     }
 
     public static TextComponentBuilder createTextComponent(String message) {
-        if (API.get().isBungee())
+        if (API.getInstance().isBungee())
             return new TextComponentBuilderVelocity(message);
         else return new TextComponentBuilderSpigot(message);
     }
 
     protected static TextComponentBuilder createTextComponent(TextComponentBuilder prev) {
-        if (API.get().isBungee()) {
+        if (API.getInstance().isBungee()) {
             TextComponentBuilderVelocity tcb = new TextComponentBuilderVelocity();
             tcb.previous = prev;
             return tcb;
@@ -42,7 +42,7 @@ public abstract class TextComponentBuilder {
     }
 
     protected static TextComponentBuilder createTextComponent(String message, TextComponentBuilder prev) {
-        if (API.get().isBungee()) {
+        if (API.getInstance().isBungee()) {
             TextComponentBuilderVelocity tcb = new TextComponentBuilderVelocity(message);
             tcb.previous = prev;
             return tcb;
@@ -93,7 +93,7 @@ public abstract class TextComponentBuilder {
     public abstract void sendTo(String name);
 
     public void sendToID(Long id) {
-        sendTo(API.get().getPlayerManager().getPlayer(id));
+        sendTo(API.getInstance().getPlayerManager().getPlayer(id));
     }
 
     public void sendToUUIDs(Collection<UUID> uuid) {
