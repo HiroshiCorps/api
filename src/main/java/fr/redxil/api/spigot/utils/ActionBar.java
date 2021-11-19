@@ -15,7 +15,7 @@ public class ActionBar {
      * @param message Message à envoyer au joueur.
      */
     public static void sendActionBar(Player player, String message) {
-        String nmsver = API.get().getPluginEnabler().getServerVersion();
+        String nmsver = API.getInstance().getPluginEnabler().getServerVersion();
 
         if (nmsver.equals("v1_8_R3")) {
             sendActionBar2(player, message);
@@ -57,7 +57,7 @@ public class ActionBar {
     }
 
     private static void sendActionBar2(Player player, String message) {
-        String nmsver = API.get().getPluginEnabler().getServerVersion();
+        String nmsver = API.getInstance().getPluginEnabler().getServerVersion();
         try {
             Class<?> craftPlayerClass = Class.forName("org.bukkit.craftbukkit." + nmsver + ".entity.CraftPlayer");
             Object craftPlayer = craftPlayerClass.cast(player);
