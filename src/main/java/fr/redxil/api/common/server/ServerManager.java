@@ -9,6 +9,7 @@
 package fr.redxil.api.common.server;
 
 import fr.redline.pms.utils.IpInfo;
+import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.server.type.ServerType;
 
 import java.util.List;
@@ -32,5 +33,7 @@ public interface ServerManager {
     Server getServer(long serverID);
 
     Server initServer(ServerType serverType, String name, IpInfo ipInfo);
+
+    Server getConnectableServer(APIPlayer apiPlayer, ServerType serverType);
 
 }

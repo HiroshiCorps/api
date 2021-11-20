@@ -91,4 +91,10 @@ public interface APIPlayerManager {
 
     List<Long> getLoadedPlayer();
 
+    String getIdentifierString(APIOfflinePlayer aop);
+
+    String getIdentifierString(String name, UUID uuid);
+
+    String getPlayerIdentifierColumn();
+
 }

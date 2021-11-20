@@ -32,6 +32,8 @@ public interface Server {
 
     Collection<UUID> getPlayerUUIDList();
 
+    int getConnectedPlayer();
+
     long getLastPing();
 
     Object getServerResponseMessage(int value);

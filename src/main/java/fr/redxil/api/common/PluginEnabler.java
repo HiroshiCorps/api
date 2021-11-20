@@ -17,7 +17,7 @@ public interface PluginEnabler {
 
     IpInfo getServerIp();
 
-    boolean isBungee();
+    boolean isVelocity();
 
     File getPluginDataFolder();
 

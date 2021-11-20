@@ -113,12 +113,12 @@ public abstract class API {
 
     public abstract TeamManager getTeamManager();
 
-    public boolean isBungee() {
-        return plugin.isBungee();
+    public boolean isVelocity() {
+        return plugin.isVelocity();
     }
 
     public boolean isSpigot() {
-        return !isBungee();
+        return !isVelocity();
     }
 
     public long getResponse() {
