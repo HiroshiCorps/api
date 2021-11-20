@@ -99,6 +99,6 @@ public interface Games {
 
     boolean isHostLinked();
 
-    boolean isAllowConnectServer(APIPlayer apiPlayer);
+    boolean isAllowConnectServer(String playerName);
 
 }

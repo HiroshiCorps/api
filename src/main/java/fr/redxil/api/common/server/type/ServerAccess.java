@@ -24,12 +24,14 @@ public enum ServerAccess {
     ADMIN;
 
     public boolean canAccess(Server server, APIPlayer apiOfflinePlayer) {
-        return canAccess(server, this, apiOfflinePlayer);
+        return canAccess(server, this, apiOfflinePlayer.getName(), apiOfflinePlayer.getRank());
     }
 
-    private boolean canAccess(Server server, ServerAccess serverAccess, APIPlayer apiPlayer) {
+    public boolean canAccess(Server server, String name, RankList rankList) {
+        return canAccess(server, this, name, rankList);
+    }
 
-        RankList rankList = apiPlayer.getRank();
+    private boolean canAccess(Server server, ServerAccess serverAccess, String name, RankList rankList) {
 
         switch (serverAccess) {
 
@@ -45,7 +47,7 @@ public enum ServerAccess {
                 if (game == null)
                     return false;
 
-                return game.isAllowConnectServer(apiPlayer);
+                return game.isAllowConnectServer(name);
 
             }
 
