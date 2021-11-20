@@ -113,6 +113,8 @@ public abstract class API {
 
     public abstract TeamManager getTeamManager();
 
+    public abstract String getServerName();
+
     public boolean isVelocity() {
         return plugin.isVelocity();
     }

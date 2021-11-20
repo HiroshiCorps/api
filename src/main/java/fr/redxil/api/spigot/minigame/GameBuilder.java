@@ -60,7 +60,7 @@ public abstract class GameBuilder {
         if (gameEnum.isCanHost() && server.isHostDedicated()) {
             APIPlayer apiPlayer = API.getInstance().getPlayerManager().getPlayer(server.getServerName());
             if (apiPlayer != null) {
-                API.getInstance().getGamesManager().initHostServer(API.getInstance().getPluginEnabler().getServerName(), API.getInstance().getPlayerManager().getPlayer(server.getHostAuthor()), gameEnum);
+                API.getInstance().getGamesManager().initHostServer(API.getInstance().getServerName(), API.getInstance().getPlayerManager().getPlayer(server.getHostAuthor()), gameEnum);
                 apiPlayer.switchServer(server.getServerName());
                 return;
             } else if (gameEnum.isHostOnly()) {

@@ -21,8 +21,6 @@ public interface PluginEnabler {
 
     File getPluginDataFolder();
 
-    String getServerName();
-
     String getPluginVersion();
 
     int getMaxPlayer();

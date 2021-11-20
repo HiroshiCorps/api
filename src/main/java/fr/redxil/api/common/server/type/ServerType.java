@@ -14,7 +14,7 @@ public enum ServerType {
     HOST("HOST", ServerAccess.GAME),
     PRIVATE("PRIVATE", ServerAccess.RANK_SPECIFIC),
     GAME("GAME", ServerAccess.GAME),
-    BUNGEE("BUNGEE", ServerAccess.OPEN);
+    VELOCITY("VELOCITY", ServerAccess.OPEN);
 
     String name;
     ServerAccess serverAccess;

@@ -19,19 +19,19 @@ public abstract class TextComponentBuilder {
     TextComponentBuilder previous = null;
 
     public static TextComponentBuilder createTextComponent() {
-        if (API.getInstance().isBungee())
+        if (API.getInstance().isVelocity())
             return new TextComponentBuilderVelocity();
         else return new TextComponentBuilderSpigot();
     }
 
     public static TextComponentBuilder createTextComponent(String message) {
-        if (API.getInstance().isBungee())
+        if (API.getInstance().isVelocity())
             return new TextComponentBuilderVelocity(message);
         else return new TextComponentBuilderSpigot(message);
     }
 
     protected static TextComponentBuilder createTextComponent(TextComponentBuilder prev) {
-        if (API.getInstance().isBungee()) {
+        if (API.getInstance().isVelocity()) {
             TextComponentBuilderVelocity tcb = new TextComponentBuilderVelocity();
             tcb.previous = prev;
             return tcb;
@@ -42,7 +42,7 @@ public abstract class TextComponentBuilder {
     }
 
     protected static TextComponentBuilder createTextComponent(String message, TextComponentBuilder prev) {
-        if (API.getInstance().isBungee()) {
+        if (API.getInstance().isVelocity()) {
             TextComponentBuilderVelocity tcb = new TextComponentBuilderVelocity(message);
             tcb.previous = prev;
             return tcb;

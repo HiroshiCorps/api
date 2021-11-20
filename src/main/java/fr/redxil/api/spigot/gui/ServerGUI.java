@@ -45,7 +45,7 @@ public class ServerGUI extends InventoryGUI {
 
         for (int invPos = 0, posList = minList; posList <= maxList && posList < serverList.size(); posList += 1, invPos += 1) {
             Server server = serverList.get(posList);
-            if (server.getServerType() != ServerType.BUNGEE)
+            if (server.getServerType() != ServerType.VELOCITY)
                 getInventory().setItem(invPos, createServerItem(serverList.get(posList)));
             else
                 invPos -= 1;
