@@ -8,47 +8,54 @@
 
 package fr.redxil.api.common.time;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
-public class TimerSystem extends TimerTask {
+public class TimerSystem implements Runnable {
 
     public double milli = 0d, sec = 0d, min = 0d, hours = 0d;
-    Timer timer = new Timer();
-    TimerListener timerListener;
-    TimeEnum timeEnum;
-    boolean started = false;
+    ScheduledExecutorService timer;
+    TimerListener timerListener = null;
+    int period = 1;
+    TimeUnit timeUnit = TimeUnit.SECONDS;
 
-    public void startTimer(TimeEnum timeEnum, TimerListener timerListener) {
-        if (started || !canStart()) return;
-        this.timerListener = timerListener;
-        this.timeEnum = timeEnum;
-        timer.schedule(this, timeEnum.getTimeStampLong());
-        started = true;
+    public TimerListener getTimerListener() {
+        return this.timerListener;
     }
 
-    public void stopTimer() {
-        if (!started) return;
-        timer.cancel();
-        timer.purge();
-        timerListener = null;
-        timeEnum = null;
-        started = false;
+    public void setTimerListener(TimerListener timerListener) {
+        this.timerListener = timerListener;
     }
 
     public boolean isRunning() {
-        return started;
+        if (timer == null)
+            return false;
+        return !timer.isShutdown();
     }
 
-    public TimeEnum getTimerEnum() {
-        return timeEnum;
+    public void startTimer() {
+        if (isRunning() || !canStart()) return;
+        this.timer = Executors.newSingleThreadScheduledExecutor();
+        timer.scheduleAtFixedRate(this, 0L, 1L, TimeUnit.MILLISECONDS);
     }
 
-    public TimerListener getTimerListener() {
-        return timerListener;
+    public void stopTimer() {
+        if (!isRunning()) return;
+        timer.shutdownNow();
+        timerListener = null;
     }
 
-    public double getValue(TimeEnum timeEnum) {
+    public void setPeriod(int period, TimeUnit timeUnit) {
+        boolean running = isRunning();
+        stopTimer();
+        this.period = period;
+        this.timeUnit = timeUnit;
+        if (running)
+            startTimer();
+    }
+
+    public double getValue(TimeUnit timeEnum) {
         switch (timeEnum) {
             case MILLISECONDS: {
                 return milli;
@@ -66,7 +73,7 @@ public class TimerSystem extends TimerTask {
         return 0d;
     }
 
-    public void setValue(TimeEnum timeEnum, double value) {
+    public void setValue(TimeUnit timeEnum, double value) {
         switch (timeEnum) {
             case MILLISECONDS: {
                 this.milli = value;
@@ -87,21 +94,21 @@ public class TimerSystem extends TimerTask {
         }
     }
 
-    public boolean remove(TimeEnum timeEnum, int time) {
+    public boolean remove(TimeUnit timeEnum, int time) {
         switch (timeEnum) {
             case MILLISECONDS: {
 
                 if (milli - time > 0) {
                     milli -= time;
                 } else {
-                    if (!remove(TimeEnum.SECONDS, 1)) {
+                    if (!remove(TimeUnit.SECONDS, 1)) {
                         milli = 0;
                         return false;
                     }
                     double kRemove = (milli - time) * -1;
                     milli = 0999d;
                     if (kRemove != 0)
-                        return remove(TimeEnum.MILLISECONDS, Double.valueOf(kRemove).intValue());
+                        return remove(TimeUnit.MILLISECONDS, Double.valueOf(kRemove).intValue());
                 }
                 return true;
 
@@ -112,14 +119,14 @@ public class TimerSystem extends TimerTask {
                 if (sec - time > 0) {
                     sec -= time;
                 } else {
-                    if (!remove(TimeEnum.MINUTES, 1)) {
+                    if (!remove(TimeUnit.MINUTES, 1)) {
                         sec = 0;
                         return false;
                     }
                     double kRemove = (sec - time) * -1;
                     sec = 60d;
                     if (kRemove != 0)
-                        return remove(TimeEnum.SECONDS, Double.valueOf(kRemove).intValue());
+                        return remove(TimeUnit.SECONDS, Double.valueOf(kRemove).intValue());
                 }
                 return true;
 
@@ -130,14 +137,14 @@ public class TimerSystem extends TimerTask {
                 if (min - time > 0) {
                     min -= time;
                 } else {
-                    if (!remove(TimeEnum.HOURS, 1)) {
+                    if (!remove(TimeUnit.HOURS, 1)) {
                         min = 0;
                         return false;
                     }
                     double kRemove = (min - time) * -1;
                     min = 60d;
                     if (kRemove != 0)
-                        return remove(TimeEnum.MINUTES, Double.valueOf(kRemove).intValue());
+                        return remove(TimeUnit.MINUTES, Double.valueOf(kRemove).intValue());
                 }
                 return true;
 
@@ -157,16 +164,44 @@ public class TimerSystem extends TimerTask {
     }
 
     public boolean canStart() {
-        return milli != 0 || sec != 0 || min != 0 || hours != 0;
+        return canStart(timeUnit);
+    }
+
+    private boolean canStart(TimeUnit timeUnit) {
+        switch (timeUnit) {
+            case MILLISECONDS: {
+                if (getValue(timeUnit) != 0)
+                    return true;
+                else return canStart(TimeUnit.SECONDS);
+            }
+            case SECONDS: {
+                if (getValue(timeUnit) != 0)
+                    return true;
+                else return canStart(TimeUnit.MINUTES);
+            }
+            case MINUTES: {
+                if (getValue(timeUnit) != 0)
+                    return true;
+                else return canStart(TimeUnit.HOURS);
+            }
+            case HOURS: {
+                return getValue(timeUnit) != 0;
+            }
+        }
+        return false;
     }
 
     @Override
     public void run() {
 
-        if (!started) return;
-        if (!remove(timeEnum, 1)) {
+        if (!remove(timeUnit, period)) {
 
-            if (!(!timerListener.timerStop(this) && canStart()))
+            if (timerListener.timerStop(this)) {
+                stopTimer();
+                return;
+            }
+
+            if (!canStart())
                 stopTimer();
 
         } else timerListener.timerChange(this);
