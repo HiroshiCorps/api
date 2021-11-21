@@ -44,21 +44,67 @@ public interface TeamManager {
 
     List<Team> getTeamOrderByRemainingPlace();
 
-
+    /**
+     * Check if player his in a team
+     *
+     * @param apiPlayer The player to ckeck
+     * @return true if the player his in a team
+     */
     boolean hasTeam(APIPlayer apiPlayer);
 
+    /**
+     * Check if player his in a team with this uuid
+     *
+     * @param uuid The uuid to check
+     * @return true if the uuid his in a team
+     */
     boolean hasTeam(UUID uuid);
 
+    /**
+     * Check if a team exist with an id
+     *
+     * @param teamID Check if team exist with the team id
+     * @return true if the team exist
+     */
     boolean isTeamExist(long teamID);
 
+    /**
+     * Get team thanks to the team id
+     *
+     * @param teamID
+     * @return Team interface if the team exist
+     */
     Team getTeam(long teamID);
 
+    /**
+     * Create team with a name
+     *
+     * @param name      Name of the team
+     * @param maxPlayer Number max of player
+     * @return Team interface, null if a team already exist with this name
+     */
     Team createTeam(String name, int maxPlayer);
 
+    /**
+     * Create team with a name
+     *
+     * @param name      Name of the team
+     * @param maxPlayer Number max of player
+     * @param color     Team color
+     * @return Team interface, null if a team already exist with this name
+     */
     Team createTeam(String name, int maxPlayer, Color color);
 
+    /**
+     * @param uuid the player uuid
+     * @return Team interface if player has team, if no, null
+     */
     Team getPlayerTeam(UUID uuid);
 
+    /**
+     * @param apiPlayer the player
+     * @return Team interface if player has team, if no, null
+     */
     Team getPlayerTeam(APIPlayer apiPlayer);
 
     boolean areAllInTeams(List<UUID> playerList);

@@ -15,8 +15,8 @@ public interface TimerListener {
      *
      * @return false if you want to cancel the timer stop (Only work if you set a new value)
      */
-    boolean timerStop(TimerGest timerGest);
+    boolean timerStop(TimerSystem timerSystem);
 
-    void timerChange(TimerGest timerGest);
+    void timerChange(TimerSystem timerSystem);
 
 }

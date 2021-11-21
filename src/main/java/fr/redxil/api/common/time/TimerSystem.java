@@ -11,7 +11,7 @@ package fr.redxil.api.common.time;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class TimerGest extends TimerTask {
+public class TimerSystem extends TimerTask {
 
     public double milli = 0d, sec = 0d, min = 0d, hours = 0d;
     Timer timer = new Timer();
@@ -93,7 +93,6 @@ public class TimerGest extends TimerTask {
 
                 if (milli - time > 0) {
                     milli -= time;
-                    return true;
                 } else {
                     if (!remove(TimeEnum.SECONDS, 1)) {
                         milli = 0;
@@ -103,8 +102,8 @@ public class TimerGest extends TimerTask {
                     milli = 0999d;
                     if (kRemove != 0)
                         return remove(TimeEnum.MILLISECONDS, Double.valueOf(kRemove).intValue());
-                    return true;
                 }
+                return true;
 
             }
 
@@ -112,7 +111,6 @@ public class TimerGest extends TimerTask {
 
                 if (sec - time > 0) {
                     sec -= time;
-                    return true;
                 } else {
                     if (!remove(TimeEnum.MINUTES, 1)) {
                         sec = 0;
@@ -122,8 +120,8 @@ public class TimerGest extends TimerTask {
                     sec = 60d;
                     if (kRemove != 0)
                         return remove(TimeEnum.SECONDS, Double.valueOf(kRemove).intValue());
-                    return true;
                 }
+                return true;
 
             }
 
@@ -131,7 +129,6 @@ public class TimerGest extends TimerTask {
 
                 if (min - time > 0) {
                     min -= time;
-                    return true;
                 } else {
                     if (!remove(TimeEnum.HOURS, 1)) {
                         min = 0;
@@ -141,8 +138,8 @@ public class TimerGest extends TimerTask {
                     min = 60d;
                     if (kRemove != 0)
                         return remove(TimeEnum.MINUTES, Double.valueOf(kRemove).intValue());
-                    return true;
                 }
+                return true;
 
             }
 

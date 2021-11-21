@@ -15,7 +15,7 @@ import fr.redxil.api.common.game.team.Team;
 import fr.redxil.api.common.game.team.TeamManager;
 import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.server.Server;
-import fr.redxil.api.common.time.TimerGest;
+import fr.redxil.api.common.time.TimerSystem;
 import fr.redxil.api.spigot.minigame.chest.ChestSystem;
 import fr.redxil.api.spigot.minigame.managers.FilesAPI;
 import fr.redxil.api.spigot.minigame.pmmanager.PMListen;
@@ -34,7 +34,7 @@ public abstract class GameBuilder {
     private final JavaPlugin plugin;
     private final ChestSystem chestsManager;
     private final GameEnum gameEnum;
-    private final TimerGest timerGest;
+    private final TimerSystem timerSystem;
     private String prefix = "Server";
 
     public GameBuilder(JavaPlugin plugin, GameEnum gameEnum) {
@@ -42,7 +42,7 @@ public abstract class GameBuilder {
         this.plugin = plugin;
         this.gameEnum = gameEnum;
         this.chestsManager = new ChestSystem();
-        this.timerGest = new TimerGest();
+        this.timerSystem = new TimerSystem();
 
         String config = FilesAPI.CONFIG.getFileName();
         saveResourceAs(config, config);
@@ -192,8 +192,8 @@ public abstract class GameBuilder {
         this.prefix = prefix;
     }
 
-    public TimerGest getTimerGest() {
-        return timerGest;
+    public TimerSystem getTimerGest() {
+        return timerSystem;
     }
 
 }
