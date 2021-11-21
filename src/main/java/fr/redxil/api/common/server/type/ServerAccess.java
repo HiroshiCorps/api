@@ -14,6 +14,8 @@ import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.rank.RankList;
 import fr.redxil.api.common.server.Server;
 
+import java.util.logging.Level;
+
 public enum ServerAccess {
 
     OPEN,
@@ -22,6 +24,13 @@ public enum ServerAccess {
     RANK_SPECIFIC,
     RANK_SPECIFIC_MIN,
     ADMIN;
+
+    public static ServerAccess getServerAccess(String string) {
+        for (ServerAccess serverAccess : values())
+            if (serverAccess.toString().equals(string))
+                return serverAccess;
+        return null;
+    }
 
     public boolean canAccess(Server server, APIPlayer apiOfflinePlayer) {
         return canAccess(server, this, apiOfflinePlayer.getName(), apiOfflinePlayer.getRank());
@@ -32,6 +41,8 @@ public enum ServerAccess {
     }
 
     private boolean canAccess(Server server, ServerAccess serverAccess, String name, RankList rankList) {
+
+        API.getInstance().getPluginEnabler().printLog(Level.FINE, serverAccess.toString());
 
         switch (serverAccess) {
 

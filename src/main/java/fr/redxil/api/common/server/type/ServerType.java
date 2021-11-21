@@ -24,10 +24,10 @@ public enum ServerType {
         this.serverAccess = serverAccess;
     }
 
-    public static ServerType fromString(String string) {
-        for (ServerType Server : values()) {
-            if (string.equals(Server.toString()))
-                return Server;
+    public static ServerType getServerType(String string) {
+        for (ServerType server : values()) {
+            if (string.equals(server.toString()))
+                return server;
         }
         return null;
     }
