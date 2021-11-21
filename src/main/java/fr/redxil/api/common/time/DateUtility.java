@@ -13,20 +13,59 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 public class DateUtility {
+
+    public static TimeUnit getTimerUnit(char s) {
+        switch (s) {
+            case 's': {
+                return TimeUnit.SECONDS;
+            }
+            case 'm': {
+                return TimeUnit.MINUTES;
+            }
+            case 'h': {
+                return TimeUnit.HOURS;
+            }
+            case 'j': {
+                return TimeUnit.DAYS;
+            }
+        }
+        return null;
+    }
+
+    public static long getTimeStampLong(TimeUnit s) {
+        switch (s) {
+            case SECONDS: {
+                return 1L;
+            }
+            case MINUTES: {
+                return 60L;
+            }
+            case HOURS: {
+                return 3600L;
+            }
+            case DAYS: {
+                return 86400L;
+            }
+        }
+        return 0L;
+    }
 
     public static long toTimeStamp(String timeArgs) {
 
         if (timeArgs.equals("perm"))
             return -1L;
 
-        TimeEnum timeEnum = TimeEnum.getTimerEnum(TallEnum.SMALL, Character.valueOf(timeArgs.charAt(timeArgs.length() - 1)).toString());
-        if (timeEnum != null)
+        TimeUnit timeUnit = getTimerUnit(timeArgs.charAt(timeArgs.length() - 1));
+        if (timeUnit != null) {
+            timeArgs = timeArgs.replace(Character.valueOf(timeArgs.charAt(timeArgs.length() - 1)).toString(), "");
             try {
-                return Integer.parseInt(timeArgs.replace(timeEnum.getString(TallEnum.SMALL), "")) * timeEnum.getTimeStampLong();
+                return Integer.parseInt(timeArgs) * getTimeStampLong(timeUnit);
             } catch (NumberFormatException ignored) {
             }
+        }
 
         return -2L;
 
