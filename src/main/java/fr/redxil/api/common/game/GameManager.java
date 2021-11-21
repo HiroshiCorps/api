@@ -8,34 +8,35 @@
 
 package fr.redxil.api.common.game;
 
+import fr.redxil.api.common.game.error.GameCreateError;
 import fr.redxil.api.common.player.APIPlayer;
 
 import java.util.List;
 
-public interface GamesManager {
+public interface GameManager {
 
-    List<Games> getListGames();
+    List<Game> getListGames();
 
     boolean isGameExist(String server);
 
     boolean isGameExist(long gameID);
 
-    Games getGame(String server);
+    Game getGame(String server);
 
-    Games getGame(long gameID);
+    Game getGame(long gameID);
 
-    Games initGameServer(String server, GameEnum gameEnum);
+    Game initGameServer(String server, GameEnum gameEnum) throws GameCreateError;
 
-    List<Hosts> getListHosts();
+    List<Host> getListHost();
 
     boolean isHostExist(String server);
 
     boolean isHostExist(long gameID);
 
-    Hosts getHost(String server);
+    Host getHost(String server);
 
-    Games getHost(long gameID);
+    Game getHost(long gameID);
 
-    Hosts initHostServer(String server, APIPlayer author, GameEnum hostsGame);
+    Host initHostServer(String server, APIPlayer author, GameEnum hostsGame) throws GameCreateError;
 
 }

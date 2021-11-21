@@ -9,7 +9,8 @@
 package fr.redxil.api.common.server;
 
 import fr.redline.pms.utils.IpInfo;
-import fr.redxil.api.common.game.Games;
+import fr.redxil.api.common.game.Game;
+import fr.redxil.api.common.game.Host;
 import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.rank.RankList;
 import fr.redxil.api.common.server.type.ServerAccess;
@@ -65,13 +66,13 @@ public interface Server {
 
     void sendShutdownOrder();
 
-    boolean isHostDedicated();
+    boolean isHostServer();
 
-    String getHostAuthor();
+    boolean isGameServer();
 
-    boolean isGamesServer();
+    Game getGame();
 
-    Games getGames();
+    Host getHost();
 
     List<Long> getTeamLinked();
 

@@ -9,21 +9,22 @@
 package fr.redxil.api.common.game;
 
 import java.util.List;
+import java.util.UUID;
 
-public interface Hosts extends Games {
+public interface Host extends Game {
 
-    String getAuthor();
+    UUID getAuthor();
 
     HostAccess getHostAccess();
 
     void setHostAccess(HostAccess value);
 
-    List<String> getAllowPlayer();
+    List<UUID> getAllowPlayer();
 
-    List<String> getAllowSpectator();
+    List<UUID> getAllowSpectator();
 
-    boolean isAllowPlayer(String player);
+    boolean isAllowPlayer(UUID player);
 
-    boolean isAllowSpectator(String player);
+    boolean isAllowSpectator(UUID player);
 
 }

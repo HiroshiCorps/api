@@ -9,8 +9,9 @@
 package fr.redxil.api.paper.minigame;
 
 import fr.redxil.api.common.API;
-import fr.redxil.api.common.game.GameEnum;
-import fr.redxil.api.common.game.Games;
+import fr.redxil.api.common.game.Game;
+import fr.redxil.api.common.game.Host;
+import fr.redxil.api.common.game.error.GameInitError;
 import fr.redxil.api.common.game.team.Team;
 import fr.redxil.api.common.game.team.TeamManager;
 import fr.redxil.api.common.player.APIPlayer;
@@ -30,49 +31,45 @@ import java.util.List;
 
 public abstract class GameBuilder {
 
-    private static GameBuilder gameBuilder = null;
+    private static GameBuilder gameBuilder;
     private final JavaPlugin plugin;
     private final ChestSystem chestsManager;
-    private final GameEnum gameEnum;
     private final TimerSystem timerSystem;
     private String prefix = "Server";
 
-    public GameBuilder(JavaPlugin plugin, GameEnum gameEnum) {
+    public GameBuilder(JavaPlugin plugin) throws GameInitError {
         gameBuilder = this;
+
+        initGame();
+        new PMListen();
+
         this.plugin = plugin;
-        this.gameEnum = gameEnum;
         this.chestsManager = new ChestSystem();
         this.timerSystem = new TimerSystem();
 
         String config = FilesAPI.CONFIG.getFileName();
         saveResourceAs(config, config);
-
-        initGame();
-        new PMListen();
     }
 
     public static GameBuilder getGameBuilder() {
         return gameBuilder;
     }
 
-    public void initGame() {
-        Server server = API.getInstance().getServer();
-        if (gameEnum.isCanHost() && server.isHostDedicated()) {
-            APIPlayer apiPlayer = API.getInstance().getPlayerManager().getPlayer(server.getServerName());
-            if (apiPlayer != null) {
-                API.getInstance().getGamesManager().initHostServer(API.getInstance().getServerName(), API.getInstance().getPlayerManager().getPlayer(server.getHostAuthor()), gameEnum);
-                apiPlayer.switchServer(server.getServerName());
-                return;
-            } else if (gameEnum.isHostOnly()) {
-                API.getInstance().getPluginEnabler().shutdownServer("Missing host");
-                return;
-            }
-        }
-        API.getInstance().getGamesManager().initGameServer(server.getServerName(), gameEnum);
-    }
+    public void initGame() throws GameInitError {
 
-    public Games getGame() {
-        return API.getInstance().getGame();
+        Game game = API.getInstance().getGame();
+        if (game == null)
+            throw new GameInitError("Game not init on Redis");
+
+        Server server = API.getInstance().getServer();
+        if (!(game instanceof Host))
+            return;
+
+        APIPlayer apiPlayer = API.getInstance().getPlayerManager().getPlayer(((Host) game).getAuthor());
+        if (apiPlayer != null)
+            apiPlayer.switchServer(server.getServerName());
+        else
+            throw new GameInitError("Missing host");
     }
 
     public boolean hasTeams() {

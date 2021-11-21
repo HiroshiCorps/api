@@ -9,11 +9,12 @@
 package fr.redxil.api.common.server.type;
 
 import fr.redxil.api.common.API;
-import fr.redxil.api.common.game.Games;
+import fr.redxil.api.common.game.Game;
 import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.rank.RankList;
 import fr.redxil.api.common.server.Server;
 
+import java.util.UUID;
 import java.util.logging.Level;
 
 public enum ServerAccess {
@@ -33,14 +34,14 @@ public enum ServerAccess {
     }
 
     public boolean canAccess(Server server, APIPlayer apiOfflinePlayer) {
-        return canAccess(server, this, apiOfflinePlayer.getName(), apiOfflinePlayer.getRank());
+        return canAccess(server, this, apiOfflinePlayer.getUUID(), apiOfflinePlayer.getRank());
     }
 
-    public boolean canAccess(Server server, String name, RankList rankList) {
+    public boolean canAccess(Server server, UUID name, RankList rankList) {
         return canAccess(server, this, name, rankList);
     }
 
-    private boolean canAccess(Server server, ServerAccess serverAccess, String name, RankList rankList) {
+    private boolean canAccess(Server server, ServerAccess serverAccess, UUID name, RankList rankList) {
 
         API.getInstance().getPluginEnabler().printLog(Level.FINE, serverAccess.toString());
 
@@ -54,7 +55,7 @@ public enum ServerAccess {
 
             case GAME: {
 
-                Games game = API.getInstance().getGame();
+                Game game = API.getInstance().getGame();
                 if (game == null)
                     return false;
 

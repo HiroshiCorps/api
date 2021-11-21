@@ -14,8 +14,9 @@ import fr.redxil.api.common.player.moderators.APIPlayerModerator;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
-public interface Games {
+public interface Game {
 
     String getServerName();
 
@@ -33,17 +34,17 @@ public interface Games {
 
     long getGameID();
 
-    List<String> getPlayers();
+    List<UUID> getPlayers();
 
-    List<String> getSpectators();
+    List<UUID> getSpectators();
 
-    List<String> getInGameSpectators();
+    List<UUID> getInGameSpectators();
 
-    List<String> getOutGameSpectators();
+    List<UUID> getOutGameSpectators();
 
-    List<String> getInConnectPlayer();
+    List<UUID> getInConnectPlayer();
 
-    boolean setSpectator(String playerName, boolean bool);
+    boolean setSpectator(UUID player, boolean bool);
 
     void setSettings(String key, Object objet);
 
@@ -51,7 +52,7 @@ public interface Games {
 
     Map<String, Object> getSettingsMap();
 
-    Hosts getHost();
+    Host getHost();
 
     GameState getGameState();
 
@@ -87,18 +88,18 @@ public interface Games {
 
     boolean forceWin(APIPlayerModerator APIPlayer, Team team, String reason);
 
-    boolean isInConnectPlayer(String playerName);
+    boolean isInConnectPlayer(UUID player);
 
     Object getSettings(String key);
 
     boolean hasSettings(String key);
 
-    boolean isPlayer(String playerName);
+    boolean isPlayer(UUID playerName);
 
-    boolean isSpectator(String playerName);
+    boolean isSpectator(UUID playerName);
 
     boolean isHostLinked();
 
-    boolean isAllowConnectServer(String playerName);
+    boolean isAllowConnectServer(UUID playerName);
 
 }
