@@ -9,6 +9,7 @@
 package fr.redxil.api.common.player;
 
 import fr.redline.pms.utils.IpInfo;
+import fr.redxil.api.common.game.team.Team;
 import fr.redxil.api.common.party.Party;
 import fr.redxil.api.common.player.data.SanctionInfo;
 import fr.redxil.api.common.player.moderators.APIPlayerModerator;
@@ -64,6 +65,21 @@ public interface APIPlayer extends APIOfflinePlayer {
 
     boolean revokeFriendInvite(APIOfflinePlayer playerName);
 
+
+    boolean hasParty();
+
     Party getParty();
+
+
+    boolean hasTeam();
+
+    Team getTeam();
+
+
+    void addTempData(String key, Object object);
+
+    Object removeTempData(String key);
+
+    Object getTempData(String key);
 
 }
