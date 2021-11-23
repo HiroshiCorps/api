@@ -6,7 +6,7 @@
  *
  */
 
-package fr.redxil.api.common.party;
+package fr.redxil.api.common.group.party;
 
 import fr.redxil.api.common.player.APIPlayer;
 
@@ -33,9 +33,9 @@ public interface Party {
 
     boolean hisInParty(APIPlayer apiPlayer);
 
-    List<APIPlayer> getAPIPlayers();
+    List<APIPlayer> getAPIPlayerList();
 
-    List<String> getPlayers();
+    List<Long> getPlayerList();
 
     boolean deleteParty(APIPlayer author);
 
@@ -49,6 +49,6 @@ public interface Party {
 
     APIPlayer getPartyOwner();
 
-    Map<String, PartyRank> getList();
+    Map<String, PartyRank> getRankList();
 
 }

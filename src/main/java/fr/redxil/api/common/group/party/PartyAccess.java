@@ -6,7 +6,7 @@
  *
  */
 
-package fr.redxil.api.common.party;
+package fr.redxil.api.common.group.party;
 
 public enum PartyAccess {
     CLOSE("close"),

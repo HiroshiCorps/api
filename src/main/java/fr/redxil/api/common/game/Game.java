@@ -8,7 +8,7 @@
 
 package fr.redxil.api.common.game;
 
-import fr.redxil.api.common.game.team.Team;
+import fr.redxil.api.common.group.team.Team;
 import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.player.moderators.APIPlayerModerator;
 

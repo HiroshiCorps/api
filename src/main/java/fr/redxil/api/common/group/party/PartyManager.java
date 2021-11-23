@@ -6,7 +6,7 @@
  *
  */
 
-package fr.redxil.api.common.party;
+package fr.redxil.api.common.group.party;
 
 import fr.redxil.api.common.player.APIPlayer;
 
@@ -14,14 +14,12 @@ public interface PartyManager {
 
     Party createParty(APIPlayer author);
 
-    Party getParty(APIPlayer apiPlayer);
+    Party getPlayerParty(APIPlayer apiPlayer);
 
     Party getParty(long partyID);
 
     boolean hasParty(APIPlayer apiPlayer);
 
-    boolean hasParty(long partyID);
-
-    boolean isOwner(APIPlayer apiPlayer);
+    boolean isPartyExist(long partyID);
 
 }
