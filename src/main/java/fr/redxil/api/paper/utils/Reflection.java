@@ -1,5 +1,6 @@
 package fr.redxil.api.paper.utils;
 
+import fr.redxil.api.common.API;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Sound;
@@ -9,6 +10,7 @@ import java.lang.reflect.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.logging.Level;
 
 public class Reflection {
     public static void playSound(Player player, Location location, String soundName, float volume, float pitch) {
@@ -154,7 +156,7 @@ public class Reflection {
         try {
             return getMethod(obj.getClass(), "getHandle").invoke(obj);
         } catch (Exception e) {
-            System.out.println("Reflection failed for getHandle Entity.");
+            API.getInstance().getPluginEnabler().printLog(Level.INFO, "Reflection failed for getHandle Entity.");
             e.printStackTrace();
             return null;
         }
