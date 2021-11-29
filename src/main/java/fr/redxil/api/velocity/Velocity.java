@@ -9,8 +9,9 @@
 package fr.redxil.api.velocity;
 
 import com.velocitypowered.api.proxy.ProxyServer;
+import fr.redxil.api.common.PluginEnabler;
 
-public abstract class Velocity {
+public abstract class Velocity implements PluginEnabler {
 
     static Velocity instance;
 
