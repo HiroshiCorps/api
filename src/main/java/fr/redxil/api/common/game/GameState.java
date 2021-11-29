@@ -10,18 +10,14 @@ package fr.redxil.api.common.game;
 
 public enum GameState {
 
-    WAITING("WAIT", false),
-    STARTING("START", false),
-    OCCUPIED("OCC", false),
-    FINISH("FIN", false),
-    CLOSED("CLO", false);
+    WAITING("WAIT"),
+    OCCUPIED("OCC"),
+    FINISH("FIN");
 
-    private final boolean state;
     private final String name;
 
-    GameState(String name, boolean state) {
+    GameState(String name) {
         this.name = name;
-        this.state = state;
     }
 
     public static GameState getState(String name) {
