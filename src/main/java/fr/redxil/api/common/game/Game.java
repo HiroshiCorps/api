@@ -36,11 +36,9 @@ public interface Game {
 
     List<UUID> getPlayers();
 
-    List<UUID> getSpectators();
+    List<UUID> getPlayerSpectators();
 
-    List<UUID> getInGameSpectators();
-
-    List<UUID> getOutGameSpectators();
+    List<UUID> getModeratorSpectators();
 
     List<UUID> getInConnectPlayer();
 
