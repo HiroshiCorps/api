@@ -50,22 +50,6 @@ public interface APIPlayer extends APIOfflinePlayer {
 
     SanctionInfo kickPlayer(String reason, APIPlayerModerator author);
 
-    /// <!-------------------- Friend part --------------------!>
-
-    void removeFriend(APIOfflinePlayer playerName);
-
-    boolean addBlackList(APIOfflinePlayer playerName);
-
-    boolean removeBlackList(APIOfflinePlayer playerName);
-
-    boolean acceptFriendInvite(APIOfflinePlayer playerName);
-
-    boolean refusedFriendInvite(APIOfflinePlayer playerName);
-
-    boolean sendFriendInvite(APIOfflinePlayer playerName);
-
-    boolean revokeFriendInvite(APIOfflinePlayer playerName);
-
 
     boolean hasParty();
 
