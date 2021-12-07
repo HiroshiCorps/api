@@ -9,9 +9,11 @@
 package fr.redxil.api.common.player;
 
 import fr.redline.pms.utils.IpInfo;
+import fr.redxil.api.common.player.data.LinkData;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.function.BiConsumer;
 
 public interface APIPlayerManager {
 
@@ -96,5 +98,46 @@ public interface APIPlayerManager {
     String getIdentifierString(String name, UUID uuid);
 
     String getPlayerIdentifierColumn();
+
+    /**
+     * When player loaded, if he has some linkType link, the BiConsumer will be used
+     *
+     * @param linkType   like a key
+     * @param biConsumer the action to do
+     */
+
+    void addLinkOnConnectAction(String linkType, BiConsumer<APIPlayer, LinkData> biConsumer);
+
+    /**
+     * Remove the action for the specific LinkType
+     *
+     * @param linkType the key
+     */
+
+    void removeLinkOnConnectAction(String linkType);
+
+    /**
+     * Get the action linked to the linkType
+     *
+     * @param linkType the key
+     * @return The linked action
+     */
+    BiConsumer<APIPlayer, LinkData> getLinkOnConnectAction(String linkType);
+
+    /**
+     * Get all register linkType
+     *
+     * @return all the register linkType
+     */
+    List<String> getLinkTypeList();
+
+    /**
+     * Check action linked to linkType
+     *
+     * @param linkType the key
+     * @return true if action exist
+     */
+    boolean hasLinkType(String linkType);
+
 
 }

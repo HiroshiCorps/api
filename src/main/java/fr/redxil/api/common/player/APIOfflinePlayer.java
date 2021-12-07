@@ -87,32 +87,6 @@ public interface APIOfflinePlayer {
 
     boolean unMute(APIPlayerModerator mod);
 
-    List<String> getFriendInviteReceived();
-
-    List<String> getFriendInviteSended();
-
-    List<String> getFriendList();
-
-    List<String> getBlackList();
-
-    boolean hasFriend(APIOfflinePlayer playerName);
-
-    void removeFriendReceived(APIOfflinePlayer playerName);
-
-    boolean isBlackList(APIOfflinePlayer playerName);
-
-    boolean hasFriendReceived(APIOfflinePlayer playerName);
-
-    boolean friendInviteReceived(APIOfflinePlayer playerName);
-
-    void friendInviteRevokeReceived(APIOfflinePlayer playerName);
-
-    boolean hasFriendSend(APIOfflinePlayer playerName);
-
-    boolean acceptFriendInviteReceived(APIOfflinePlayer playerName);
-
-    void refusedFriendInviteReceived(APIOfflinePlayer playerName);
-
     /// <!-------------------- Setting part --------------------!>
 
     void loadSettings();
