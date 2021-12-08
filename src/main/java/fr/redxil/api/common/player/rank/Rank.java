@@ -6,9 +6,9 @@
  *
  */
 
-package fr.redxil.api.common.rank;
+package fr.redxil.api.common.player.rank;
 
-public enum RankList {
+public enum Rank {
 
     ADMINISTRATEUR(7, 777L, true,
             "§c[Administrateur] ",
@@ -77,7 +77,7 @@ public enum RankList {
     private final String chatRankString, tabString, chatSeparator, scoreboardString;
     private final Boolean mod;
 
-    RankList(final Integer id, final Long power, Boolean mod, final String chatRankString, final String chatSeparator, final String tabString, final String scoreboardString) {
+    Rank(final Integer id, final Long power, Boolean mod, final String chatRankString, final String chatSeparator, final String tabString, final String scoreboardString) {
         this.power = power;
         this.chatRankString = chatRankString;
         this.tabString = tabString;
@@ -87,15 +87,15 @@ public enum RankList {
         this.scoreboardString = scoreboardString;
     }
 
-    public static RankList getRank(long power) {
-        for (RankList rank : RankList.values())
+    public static Rank getRank(long power) {
+        for (Rank rank : Rank.values())
             if (rank.getRankPower() == power)
                 return rank;
         return null;
     }
 
-    public static RankList getRank(String name) {
-        for (RankList rank : RankList.values())
+    public static Rank getRank(String name) {
+        for (Rank rank : Rank.values())
             if (rank.getRankName().equals(name))
                 return rank;
         return null;

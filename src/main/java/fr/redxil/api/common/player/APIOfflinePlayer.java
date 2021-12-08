@@ -11,7 +11,7 @@ package fr.redxil.api.common.player;
 import fr.redxil.api.common.player.data.SanctionInfo;
 import fr.redxil.api.common.player.data.Setting;
 import fr.redxil.api.common.player.moderators.APIPlayerModerator;
-import fr.redxil.api.common.rank.RankList;
+import fr.redxil.api.common.player.rank.Rank;
 import fr.redxil.api.common.utils.SanctionType;
 
 import java.util.List;
@@ -25,15 +25,15 @@ public interface APIOfflinePlayer {
 
     Long getRankPower(boolean nickCare);
 
-    RankList getRank();
+    Rank getRank();
 
-    void setRank(RankList rank);
+    void setRank(Rank rank);
 
     boolean hasPermission(long l);
 
     boolean isNick();
 
-    RankList getRank(boolean nickCare);
+    Rank getRank(boolean nickCare);
 
     String getName();
 

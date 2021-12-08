@@ -11,7 +11,7 @@ package fr.redxil.api.common.server.type;
 import fr.redxil.api.common.API;
 import fr.redxil.api.common.game.Game;
 import fr.redxil.api.common.player.APIPlayer;
-import fr.redxil.api.common.rank.RankList;
+import fr.redxil.api.common.player.rank.Rank;
 import fr.redxil.api.common.server.Server;
 
 import java.util.UUID;
@@ -37,11 +37,11 @@ public enum ServerAccess {
         return canAccess(server, this, apiOfflinePlayer.getUUID(), apiOfflinePlayer.getRank());
     }
 
-    public boolean canAccess(Server server, UUID name, RankList rankList) {
-        return canAccess(server, this, name, rankList);
+    public boolean canAccess(Server server, UUID name, Rank rank) {
+        return canAccess(server, this, name, rank);
     }
 
-    private boolean canAccess(Server server, ServerAccess serverAccess, UUID name, RankList rankList) {
+    private boolean canAccess(Server server, ServerAccess serverAccess, UUID name, Rank rank) {
 
         API.getInstance().getPluginEnabler().printLog(Level.FINE, serverAccess.toString());
 
@@ -65,25 +65,25 @@ public enum ServerAccess {
 
             case MAINTENANCE: {
 
-                return rankList.isModeratorRank();
+                return rank.isModeratorRank();
 
             }
 
             case RANK_SPECIFIC: {
 
-                return rankList == server.getReservedRank();
+                return rank == server.getReservedRank();
 
             }
 
             case RANK_SPECIFIC_MIN: {
 
-                return rankList.getRankPower() >= server.getReservedRank().getRankPower();
+                return rank.getRankPower() >= server.getReservedRank().getRankPower();
 
             }
 
             case ADMIN: {
 
-                return rankList == RankList.ADMINISTRATEUR;
+                return rank == Rank.ADMINISTRATEUR;
 
             }
 

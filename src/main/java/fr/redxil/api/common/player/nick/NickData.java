@@ -8,14 +8,14 @@
 
 package fr.redxil.api.common.player.nick;
 
-import fr.redxil.api.common.rank.RankList;
+import fr.redxil.api.common.player.rank.Rank;
 
 public class NickData {
 
     final String name;
-    final RankList rank;
+    final Rank rank;
 
-    public NickData(String name, RankList rank) {
+    public NickData(String name, Rank rank) {
         this.name = name;
         this.rank = rank;
     }
@@ -24,7 +24,7 @@ public class NickData {
         return this.name;
     }
 
-    public RankList getRank() {
+    public Rank getRank() {
         return this.rank;
     }
 }

@@ -12,7 +12,7 @@ import fr.redline.pms.utils.IpInfo;
 import fr.redxil.api.common.game.Game;
 import fr.redxil.api.common.game.Host;
 import fr.redxil.api.common.player.APIPlayer;
-import fr.redxil.api.common.rank.RankList;
+import fr.redxil.api.common.player.rank.Rank;
 import fr.redxil.api.common.server.type.ServerAccess;
 import fr.redxil.api.common.server.type.ServerStatus;
 import fr.redxil.api.common.server.type.ServerType;
@@ -76,8 +76,8 @@ public interface Server {
 
     List<Long> getTeamLinked();
 
-    RankList getReservedRank();
+    Rank getReservedRank();
 
-    void setReservedRank(RankList rank);
+    void setReservedRank(Rank rank);
 
 }
