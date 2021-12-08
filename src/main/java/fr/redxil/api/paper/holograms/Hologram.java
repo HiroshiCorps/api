@@ -3,25 +3,30 @@ package fr.redxil.api.paper.holograms;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import java.util.List;
-
 public interface Hologram {
 
-    List<HologramLine> lines();
+    void updateText(int line);
 
-    Location location();
+    void updateTextFor(int line, Player player);
 
-    default long refreshInterval() {
-        return -1L;
-    }
+    void refresh();
 
-    default double indent() {
-        return 0.25;
-    }
+    void send(Player player);
 
-    default void spawned(Player player) {
-    }
+    void destroy(Player player);
 
-    default void destroyed(Player player) {
-    }
+    void delete();
+
+    Location getCurrentLocation();
+
+    void setCurrentLocation(Location location);
+
+    long getRefreshInterval();
+
+    void setRefreshInterval(long interval);
+
+    double getLineIndent();
+
+    void setLineIndent(double interval);
+
 }

@@ -5,34 +5,34 @@ import org.bukkit.entity.Player;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
-public class HologramLine {
+public class HologramText {
 
-    private String line;
+    private String text;
     private Consumer<String> beforeUpdate;
     private Consumer<String> thenUpdate;
     private BiFunction<Player, String, String> updater;
     private long interval;
 
-    public HologramLine(String line) {
-        this.line = line;
+    public HologramText(String text) {
+        this.text = text;
     }
 
-    public HologramLine beforeUpdate(Consumer<String> consumer) {
+    public HologramText beforeUpdate(Consumer<String> consumer) {
         this.beforeUpdate = consumer;
         return this;
     }
 
-    public HologramLine onUpdate(BiFunction<Player, String, String> updater) {
+    public HologramText onUpdate(BiFunction<Player, String, String> updater) {
         this.updater = updater;
         return this;
     }
 
-    public HologramLine thenUpdate(Consumer<String> consumer) {
+    public HologramText thenUpdate(Consumer<String> consumer) {
         this.thenUpdate = consumer;
         return this;
     }
 
-    public HologramLine interval(long interval) {
+    public HologramText interval(long interval) {
         this.interval = interval;
         return this;
     }
@@ -46,15 +46,15 @@ public class HologramLine {
     }
 
     public String getUpdatingLine(Player player) {
-        return this.updater == null ? this.line : this.updater.apply(player, this.line);
+        return this.updater == null ? this.text : this.updater.apply(player, this.text);
     }
 
-    public String getLine() {
-        return line;
+    public String getText() {
+        return text;
     }
 
-    public void setLine(String line) {
-        this.line = line;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public long getInterval() {

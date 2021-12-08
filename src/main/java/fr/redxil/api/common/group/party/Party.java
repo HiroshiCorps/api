@@ -49,6 +49,6 @@ public interface Party {
 
     APIPlayer getPartyOwner();
 
-    Map<String, PartyRank> getRankList();
+    Map<String, PartyRank> getRank();
 
 }
