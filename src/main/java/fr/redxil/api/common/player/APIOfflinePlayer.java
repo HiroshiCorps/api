@@ -8,6 +8,7 @@
 
 package fr.redxil.api.common.player;
 
+import fr.redxil.api.common.player.data.LinkData;
 import fr.redxil.api.common.player.data.SanctionInfo;
 import fr.redxil.api.common.player.data.Setting;
 import fr.redxil.api.common.player.moderators.APIPlayerModerator;
@@ -98,5 +99,14 @@ public interface APIOfflinePlayer {
     Setting createSetting(String settingName, String settingValue);
 
     Setting getSetting(String settingsName);
+
+
+    boolean hasLinkWith(APIOfflinePlayer apiOfflinePlayer, String... linkType);
+
+    List<? extends LinkData> getLinksWith(APIOfflinePlayer apiOfflinePlayer, String... linkType);
+
+    LinkData getLinkWith(APIOfflinePlayer apiOfflinePlayer, String linkType);
+
+    LinkData createLinkWith(APIOfflinePlayer apiOfflinePlayer, String linkType);
 
 }

@@ -8,8 +8,8 @@
 
 package fr.redxil.api.paper.minigame.pmmanager;
 
-import fr.redline.pms.connect.linker.pm.PMManager;
-import fr.redline.pms.connect.linker.pm.PMReceiver;
+import fr.redline.pms.pm.PMReceiver;
+import fr.redline.pms.pm.RedisPMManager;
 import fr.redxil.api.common.API;
 import fr.redxil.api.paper.minigame.GameBuilder;
 import org.redisson.api.RedissonClient;
@@ -18,15 +18,14 @@ public class PMListen implements PMReceiver {
 
     public PMListen() {
         RedissonClient rc = API.getInstance().getRedisManager().getRedissonClient();
-        PMManager.addRedissonPMListener(rc, "forceSTART", String.class, this);
-        PMManager.addRedissonPMListener(rc, "forceSTOPSTART", String.class, this);
-        PMManager.addRedissonPMListener(rc, "forceEND", String.class, this);
-        PMManager.addRedissonPMListener(rc, "forceWIN", String.class, this);
-
+        RedisPMManager.addRedissonPMListener(rc, "forceSTART", String.class, this);
+        RedisPMManager.addRedissonPMListener(rc, "forceSTOPSTART", String.class, this);
+        RedisPMManager.addRedissonPMListener(rc, "forceEND", String.class, this);
+        RedisPMManager.addRedissonPMListener(rc, "forceWIN", String.class, this);
     }
 
     @Override
-    public void pluginMessageReceived(String s, Object o) {
+    public void redisPluginMessageReceived(String s, Object o) {
         switch (s) {
             case "forceSTART": {
                 GameBuilder.getGameBuilder().forceStart();
