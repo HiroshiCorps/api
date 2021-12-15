@@ -101,9 +101,9 @@ public interface APIOfflinePlayer {
     Setting getSetting(String settingsName);
 
 
-    boolean hasLinkWith(APIOfflinePlayer apiOfflinePlayer, String... linkType);
+    boolean hasLinkWith(APIOfflinePlayer apiOfflinePlayer, String linkType);
 
-    List<? extends LinkData> getLinksWith(APIOfflinePlayer apiOfflinePlayer, String... linkType);
+    List<? extends LinkData> getLinksWith(APIOfflinePlayer apiOfflinePlayer, String linkType);
 
     LinkData getLinkWith(APIOfflinePlayer apiOfflinePlayer, String linkType);
 
