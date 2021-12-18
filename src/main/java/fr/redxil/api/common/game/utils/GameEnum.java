@@ -6,7 +6,7 @@
  *
  */
 
-package fr.redxil.api.common.game;
+package fr.redxil.api.common.game.utils;
 
 public enum GameEnum {
     FATALITY("fatality", true, 5, false, false, 15, 15);

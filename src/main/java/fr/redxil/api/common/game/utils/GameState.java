@@ -6,27 +6,29 @@
  *
  */
 
-package fr.redxil.api.common.game;
+package fr.redxil.api.common.game.utils;
 
-public enum HostAccess {
-    OPEN("open"),
-    FRIEND("friend"),
-    CLOSE("close");
+public enum GameState {
 
-    final String name;
+    WAITING("WAIT"),
+    OCCUPIED("OCC"),
+    FINISH("FIN");
 
-    HostAccess(String name) {
+    private final String name;
+
+    GameState(String name) {
         this.name = name;
     }
 
-    public static HostAccess getStatus(String name) {
-        for (HostAccess hs : values())
-            if (hs.toString().equals(name))
-                return hs;
+    public static GameState getState(String name) {
+        for (GameState gs : values())
+            if (gs.getName().equals(name))
+                return gs;
+
         return null;
     }
 
-    public String toString() {
+    public String getName() {
         return name;
     }
 

@@ -35,7 +35,6 @@ public abstract class GameBuilder {
     private final JavaPlugin plugin;
     private final ChestSystem chestsManager;
     private final TimerSystem timerSystem;
-    private String prefix = "Server";
 
     public GameBuilder(JavaPlugin plugin) throws GameInitError {
         gameBuilder = this;
@@ -179,14 +178,6 @@ public abstract class GameBuilder {
 
     public ChestSystem getChestSystem() {
         return chestsManager;
-    }
-
-    public String getPrefix() {
-        return prefix;
-    }
-
-    public void setPrefix(String prefix) {
-        this.prefix = prefix;
     }
 
     public TimerSystem getTimerGest() {

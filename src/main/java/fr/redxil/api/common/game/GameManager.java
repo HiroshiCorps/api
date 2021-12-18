@@ -9,6 +9,7 @@
 package fr.redxil.api.common.game;
 
 import fr.redxil.api.common.game.error.GameCreateError;
+import fr.redxil.api.common.game.utils.GameEnum;
 import fr.redxil.api.common.player.APIPlayer;
 
 import java.util.List;

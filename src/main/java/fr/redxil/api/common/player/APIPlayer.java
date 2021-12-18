@@ -30,8 +30,6 @@ public interface APIPlayer extends APIOfflinePlayer {
 
     boolean isLogin();
 
-    boolean isFreeze();
-
     /// <!-------------------- Print rank part --------------------!>
 
     String getTabString();
@@ -50,16 +48,21 @@ public interface APIPlayer extends APIOfflinePlayer {
 
     SanctionInfo kickPlayer(String reason, APIPlayerModerator author);
 
+    boolean isFreeze();
+
+    /// <!-------------------- Party part --------------------!>
 
     boolean hasParty();
 
     Party getParty();
 
+    /// <!-------------------- Team part --------------------!>
 
     boolean hasTeam();
 
     Team getTeam();
 
+    /// <!-------------------- Temp part --------------------!>
 
     void addTempData(String key, Object object);
 

@@ -8,6 +8,8 @@
 
 package fr.redxil.api.common.game;
 
+import fr.redxil.api.common.game.utils.GameEnum;
+import fr.redxil.api.common.game.utils.GameState;
 import fr.redxil.api.common.group.team.Team;
 import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.player.moderators.APIPlayerModerator;
@@ -34,23 +36,7 @@ public interface Game {
 
     long getGameID();
 
-    List<UUID> getPlayers();
-
-    List<UUID> getPlayerSpectators();
-
-    List<UUID> getModeratorSpectators();
-
-    List<UUID> getInConnectPlayer();
-
-    boolean setSpectator(UUID player, boolean bool);
-
-    void setSettings(String key, Object objet);
-
-    void removeSettings(String key);
-
-    Map<String, Object> getSettingsMap();
-
-    Host getHost();
+    /// <!-------------------- Game part --------------------!>
 
     GameState getGameState();
 
@@ -64,19 +50,16 @@ public interface Game {
 
     void setSubGames(String subGames);
 
+
+    boolean isPlayer(UUID playerName);
+
+    boolean isSpectator(UUID playerName);
+
+
     String getMap();
 
     void setMap(String map);
 
-    boolean hasTeam();
-
-    void setHasTeam(boolean b);
-
-    void stop();
-
-    boolean canAccess(APIPlayer apiPlayer, boolean spectator);
-
-    boolean joinGame(APIPlayer apiPlayer, boolean spectator);
 
     void forceStart(APIPlayerModerator APIPlayer);
 
@@ -86,18 +69,48 @@ public interface Game {
 
     boolean forceWin(APIPlayerModerator APIPlayer, Team team, String reason);
 
+    void stop();
+
+    /// <!-------------------- Player Part --------------------!>
+
+    List<UUID> getPlayers();
+
+    List<UUID> getPlayerSpectators();
+
+    List<UUID> getModeratorSpectators();
+
+    List<UUID> getInConnectPlayer();
+
+    boolean setSpectator(UUID player, boolean bool);
+
+    boolean canAccess(APIPlayer apiPlayer, boolean spectator);
+
+    boolean joinGame(APIPlayer apiPlayer, boolean spectator);
+
     boolean isInConnectPlayer(UUID player);
+
+    boolean isAllowConnectServer(UUID playerName);
+
+
+    /// <!-------------------- Settings part --------------------!>
+
+    void setSettings(String key, Object objet);
+
+    void removeSettings(String key);
+
+    Map<String, Object> getSettingsMap();
 
     Object getSettings(String key);
 
     boolean hasSettings(String key);
 
-    boolean isPlayer(UUID playerName);
 
-    boolean isSpectator(UUID playerName);
+    Host getHost();
+
+    boolean hasTeam();
+
+    void setHasTeam(boolean b);
 
     boolean isHostLinked();
-
-    boolean isAllowConnectServer(UUID playerName);
 
 }

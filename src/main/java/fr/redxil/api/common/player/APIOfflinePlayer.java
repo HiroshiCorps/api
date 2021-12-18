@@ -20,7 +20,7 @@ import java.util.UUID;
 
 public interface APIOfflinePlayer {
 
-    /// <!-------------------- APIPlayer part --------------------!>
+    /// <!-------------------- Rank part --------------------!>
 
     Long getRankPower();
 
@@ -31,6 +31,8 @@ public interface APIOfflinePlayer {
     void setRank(Rank rank);
 
     boolean hasPermission(long l);
+
+    /// <!-------------------- APIPlayer part --------------------!>
 
     boolean isNick();
 
@@ -46,11 +48,11 @@ public interface APIOfflinePlayer {
 
     void setUUID(UUID uuid);
 
+    boolean isConnected();
+
     long getMemberId();
 
     /// <!-------------------- Money part --------------------!>
-
-    boolean isConnected();
 
     void addSolde(long value);
 
@@ -60,11 +62,11 @@ public interface APIOfflinePlayer {
 
     void addCoins(long value);
 
-    /// <!-------------------- Sanction part --------------------!>
-
     boolean setCoins(long value);
 
     long getCoins();
+
+    /// <!-------------------- Sanction part --------------------!>
 
     void loadSanction();
 
@@ -100,6 +102,7 @@ public interface APIOfflinePlayer {
 
     Setting getSetting(String settingsName);
 
+    /// <!-------------------- Link part --------------------!>
 
     boolean hasLinkWith(APIOfflinePlayer apiOfflinePlayer, String linkType);
 
