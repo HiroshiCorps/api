@@ -1,16 +1,14 @@
 package fr.redxil.api.velocity;
 
-import fr.redxil.api.paper.Paper;
-
 public class CoreEnabledEvent {
 
-    Paper paper;
+    Velocity paper;
 
-    public CoreEnabledEvent(Paper paper) {
+    public CoreEnabledEvent(Velocity paper) {
         this.paper = paper;
     }
 
-    public Paper getPaper() {
+    public Velocity getVelocity() {
         return paper;
     }
 
