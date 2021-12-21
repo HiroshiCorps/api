@@ -104,11 +104,11 @@ public interface APIOfflinePlayer {
 
     /// <!-------------------- Link part --------------------!>
 
-    boolean hasLinkWith(APIOfflinePlayer apiOfflinePlayer, String linkType, boolean checkReceive);
+    boolean hasLinkWith(APIOfflinePlayer apiOfflinePlayer, String linkType, boolean includeReceived);
 
-    List<? extends LinkData> getLinksWith(APIOfflinePlayer apiOfflinePlayer, String linkType, boolean checkReceive);
+    List<? extends LinkData> getLinksWith(APIOfflinePlayer apiOfflinePlayer, String linkType, boolean includeReceived);
 
-    LinkData getLinkWith(APIOfflinePlayer apiOfflinePlayer, String linkType, boolean checkReceive);
+    LinkData getLinkWith(APIOfflinePlayer apiOfflinePlayer, String linkType, boolean includeReceived);
 
     LinkData createLinkWith(APIOfflinePlayer apiOfflinePlayer, String linkType);
 
