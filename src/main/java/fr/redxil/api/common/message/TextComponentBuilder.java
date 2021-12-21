@@ -18,6 +18,10 @@ public abstract class TextComponentBuilder {
 
     TextComponentBuilder previous = null;
 
+    protected TextComponentBuilder() {
+
+    }
+
     public static TextComponentBuilder createTextComponent() {
         if (API.getInstance().isVelocity())
             return new TextComponentBuilderVelocity();
