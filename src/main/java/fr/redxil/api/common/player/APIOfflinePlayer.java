@@ -9,12 +9,14 @@
 package fr.redxil.api.common.player;
 
 import fr.redxil.api.common.player.data.LinkData;
+import fr.redxil.api.common.player.data.LinkUsage;
 import fr.redxil.api.common.player.data.SanctionInfo;
 import fr.redxil.api.common.player.data.Setting;
 import fr.redxil.api.common.player.moderators.APIPlayerModerator;
 import fr.redxil.api.common.player.rank.Rank;
 import fr.redxil.api.common.utils.SanctionType;
 
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.UUID;
 
@@ -104,12 +106,12 @@ public interface APIOfflinePlayer {
 
     /// <!-------------------- Link part --------------------!>
 
-    boolean hasLinkWith(APIOfflinePlayer apiOfflinePlayer, String linkType, boolean includeReceived);
+    boolean hasLinkWith(LinkUsage linkUsage, @Nullable APIOfflinePlayer apiOfflinePlayer, String... linkType);
 
-    List<? extends LinkData> getLinksWith(APIOfflinePlayer apiOfflinePlayer, String linkType, boolean includeReceived);
+    List<LinkData> getLinks(LinkUsage linkUsage, @Nullable APIOfflinePlayer apiOfflinePlayer, String... linkType);
 
-    LinkData getLinkWith(APIOfflinePlayer apiOfflinePlayer, String linkType, boolean includeReceived);
+    LinkData getLink(LinkUsage linkUsage, @Nullable APIOfflinePlayer apiOfflinePlayer, String... linkType);
 
-    LinkData createLinkWith(APIOfflinePlayer apiOfflinePlayer, String linkType);
+    LinkData createLink(APIOfflinePlayer apiOfflinePlayer, String linkType);
 
 }

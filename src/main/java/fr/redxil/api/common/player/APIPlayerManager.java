@@ -139,5 +139,12 @@ public interface APIPlayerManager {
      */
     boolean hasLinkType(String linkType);
 
+    /**
+     * Get LinkData with linkId
+     *
+     * @param linkID the id of the link
+     * @return LinkData if the link exist
+     */
+    LinkData getLink(int linkID);
 
 }
