@@ -27,8 +27,6 @@ public interface APIOfflinePlayer {
 
     Long getRankPower();
 
-    Long getRankPower(boolean nickCare);
-
     Rank getRank();
 
     void setRank(Rank rank);
@@ -41,13 +39,9 @@ public interface APIOfflinePlayer {
 
     boolean isNick();
 
-    Rank getRank(boolean nickCare);
-
     String getName();
 
     void setName(String name);
-
-    String getName(boolean nickCare);
 
     UUID getUUID();
 

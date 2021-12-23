@@ -13,8 +13,10 @@ import fr.redxil.api.common.group.party.Party;
 import fr.redxil.api.common.group.team.Team;
 import fr.redxil.api.common.player.data.SanctionInfo;
 import fr.redxil.api.common.player.moderators.APIPlayerModerator;
+import fr.redxil.api.common.player.rank.Rank;
 import fr.redxil.api.common.server.Server;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
 
@@ -29,6 +31,19 @@ public interface APIPlayer extends APIOfflinePlayer {
     void unloadPlayer();
 
     boolean isLogin();
+
+
+    Rank getRealRank();
+
+    void setRealRank(Rank rank);
+
+    String getRealName();
+
+    void setRealName(String name);
+
+    Long getRealRankPower();
+
+    void setRealRank(Rank rank, Timestamp timestamp);
 
     /// <!-------------------- Print rank part --------------------!>
 
