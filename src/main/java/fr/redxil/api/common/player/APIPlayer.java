@@ -33,6 +33,8 @@ public interface APIPlayer extends APIOfflinePlayer {
     boolean isLogin();
 
 
+    boolean isNick();
+
     Rank getRealRank();
 
     void setRealRank(Rank rank);

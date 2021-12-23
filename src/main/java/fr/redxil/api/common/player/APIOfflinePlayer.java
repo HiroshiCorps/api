@@ -37,8 +37,6 @@ public interface APIOfflinePlayer {
 
     /// <!-------------------- APIPlayer part --------------------!>
 
-    boolean isNick();
-
     String getName();
 
     void setName(String name);
