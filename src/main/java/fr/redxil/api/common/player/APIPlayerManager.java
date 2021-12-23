@@ -17,6 +17,8 @@ import java.util.function.BiConsumer;
 
 public interface APIPlayerManager {
 
+    boolean dataExist(String name);
+
     /**
      * Get the APIPlayer with this name / nick (supported but take more query on redis, please use APIPlayerManager.getPlayer(memberID) if you can)
      *
@@ -92,12 +94,6 @@ public interface APIPlayerManager {
     boolean isLoadedPlayer(UUID uuid);
 
     List<Long> getLoadedPlayer();
-
-    String getIdentifierString(APIOfflinePlayer aop);
-
-    String getIdentifierString(String name, UUID uuid);
-
-    String getPlayerIdentifierColumn();
 
     /**
      * When player loaded, if he has some linkType link, the BiConsumer will be used

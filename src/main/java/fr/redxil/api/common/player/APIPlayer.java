@@ -41,11 +41,17 @@ public interface APIPlayer extends APIOfflinePlayer {
 
     String getRealName();
 
-    void setRealName(String name);
+    boolean setRealName(String name);
 
     Long getRealRankPower();
 
     void setRealRank(Rank rank, Timestamp timestamp);
+
+    Timestamp getRankTimeStamp();
+
+    Timestamp getRealRankTimeStamp();
+
+    void restoreRealData();
 
     /// <!-------------------- Print rank part --------------------!>
 

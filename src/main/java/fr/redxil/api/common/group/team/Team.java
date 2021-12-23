@@ -83,7 +83,7 @@ public interface Team {
      *
      */
 
-    List<String> getListPlayerName(boolean nickCare);
+    List<String> getListPlayerName();
 
     List<APIPlayer> getPlayers();
 

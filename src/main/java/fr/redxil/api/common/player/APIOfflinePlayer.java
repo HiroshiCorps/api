@@ -39,7 +39,7 @@ public interface APIOfflinePlayer {
 
     String getName();
 
-    void setName(String name);
+    boolean setName(String name);
 
     UUID getUUID();
 
