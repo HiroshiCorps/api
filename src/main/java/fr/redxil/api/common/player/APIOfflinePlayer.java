@@ -17,6 +17,7 @@ import fr.redxil.api.common.player.rank.Rank;
 import fr.redxil.api.common.utils.SanctionType;
 
 import javax.annotation.Nullable;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
 
@@ -31,6 +32,8 @@ public interface APIOfflinePlayer {
     Rank getRank();
 
     void setRank(Rank rank);
+
+    void setRank(Rank rank, Timestamp timestamp);
 
     boolean hasPermission(long l);
 
