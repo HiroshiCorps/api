@@ -15,7 +15,6 @@ import fr.redxil.api.common.group.party.PartyManager;
 import fr.redxil.api.common.group.team.TeamManager;
 import fr.redxil.api.common.player.APIPlayerManager;
 import fr.redxil.api.common.player.moderators.ModeratorManager;
-import fr.redxil.api.common.player.nick.NickGestion;
 import fr.redxil.api.common.redis.RedisManager;
 import fr.redxil.api.common.server.Server;
 import fr.redxil.api.common.server.ServerManager;
@@ -89,13 +88,6 @@ public abstract class API {
     public PluginEnabler getPluginEnabler() {
         return this.plugin;
     }
-
-    /**
-     * Get the nick manager
-     *
-     * @return NickManager
-     */
-    public abstract NickGestion getNickGestion();
 
     public abstract ServerType getServerType();
 
