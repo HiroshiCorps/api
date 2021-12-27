@@ -23,11 +23,27 @@ import java.util.UUID;
 
 public interface Server {
 
+    String getServerName();
+
+    ServerType getServerType();
+
+    long getServerId();
+
+
     int getMaxPlayers();
 
     void setMaxPlayers(int players);
 
-    String getServerName();
+    IpInfo getServerIP();
+
+    boolean isOnline();
+
+    void shutdown();
+
+
+    void setPlayerInServer(APIPlayer apiPlayer);
+
+    void removePlayerInServer(UUID uuid);
 
     Collection<APIPlayer> getPlayerList();
 
@@ -35,15 +51,11 @@ public interface Server {
 
     int getConnectedPlayer();
 
-    long getLastPing();
 
-    Object getServerResponseMessage(int value);
+    Rank getReservedRank();
 
-    boolean isOnline();
+    void setReservedRank(Rank rank);
 
-    IpInfo getServerIP();
-
-    boolean shutdown();
 
 
     ServerStatus getServerStatus();
@@ -56,15 +68,6 @@ public interface Server {
     void setServerAccess(ServerAccess serverAccess);
 
 
-    ServerType getServerType();
-
-    long getServerId();
-
-    void setPlayerInServer(APIPlayer apiPlayer);
-
-    void removePlayerInServer(UUID uuid);
-
-    void sendShutdownOrder();
 
     boolean isHostServer();
 
@@ -75,9 +78,5 @@ public interface Server {
     Host getHost();
 
     List<Long> getTeamLinked();
-
-    Rank getReservedRank();
-
-    void setReservedRank(Rank rank);
 
 }
