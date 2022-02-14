@@ -107,6 +107,8 @@ public abstract class API {
 
     public abstract String getServerName();
 
+    public abstract boolean dataConnected();
+
     public boolean isVelocity() {
         return plugin.isVelocity();
     }
@@ -119,12 +121,15 @@ public abstract class API {
         return System.currentTimeMillis();
     }
 
-    public boolean isEnabled() {
+    public static boolean isEnabled() {
         return enabled;
     }
 
     public static void setEnabled(boolean enabled) {
         API.enabled = enabled;
+        if(enabled)
+            getInstance().getPluginEnabler().onAPIEnabled();
+        else getInstance().getPluginEnabler().onAPIDisabled();
     }
 
 }

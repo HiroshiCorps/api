@@ -15,6 +15,10 @@ import java.util.logging.Level;
 
 public interface PluginEnabler {
 
+    void onAPIEnabled();
+
+    void onAPIDisabled();
+
     IpInfo getServerIp();
 
     boolean isVelocity();
@@ -24,10 +28,6 @@ public interface PluginEnabler {
     String getPluginVersion();
 
     int getMaxPlayer();
-
-    void shutdownServer(String msg);
-
-    void shutdownPlugin(String msg);
 
     String getServerVersion();
 
