@@ -79,12 +79,6 @@ public interface APIPlayer extends APIOfflinePlayer {
 
     Party getParty();
 
-    /// <!-------------------- Team part --------------------!>
-
-    boolean hasTeam();
-
-    Team getTeam();
-
     /// <!-------------------- Temp part --------------------!>
 
     void addTempData(String key, Object object);

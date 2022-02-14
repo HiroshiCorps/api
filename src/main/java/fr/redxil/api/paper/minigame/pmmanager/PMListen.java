@@ -41,7 +41,7 @@ public class PMListen implements PMReceiver {
             }
             case "forceWIN": {
                 String[] splitted = ((String) o).split("<split>");
-                GameBuilder.getGameBuilder().forceWin(GameBuilder.getGameBuilder().getTeamManager().getTeam(Long.parseLong(splitted[1])), splitted[2]);
+                GameBuilder.getGameBuilder().forceWin(GameBuilder.getGameBuilder().getTeamManager().getTeam(API.getInstance().getGame(), splitted[1]), splitted[2]);
                 break;
             }
         }

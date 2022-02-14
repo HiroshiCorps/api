@@ -77,6 +77,4 @@ public interface Server {
 
     Host getHost();
 
-    List<Long> getTeamLinked();
-
 }

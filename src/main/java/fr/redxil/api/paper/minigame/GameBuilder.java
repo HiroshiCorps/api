@@ -71,7 +71,7 @@ public abstract class GameBuilder {
     }
 
     public boolean hasTeams() {
-        return !getTeamManager().getTeamList().isEmpty();
+        return !getTeamManager().getTeamList(API.getInstance().getGame()).isEmpty();
     }
 
     private void saveResourceAs(String resourcePath, String outputPath) {

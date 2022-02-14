@@ -44,9 +44,9 @@ public interface Team {
      *
      */
 
-    long getTeamID();
+    long getGameID();
 
-    String getName();
+    String getTeamName();
 
 
     String getDisplayName();
