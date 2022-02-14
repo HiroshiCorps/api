@@ -16,10 +16,6 @@ repositories {
         dir "libs"
     }
 
-    flatDir {
-        dir "../paper/Paper-Server/target"
-    }
-
     maven {
         url 'https://repo.velocitypowered.com/snapshots/'
     }

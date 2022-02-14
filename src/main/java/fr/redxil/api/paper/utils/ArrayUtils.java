@@ -72,7 +72,7 @@ public class ArrayUtils {
      * @return the array list
      */
     public ArrayList<String> convert(Set<String> set1) {
-        Set<String> set = new HashSet<String>(set1);
+        Set<String> set = new HashSet<>(set1);
         return new ArrayList<>(set);
     }
 
@@ -100,11 +100,11 @@ public class ArrayUtils {
         return string;
     }
 
-    public ArrayList<BaseComponent> convertBaseComponent(BaseComponent[] list) {
+    public List<BaseComponent> convertBaseComponent(BaseComponent[] list) {
         if (list == null) {
             return null;
         }
-        return (ArrayList<BaseComponent>) new ArrayList(Arrays.asList(list));
+        return Arrays.asList(list);
     }
 
     /**
@@ -125,7 +125,7 @@ public class ArrayUtils {
 
 
     public HashMap<String, String> fromString(String str) {
-        HashMap<String, String> map = new HashMap<String, String>();
+        HashMap<String, String> map = new HashMap<>();
         if (!str.equals("")) {
             for (String entry : str.split("%entry%")) {
                 String[] values = entry.split("%pair%");
