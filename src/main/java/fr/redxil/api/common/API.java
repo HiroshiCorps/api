@@ -126,6 +126,8 @@ public abstract class API {
     }
 
     public static void setEnabled(boolean enabled) {
+        if(API.enabled == enabled)
+            return;
         API.enabled = enabled;
         if(enabled)
             getInstance().getPluginEnabler().onAPIEnabled();
