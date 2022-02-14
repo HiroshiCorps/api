@@ -71,7 +71,7 @@ public interface TeamManager {
     /**
      * Get team thanks to the team id
      *
-     * @param teamID
+     * @param teamID team to get
      * @return Team interface if the team exist
      */
     Team getTeam(long teamID);

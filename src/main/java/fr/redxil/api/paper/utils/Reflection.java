@@ -501,7 +501,8 @@ public class Reflection {
      * @param instance  instance the class to use
      * @param fieldName the name of the {@link Field} to modify
      * @param value     the value to set
-     * @throws NoSuchFieldException, IllegalAccessException
+     * @throws NoSuchFieldException append when fieldName not exist in class
+     * @throws IllegalAccessException append when access not authorized
      */
     public static void setValue(Object instance, String fieldName, Object value) throws NoSuchFieldException, IllegalAccessException {
         setValue(instance, true, fieldName, value);
@@ -514,7 +515,8 @@ public class Reflection {
      * @param fieldName name of the {@link Field}
      * @return the value of {@link Object} instance's {@link Field} with the
      * name of fieldName
-     * @throws NoSuchFieldException, IllegalAccessException
+     * @throws NoSuchFieldException append when fieldName not exist in class
+     * @throws IllegalAccessException append when access not authorized
      */
     public static Object getValue(Object instance, String fieldName) throws NoSuchFieldException, IllegalAccessException {
         return getValue(instance, true, fieldName);
@@ -525,7 +527,7 @@ public class Reflection {
      *
      * @param field The field object
      * @param value The new value
-     * @throws ReflectiveOperationException
+     * @throws ReflectiveOperationException append when access not authorized
      */
     public static void setFinalStatic(Field field, Object value) throws ReflectiveOperationException {
         field.setAccessible(true);
@@ -538,10 +540,10 @@ public class Reflection {
 
     /**
      * Set a final static var
-     *
+     * @param object The object to change final
      * @param field The field object
      * @param value The new value
-     * @throws ReflectiveOperationException
+     * @throws ReflectiveOperationException append when access not authorized
      */
     public static void setFinal(Object object, Field field, Object value) throws ReflectiveOperationException {
         field.setAccessible(true);
@@ -553,7 +555,7 @@ public class Reflection {
 
     /**
      * Represents an enumeration of dynamic packages of NMS and CraftBukkit
-     * <p/>
+     *
      * This class is part of the <b>ReflectionUtils</b> and follows the same usage conditions
      *
      * @author DarkBlade12
@@ -642,7 +644,7 @@ public class Reflection {
 
     /**
      * Represents an enumeration of Java data types with corresponding classes
-     * <p/>
+     *
      * This class is part of the <b>ReflectionUtils</b> and follows the same usage conditions
      *
      * @author DarkBlade12
@@ -817,9 +819,9 @@ public class Reflection {
 
     /**
      * Represents an enumeration of all packet types that are featured in <b>Minecraft 1.7.10</b>
-     * <p/>
+     *
      * If this enumeration is no longer up-to-date, please let me know in my <a href="http://forums.bukkit.org/threads/lib-1-7-particleeffect-v1-4.154406">forum post</a>
-     * <p/>
+     *
      * This class is part of the <b>ReflectionUtils</b> and follows the same usage conditions
      *
      * @author DarkBlade12

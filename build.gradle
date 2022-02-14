@@ -8,6 +8,10 @@ compileJava.options.encoding = 'UTF-8'
 
 configurations.implementation.setCanBeResolved(true)
 
+javadoc {
+    options.encoding = 'UTF-8'
+}
+
 repositories {
     mavenCentral()
     mavenLocal()

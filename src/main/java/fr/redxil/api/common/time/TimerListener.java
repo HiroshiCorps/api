@@ -12,11 +12,15 @@ public interface TimerListener {
 
     /**
      * Function called when the timer is about to stop
-     *
+     * @param timerSystem The timer who stopped
      * @return false if you want to cancel the timer stop (Only work if you set a new value)
      */
     boolean timerStop(TimerSystem timerSystem);
 
+    /**
+     * Function called when the remaining delay is changing
+     * @param timerSystem The timer who delay changed
+     */
     void timerChange(TimerSystem timerSystem);
 
 }

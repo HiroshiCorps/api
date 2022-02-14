@@ -20,21 +20,53 @@ import java.util.UUID;
 
 public interface Game {
 
+    /**
+     * Aim to get the game id
+     * @return the game id
+     */
+    long getGameID();
+
+    /**
+     * Aim to get the server name
+     * @return the server name
+     */
     String getServerName();
 
+    /**
+     * Get the minimum player needed
+     * @return Minimum player needed to start
+     */
     int getMinPlayer();
 
+    /**
+     * Change the minimum player needed
+     * @param n the number of player
+     */
     void setMinPlayer(int n);
 
+    /**
+     * Get the maximum player needed
+     * @return Maximum player needed to start
+     */
     int getMaxPlayer();
 
+    /**
+     * Change the minimum player needed
+     * @param n the number of player
+     */
     void setMaxPlayer(int n);
 
+    /**
+     * Get maximum normal player authorize to spectate a game without participating to it
+     * @return the max number of player
+     */
     int getMaxPlayerSpec();
 
+    /**
+     * Set maximum normal player authorize to spectate a game without participating to it
+     * @param n the number of player
+     */
     void setMaxPlayerSpec(int n);
-
-    long getGameID();
 
     /// <!-------------------- Game part --------------------!>
 
