@@ -232,6 +232,8 @@ public interface Game {
     boolean hasSettings(String key);
 
 
+    void clearData();
+
     Host getHost();
 
     boolean hasTeam();
