@@ -236,8 +236,6 @@ public interface Game {
 
     Host getHost();
 
-    boolean hasTeam();
-
     boolean isHostLinked();
 
 }
