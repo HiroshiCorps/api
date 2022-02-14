@@ -236,8 +236,6 @@ public interface Game {
 
     boolean hasTeam();
 
-    void setHasTeam(boolean b);
-
     boolean isHostLinked();
 
 }
