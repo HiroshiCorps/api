@@ -70,8 +70,16 @@ public interface Game {
 
     /// <!-------------------- Game part --------------------!>
 
+    /**
+     * Check if game is running or not
+     * @return the actual game state
+     */
     GameState getGameState();
 
+    /**
+     * Change the GameState
+     * @param gameState the new GameState
+     */
     void setGameState(GameState gameState);
 
     boolean isGameState(GameState... gameState);
