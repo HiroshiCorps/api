@@ -60,15 +60,14 @@ public abstract class GameBuilder {
         if (game == null)
             throw new GameInitError("Game not init on Redis");
 
-        Server server = API.getInstance().getServer();
-        if (!(game instanceof Host))
-            return;
-
-        APIPlayer apiPlayer = API.getInstance().getPlayerManager().getPlayer(((Host) game).getAuthor());
-        if (apiPlayer != null)
-            apiPlayer.switchServer(server.getServerName());
-        else
-            throw new GameInitError("Missing host");
+        if(game instanceof Host) {
+            Server server = API.getInstance().getServer();
+            APIPlayer apiPlayer = API.getInstance().getPlayerManager().getPlayer(((Host) game).getAuthor());
+            if (apiPlayer != null)
+                apiPlayer.switchServer(server.getServerName());
+            else
+                throw new GameInitError("Missing host");
+        }
     }
 
     public boolean hasTeams() {
@@ -118,13 +117,13 @@ public abstract class GameBuilder {
         }
     }
 
-    public abstract void onPlayerJoin(org.bukkit.entity.Player player);
+    public abstract void onPlayerJoin(Player player);
 
-    public abstract void onPlayerLeave(org.bukkit.entity.Player player);
+    public abstract void onPlayerLeave(Player player);
 
-    public abstract void onSpectatorJoin(org.bukkit.entity.Player player);
+    public abstract void onSpectatorJoin(Player player);
 
-    public abstract void onSpectatorLeave(org.bukkit.entity.Player player);
+    public abstract void onSpectatorLeave(Player player);
 
     public abstract boolean start();
 
