@@ -12,6 +12,8 @@ import fr.redxil.api.common.API;
 import fr.redxil.api.common.game.Game;
 import fr.redxil.api.common.game.Host;
 import fr.redxil.api.common.game.error.GameInitError;
+import fr.redxil.api.common.game.utils.GameEnum;
+import fr.redxil.api.common.game.utils.GameState;
 import fr.redxil.api.common.group.team.Team;
 import fr.redxil.api.common.group.team.TeamManager;
 import fr.redxil.api.common.player.APIPlayer;
@@ -36,10 +38,10 @@ public abstract class GameBuilder {
     private final ChestSystem chestsManager;
     private final TimerSystem timerSystem;
 
-    public GameBuilder(JavaPlugin plugin) throws GameInitError {
+    public GameBuilder(JavaPlugin plugin, GameEnum gameEnum) throws GameInitError {
         gameBuilder = this;
 
-        initGame();
+        initGame(gameEnum);
         new PMListen();
 
         this.plugin = plugin;
@@ -54,19 +56,26 @@ public abstract class GameBuilder {
         return gameBuilder;
     }
 
-    public void initGame() throws GameInitError {
+    public void initGame(GameEnum gameEnum) throws GameInitError {
 
         Game game = API.getInstance().getGame();
         if (game == null)
             throw new GameInitError("Game not init on Redis");
 
-        if(game instanceof Host) {
+        if (game.getGame() != gameEnum) {
+            game.setGameState(GameState.CRASHED);
+            throw new GameInitError("Wrong game Started");
+        }
+
+        if (game instanceof Host) {
             Server server = API.getInstance().getServer();
             APIPlayer apiPlayer = API.getInstance().getPlayerManager().getPlayer(((Host) game).getAuthor());
             if (apiPlayer != null)
                 apiPlayer.switchServer(server.getServerName());
-            else
+            else {
+                game.setGameState(GameState.CRASHED);
                 throw new GameInitError("Missing host");
+            }
         }
     }
 
@@ -131,12 +140,18 @@ public abstract class GameBuilder {
 
     public abstract boolean stopStart();
 
+    public abstract void onWin(Team team);
+
+    public abstract void onWin(Player player);
+
     public abstract void forceEnd(String reason);
 
     public abstract void forceWin(Team team, String reason);
 
+    public abstract void forceWin(Player player, String reason);
+
     public void broadcastTitle(String title, String subtitle) {
-        Title.sendTitleToAllPlayers(title, subtitle, 10, 20,10);
+        Title.sendTitleToAllPlayers(title, subtitle, 10, 20, 10);
     }
 
     public void broadcastMessage(String message) {

@@ -10,6 +10,7 @@ package fr.redxil.api.common.game.utils;
 
 public enum GameEnum {
     TAG("tag", true, 5, false, false, 2, 10),
+    TEST("test", true, 5, false, false, 2, 10),
     FATALITY("fatality", true, 5, false, false, 15, 15);
 
     final String name;

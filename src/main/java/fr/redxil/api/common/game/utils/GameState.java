@@ -11,8 +11,10 @@ package fr.redxil.api.common.game.utils;
 public enum GameState {
 
     WAITING("WAIT"),
-    OCCUPIED("OCC"),
-    FINISH("FIN");
+    START("START"),
+    GAME("GAME"),
+    FINISH("FIN"),
+    CRASHED("CRASHED");
 
     private final String name;
 

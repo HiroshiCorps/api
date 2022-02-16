@@ -34,10 +34,16 @@ public class TimerSystem implements Runnable {
         return !timer.isShutdown();
     }
 
-    public void startTimer() {
-        if (isRunning() || !canStart()) return;
+    public boolean startTimer() {
+        if (isRunning() || !canStart()) return false;
         this.timer = Executors.newSingleThreadScheduledExecutor();
         timer.scheduleAtFixedRate(this, 0L, 1L, TimeUnit.MILLISECONDS);
+        return true;
+    }
+
+    public boolean startTimer(TimerListener timerListener) {
+        setTimerListener(timerListener);
+        return startTimer();
     }
 
     public void stopTimer() {
@@ -73,7 +79,7 @@ public class TimerSystem implements Runnable {
         return 0d;
     }
 
-    public void setValue(TimeUnit timeEnum, double value) {
+    public void setValue(double value, TimeUnit timeEnum) {
         switch (timeEnum) {
             case MILLISECONDS: {
                 this.milli = value;
@@ -94,21 +100,21 @@ public class TimerSystem implements Runnable {
         }
     }
 
-    public boolean remove(TimeUnit timeEnum, int time) {
+    public boolean remove(int time, TimeUnit timeEnum) {
         switch (timeEnum) {
             case MILLISECONDS: {
 
                 if (milli - time > 0) {
                     milli -= time;
                 } else {
-                    if (!remove(TimeUnit.SECONDS, 1)) {
+                    if (!remove(1, TimeUnit.SECONDS)) {
                         milli = 0;
                         return false;
                     }
                     double kRemove = (milli - time) * -1;
                     milli = 0999d;
                     if (kRemove != 0)
-                        return remove(TimeUnit.MILLISECONDS, Double.valueOf(kRemove).intValue());
+                        return remove(Double.valueOf(kRemove).intValue(), TimeUnit.MILLISECONDS);
                 }
                 return true;
 
@@ -119,14 +125,14 @@ public class TimerSystem implements Runnable {
                 if (sec - time > 0) {
                     sec -= time;
                 } else {
-                    if (!remove(TimeUnit.MINUTES, 1)) {
+                    if (!remove(1, TimeUnit.MINUTES)) {
                         sec = 0;
                         return false;
                     }
                     double kRemove = (sec - time) * -1;
                     sec = 60d;
                     if (kRemove != 0)
-                        return remove(TimeUnit.SECONDS, Double.valueOf(kRemove).intValue());
+                        return remove(Double.valueOf(kRemove).intValue(), TimeUnit.SECONDS);
                 }
                 return true;
 
@@ -137,14 +143,14 @@ public class TimerSystem implements Runnable {
                 if (min - time > 0) {
                     min -= time;
                 } else {
-                    if (!remove(TimeUnit.HOURS, 1)) {
+                    if (!remove(1, TimeUnit.HOURS)) {
                         min = 0;
                         return false;
                     }
                     double kRemove = (min - time) * -1;
                     min = 60d;
                     if (kRemove != 0)
-                        return remove(TimeUnit.MINUTES, Double.valueOf(kRemove).intValue());
+                        return remove(Double.valueOf(kRemove).intValue(), TimeUnit.MINUTES);
                 }
                 return true;
 
@@ -194,7 +200,7 @@ public class TimerSystem implements Runnable {
     @Override
     public void run() {
 
-        if (!remove(timeUnit, period)) {
+        if (!remove(period, timeUnit)) {
 
             if (timerListener.timerStop(this)) {
                 stopTimer();
