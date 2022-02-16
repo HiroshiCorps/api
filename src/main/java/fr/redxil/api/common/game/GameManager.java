@@ -31,7 +31,7 @@ public interface GameManager {
      * @return
      * @throws GameCreateError
      */
-    Game initGameServer(GameEnum gameEnum) throws GameCreateError;
+    Game initGameServer(long serverID, GameEnum gameEnum) throws GameCreateError;
 
     List<Host> getListHost();
 
@@ -43,6 +43,6 @@ public interface GameManager {
 
     Host getHost(long gameID);
 
-    Host initHostServer(APIPlayer author, GameEnum hostsGame);
+    Host initHostServer(long serverID, APIPlayer author, GameEnum hostsGame);
 
 }

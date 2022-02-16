@@ -32,12 +32,7 @@ public interface Game {
      *
      * @return the server id
      */
-    Long getServerID();
-
-    /**
-     * Aim to set the server id
-     */
-    void setServerID(long serverID);
+    long getServerID();
 
     /**
      * Get the minimum player needed
