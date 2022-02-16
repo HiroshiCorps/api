@@ -70,7 +70,7 @@ public abstract class GameBuilder {
             Server server = API.getInstance().getServer();
             APIPlayer apiPlayer = API.getInstance().getPlayerManager().getPlayer(((Host) game).getAuthor());
             if (apiPlayer != null)
-                apiPlayer.switchServer(server.getServerName());
+                apiPlayer.switchServer(server.getServerId());
             else {
                 game.setGameState(GameState.CRASHED);
                 throw new GameInitError("Missing host");

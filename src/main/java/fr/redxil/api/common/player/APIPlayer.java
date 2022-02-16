@@ -10,7 +10,6 @@ package fr.redxil.api.common.player;
 
 import fr.redline.pms.utils.IpInfo;
 import fr.redxil.api.common.group.party.Party;
-import fr.redxil.api.common.group.team.Team;
 import fr.redxil.api.common.player.data.SanctionInfo;
 import fr.redxil.api.common.player.moderators.APIPlayerModerator;
 import fr.redxil.api.common.player.rank.Rank;
@@ -65,7 +64,7 @@ public interface APIPlayer extends APIOfflinePlayer {
 
     Server getBungeeServer();
 
-    void switchServer(String server);
+    void switchServer(long serverID);
 
     /// <!-------------------- Sanction part --------------------!>
 

@@ -22,18 +22,26 @@ public interface Game {
 
     /**
      * Aim to get the game id
+     *
      * @return the game id
      */
     long getGameID();
 
     /**
-     * Aim to get the server name
-     * @return the server name
+     * Aim to get the server id
+     *
+     * @return the server id
      */
-    String getServerName();
+    Long getServerID();
+
+    /**
+     * Aim to set the server id
+     */
+    void setServerID(long serverID);
 
     /**
      * Get the minimum player needed
+     *
      * @return Minimum player needed to start
      */
     int getMinPlayer();

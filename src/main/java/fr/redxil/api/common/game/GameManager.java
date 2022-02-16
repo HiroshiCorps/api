@@ -18,26 +18,31 @@ public interface GameManager {
 
     List<Game> getListGames();
 
-    boolean isGameExist(String server);
+    boolean isGameExistByServerID(long server);
 
     boolean isGameExist(long gameID);
 
-    Game getGame(String server);
+    Game getGameByServerID(long server);
 
     Game getGame(long gameID);
 
-    Game initGameServer(String server, GameEnum gameEnum) throws GameCreateError;
+    /**
+     * @param gameEnum
+     * @return
+     * @throws GameCreateError
+     */
+    Game initGameServer(GameEnum gameEnum) throws GameCreateError;
 
     List<Host> getListHost();
 
-    boolean isHostExist(String server);
+    boolean isHostExistByServerID(long server);
 
     boolean isHostExist(long gameID);
 
-    Host getHost(String server);
+    Host getHostByServerID(long server);
 
-    Game getHost(long gameID);
+    Host getHost(long gameID);
 
-    Host initHostServer(String server, APIPlayer author, GameEnum hostsGame) throws GameCreateError;
+    Host initHostServer(APIPlayer author, GameEnum hostsGame);
 
 }
