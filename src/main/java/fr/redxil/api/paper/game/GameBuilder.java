@@ -15,7 +15,6 @@ import fr.redxil.api.common.game.error.GameInitError;
 import fr.redxil.api.common.game.utils.GameEnum;
 import fr.redxil.api.common.game.utils.GameState;
 import fr.redxil.api.common.group.team.Team;
-import fr.redxil.api.common.group.team.TeamManager;
 import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.server.Server;
 import fr.redxil.api.common.time.TimerSystem;
@@ -80,7 +79,7 @@ public abstract class GameBuilder {
     }
 
     public boolean hasTeams() {
-        return !getTeamManager().getTeamList(API.getInstance().getGame()).isEmpty();
+        return !API.getInstance().getTeamManager().getTeamList(API.getInstance().getGame()).isEmpty();
     }
 
     private void saveResourceAs(String resourcePath, String outputPath) {
@@ -184,10 +183,6 @@ public abstract class GameBuilder {
 
     public JavaPlugin getPlugin() {
         return plugin;
-    }
-
-    public TeamManager getTeamManager() {
-        return API.getInstance().getTeamManager();
     }
 
     public ChestSystem getChestSystem() {
