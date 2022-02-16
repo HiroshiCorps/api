@@ -18,12 +18,13 @@ import fr.redxil.api.common.server.type.ServerStatus;
 import fr.redxil.api.common.server.type.ServerType;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.UUID;
 
 public interface Server {
 
     String getServerName();
+
+    void setServerName(String serverName);
 
     ServerType getServerType();
 

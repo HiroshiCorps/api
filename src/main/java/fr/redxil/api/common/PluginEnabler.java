@@ -40,4 +40,6 @@ public interface PluginEnabler {
      */
     void printLog(Level level, String text);
 
+    String getServerName();
+
 }

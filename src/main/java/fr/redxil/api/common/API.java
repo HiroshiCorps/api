@@ -105,7 +105,7 @@ public abstract class API {
 
     public abstract TeamManager getTeamManager();
 
-    public abstract String getServerName();
+    public abstract long getServerID();
 
     public abstract boolean dataConnected();
 
