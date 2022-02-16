@@ -6,12 +6,12 @@
  *
  */
 
-package fr.redxil.api.paper.minigame.pmmanager;
+package fr.redxil.api.paper.game.pmmanager;
 
 import fr.redline.pms.pm.PMReceiver;
 import fr.redline.pms.pm.RedisPMManager;
 import fr.redxil.api.common.API;
-import fr.redxil.api.paper.minigame.GameBuilder;
+import fr.redxil.api.paper.game.GameBuilder;
 import org.redisson.api.RedissonClient;
 
 public class PMListen implements PMReceiver {

@@ -6,7 +6,7 @@
  *
  */
 
-package fr.redxil.api.paper.minigame.chest;
+package fr.redxil.api.paper.game.chest;
 
 public enum ChestLegendary {
 }

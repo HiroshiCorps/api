@@ -1,4 +1,4 @@
-package fr.redxil.api.paper.minigame.exemple;
+package fr.redxil.api.paper.game.exemple;
 
 import fr.redxil.api.common.API;
 import fr.redxil.api.common.game.Game;
@@ -6,7 +6,7 @@ import fr.redxil.api.common.game.error.GameInitError;
 import fr.redxil.api.common.game.utils.GameEnum;
 import fr.redxil.api.common.game.utils.GameState;
 import fr.redxil.api.common.group.team.Team;
-import fr.redxil.api.paper.minigame.GameBuilder;
+import fr.redxil.api.paper.game.GameBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;

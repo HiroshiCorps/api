@@ -6,7 +6,7 @@
  *
  */
 
-package fr.redxil.api.paper.minigame.managers.config;
+package fr.redxil.api.paper.game.managers.config;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

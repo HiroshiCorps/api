@@ -6,7 +6,7 @@
  *
  */
 
-package fr.redxil.api.paper.minigame;
+package fr.redxil.api.paper.game;
 
 import fr.redxil.api.common.API;
 import fr.redxil.api.common.game.Game;
@@ -19,9 +19,9 @@ import fr.redxil.api.common.group.team.TeamManager;
 import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.server.Server;
 import fr.redxil.api.common.time.TimerSystem;
-import fr.redxil.api.paper.minigame.chest.ChestSystem;
-import fr.redxil.api.paper.minigame.managers.FilesAPI;
-import fr.redxil.api.paper.minigame.pmmanager.PMListen;
+import fr.redxil.api.paper.game.chest.ChestSystem;
+import fr.redxil.api.paper.game.managers.FilesAPI;
+import fr.redxil.api.paper.game.pmmanager.PMListen;
 import fr.redxil.api.paper.utils.ActionBar;
 import fr.redxil.api.paper.utils.Title;
 import org.bukkit.Sound;

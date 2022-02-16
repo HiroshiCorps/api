@@ -1,4 +1,4 @@
-package fr.redxil.api.paper.minigame.exemple;
+package fr.redxil.api.paper.game.exemple;
 
 import fr.redxil.api.common.time.TimerListener;
 import fr.redxil.api.common.time.TimerSystem;

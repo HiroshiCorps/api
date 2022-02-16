@@ -6,7 +6,7 @@
  *
  */
 
-package fr.redxil.api.paper.minigame.scoreboard;
+package fr.redxil.api.paper.game.scoreboard;
 
 import fr.redxil.api.paper.utils.Reflection;
 import net.minecraft.server.v1_12_R1.ChatComponentText;
