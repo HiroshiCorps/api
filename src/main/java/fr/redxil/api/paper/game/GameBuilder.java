@@ -17,7 +17,6 @@ import fr.redxil.api.common.game.utils.GameState;
 import fr.redxil.api.common.group.team.Team;
 import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.server.Server;
-import fr.redxil.api.common.time.TimerSystem;
 import fr.redxil.api.paper.game.chest.ChestSystem;
 import fr.redxil.api.paper.game.managers.FilesAPI;
 import fr.redxil.api.paper.game.pmmanager.PMListen;
@@ -35,7 +34,6 @@ public abstract class GameBuilder {
     private static GameBuilder gameBuilder;
     private final JavaPlugin plugin;
     private final ChestSystem chestsManager;
-    private final TimerSystem timerSystem;
 
     public GameBuilder(JavaPlugin plugin, GameEnum gameEnum) throws GameInitError {
         gameBuilder = this;
@@ -45,7 +43,6 @@ public abstract class GameBuilder {
 
         this.plugin = plugin;
         this.chestsManager = new ChestSystem();
-        this.timerSystem = new TimerSystem();
 
         String config = FilesAPI.CONFIG.getFileName();
         saveResourceAs(config, config);
@@ -187,10 +184,6 @@ public abstract class GameBuilder {
 
     public ChestSystem getChestSystem() {
         return chestsManager;
-    }
-
-    public TimerSystem getTimerGest() {
-        return timerSystem;
     }
 
 }
