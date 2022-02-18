@@ -59,8 +59,8 @@ publishing {
     }
     repositories {
         maven {
-            name 'hiroshi-api'
-            url "https://repo.ngimenez.fr/repository/hiroshi-api/"
+            name 'hiroshimc'
+            url "https://repo.ngimenez.fr/repository/hiroshimc/"
             credentials {
                 username project.repoUser
                 password project.repoPassword
