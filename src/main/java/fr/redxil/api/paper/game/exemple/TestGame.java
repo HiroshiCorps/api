@@ -6,6 +6,7 @@ import fr.redxil.api.common.game.error.GameInitError;
 import fr.redxil.api.common.game.utils.GameEnum;
 import fr.redxil.api.common.game.utils.GameState;
 import fr.redxil.api.common.group.team.Team;
+import fr.redxil.api.common.time.TimerSystem;
 import fr.redxil.api.paper.game.GameBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -15,6 +16,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.concurrent.TimeUnit;
 
 public class TestGame extends GameBuilder {
+
+    TimerSystem timerSystem = new TimerSystem();
+
     public TestGame(JavaPlugin plugin) throws GameInitError {
         super(plugin, GameEnum.TEST);
     }
@@ -54,9 +58,9 @@ public class TestGame extends GameBuilder {
         if (game.getPlayers().size() < game.getMinPlayer() || !game.getInConnectPlayer().isEmpty())
             return false;
         game.setGameState(GameState.START);
-        getTimerGest().setPeriod(1, TimeUnit.SECONDS);
-        getTimerGest().setValue(10, TimeUnit.SECONDS);
-        return getTimerGest().startTimer(new StartTimerListener(this));
+        timerSystem.setPeriod(1, TimeUnit.SECONDS);
+        timerSystem.setValue(10, TimeUnit.SECONDS);
+        return timerSystem.startTimer(new StartTimerListener(this));
     }
 
     @Override
@@ -69,7 +73,7 @@ public class TestGame extends GameBuilder {
         Game game = API.getInstance().getGame();
         if (game.getGameState() != GameState.START)
             return false;
-        getTimerGest().stopTimer();
+        timerSystem.stopTimer();
         game.setGameState(GameState.WAITING);
         return true;
     }
@@ -117,7 +121,7 @@ public class TestGame extends GameBuilder {
     public void startTimerFinish() {
         Game game = API.getInstance().getGame();
         game.setGameState(GameState.GAME);
-        getTimerGest().setValue(10, TimeUnit.MINUTES);
+        timerSystem.setValue(10, TimeUnit.MINUTES);
         /*
             Here you can teleport player to their spawn point,
             Change their gamemode to survival
