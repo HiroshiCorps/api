@@ -52,7 +52,7 @@ dependencies {
 publishing {
     publications {
         maven(MavenPublication) {
-            artifact("build/libs/api-$version" + ".jar") {
+            artifact("build/libs/" + rootProject.name + "-$version" + ".jar") {
                 extension 'jar'
             }
         }
