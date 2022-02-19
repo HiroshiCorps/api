@@ -34,6 +34,8 @@ public interface ServerManager {
 
     Server initServer(ServerType serverType, String name, IpInfo ipInfo);
 
+    Server initServer(ServerType serverType, Long serverID, IpInfo ipInfo);
+
     Server getConnectableServer(APIPlayer apiPlayer, ServerType serverType);
 
 }
