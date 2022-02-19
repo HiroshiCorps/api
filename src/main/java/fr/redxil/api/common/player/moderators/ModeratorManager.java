@@ -78,10 +78,10 @@ public interface ModeratorManager {
     /**
      * Check if a player is a server moderator
      *
-     * @param memberId this need to be the MemberId of the APIPlayer
+     * @param memberID this need to be the MemberId of the APIPlayer
      * @return True if the player is a moderator
      */
-    boolean isModerator(long memberId);
+    boolean isModerator(long memberID);
 
     /**
      * Check if a player is a server moderator
@@ -91,6 +91,6 @@ public interface ModeratorManager {
      */
     boolean isModerator(String name);
 
-    boolean isLoaded(long memberId);
+    boolean isLoaded(long memberID);
 
 }

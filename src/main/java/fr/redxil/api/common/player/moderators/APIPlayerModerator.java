@@ -23,7 +23,7 @@ public interface APIPlayerModerator {
     /**
      * @return This function return the MemberId of the moderator
      */
-    long getMemberId();
+    long getMemberID();
 
     /**
      * @return This function return the current UUID of the moderator

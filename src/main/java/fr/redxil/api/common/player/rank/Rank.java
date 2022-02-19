@@ -117,7 +117,7 @@ public enum Rank {
         return this.toString();
     }
 
-    public final Integer getId() {
+    public final Integer getID() {
         return this.id;
     }
 
