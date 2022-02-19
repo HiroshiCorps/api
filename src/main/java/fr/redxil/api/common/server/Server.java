@@ -28,7 +28,7 @@ public interface Server {
 
     ServerType getServerType();
 
-    long getServerId();
+    long getServerID();
 
 
     int getMaxPlayers();

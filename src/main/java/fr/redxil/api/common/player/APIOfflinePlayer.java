@@ -47,7 +47,7 @@ public interface APIOfflinePlayer {
 
     boolean isConnected();
 
-    long getMemberId();
+    long gerMemberID();
 
     /// <!-------------------- Money part --------------------!>
 
