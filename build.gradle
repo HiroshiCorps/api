@@ -36,7 +36,7 @@ repositories {
 
 dependencies {
     compileOnly group: 'com.velocitypowered', name: 'velocity-api', version: '3.0.0'
-    compileOnly name: 'paper-1.12.2'
+    compileOnly name: 'spigot-1.17.1'
     implementation group: 'com.zaxxer', name: 'HikariCP', version: '4.0.3'
     implementation group: 'net.wesjd', name: 'anvilgui', version: '1.5.2-SNAPSHOT'
     implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.7.3'

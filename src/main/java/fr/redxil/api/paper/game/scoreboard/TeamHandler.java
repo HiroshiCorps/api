@@ -9,8 +9,6 @@
 package fr.redxil.api.paper.game.scoreboard;
 
 import fr.redxil.api.paper.utils.Reflection;
-import net.minecraft.server.v1_12_R1.ChatComponentText;
-import net.minecraft.server.v1_12_R1.PacketPlayOutScoreboardTeam;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -344,6 +342,7 @@ public class TeamHandler {
             if (news == null)
                 news = new ArrayList<>();
 
+            /*
             try {
                 PacketPlayOutScoreboardTeam packet = new PacketPlayOutScoreboardTeam();
 
@@ -364,7 +363,7 @@ public class TeamHandler {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
+            */
             return null;
         }
 
