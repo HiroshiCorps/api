@@ -41,6 +41,7 @@ dependencies {
     implementation group: 'net.wesjd', name: 'anvilgui', version: '1.5.2-SNAPSHOT'
     implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.7.3'
     implementation name: 'PluginMessageSystem-1.0-SNAPSHOT'
+    implementation name: 'InteractInv-1.0-unstable'
     jar {
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
         from {

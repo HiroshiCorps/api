@@ -41,8 +41,6 @@ public interface APIOfflinePlayer {
 
     boolean setName(String name);
 
-    UUID getUUID();
-
     void setUUID(UUID uuid);
 
     boolean isConnected();
