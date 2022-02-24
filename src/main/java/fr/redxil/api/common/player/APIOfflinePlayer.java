@@ -8,6 +8,7 @@
 
 package fr.redxil.api.common.player;
 
+import fr.redline.pms.utils.IpInfo;
 import fr.redxil.api.common.player.data.LinkData;
 import fr.redxil.api.common.player.data.LinkUsage;
 import fr.redxil.api.common.player.data.SanctionInfo;
@@ -42,6 +43,8 @@ public interface APIOfflinePlayer {
     boolean setName(String name);
 
     void setUUID(UUID uuid);
+
+    UUID getUUID();
 
     boolean isConnected();
 
@@ -106,5 +109,9 @@ public interface APIOfflinePlayer {
     LinkData getLink(LinkUsage linkUsage, @Nullable APIOfflinePlayer apiOfflinePlayer, String... linkType);
 
     LinkData createLink(APIOfflinePlayer apiOfflinePlayer, String linkType);
+
+    IpInfo getIP();
+
+    void setIP(IpInfo ip);
 
 }

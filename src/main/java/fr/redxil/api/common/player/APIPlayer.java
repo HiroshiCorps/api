@@ -8,7 +8,6 @@
 
 package fr.redxil.api.common.player;
 
-import fr.redline.pms.utils.IpInfo;
 import fr.redxil.api.common.group.party.Party;
 import fr.redxil.api.common.player.data.SanctionInfo;
 import fr.redxil.api.common.player.moderators.APIPlayerModerator;
@@ -17,15 +16,10 @@ import fr.redxil.api.common.server.Server;
 
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.UUID;
 
 public interface APIPlayer extends APIOfflinePlayer {
 
     /// <!-------------------- APIPlayer part --------------------!>
-
-    UUID getUUID();
-
-    IpInfo getIpInfo();
 
     void unloadPlayer();
 
