@@ -8,27 +8,29 @@
 
 package fr.redxil.api.common.time;
 
+import fr.redxil.api.common.API;
+
+import java.sql.Timestamp;
 import java.text.DateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 
 public class DateUtility {
 
     public static TimeUnit getTimerUnit(char s) {
         switch (s) {
-            case 's': {
+            case 's' -> {
                 return TimeUnit.SECONDS;
             }
-            case 'm': {
+            case 'm' -> {
                 return TimeUnit.MINUTES;
             }
-            case 'h': {
+            case 'h' -> {
                 return TimeUnit.HOURS;
             }
-            case 'j': {
+            case 'j' -> {
                 return TimeUnit.DAYS;
             }
         }
@@ -37,17 +39,17 @@ public class DateUtility {
 
     public static long getTimeStampLong(TimeUnit s) {
         switch (s) {
-            case SECONDS: {
-                return 1L;
+            case SECONDS -> {
+                return 1000L;
             }
-            case MINUTES: {
-                return 60L;
+            case MINUTES -> {
+                return 60000L;
             }
-            case HOURS: {
-                return 3600L;
+            case HOURS -> {
+                return 3600000L;
             }
-            case DAYS: {
-                return 86400L;
+            case DAYS -> {
+                return 86400000L;
             }
         }
         return 0L;
@@ -62,7 +64,9 @@ public class DateUtility {
         if (timeUnit != null) {
             timeArgs = timeArgs.replace(Character.valueOf(timeArgs.charAt(timeArgs.length() - 1)).toString(), "");
             try {
-                return Integer.parseInt(timeArgs) * getTimeStampLong(timeUnit);
+                long value = Integer.parseInt(timeArgs) * getTimeStampLong(timeUnit);
+                API.getInstance().getPluginEnabler().printLog(Level.INFO, Long.valueOf(value).toString());
+                return value;
             } catch (NumberFormatException ignored) {
             }
         }
@@ -74,9 +78,7 @@ public class DateUtility {
     public static long addToCurrentTimeStamp(long timeArgs) {
 
         long durationTime = getCurrentTimeStamp();
-
         if (timeArgs == -1L) return -1L;
-
         return durationTime + timeArgs;
 
     }
@@ -91,7 +93,7 @@ public class DateUtility {
 
     public static long getCurrentTimeStamp() {
 
-        return Calendar.getInstance(TimeZone.getDefault()).getTimeInMillis();
+        return new Timestamp(System.currentTimeMillis()).getTime();
 
     }
 
