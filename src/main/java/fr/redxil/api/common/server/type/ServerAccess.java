@@ -15,7 +15,6 @@ import fr.redxil.api.common.player.rank.Rank;
 import fr.redxil.api.common.server.Server;
 
 import java.util.UUID;
-import java.util.logging.Level;
 
 public enum ServerAccess {
 
@@ -43,17 +42,13 @@ public enum ServerAccess {
 
     private boolean canAccess(Server server, ServerAccess serverAccess, UUID name, Rank rank) {
 
-        API.getInstance().getPluginEnabler().printLog(Level.FINE, serverAccess.toString());
-
         switch (serverAccess) {
-
-            case OPEN: {
+            case OPEN -> {
 
                 return true;
 
             }
-
-            case GAME: {
+            case GAME -> {
 
                 Game game = API.getInstance().getGame();
                 if (game == null)
@@ -62,31 +57,26 @@ public enum ServerAccess {
                 return game.isAllowConnectServer(name);
 
             }
-
-            case MAINTENANCE: {
+            case MAINTENANCE -> {
 
                 return rank.isModeratorRank();
 
             }
-
-            case RANK_SPECIFIC: {
+            case RANK_SPECIFIC -> {
 
                 return rank == server.getReservedRank();
 
             }
-
-            case RANK_SPECIFIC_MIN: {
+            case RANK_SPECIFIC_MIN -> {
 
                 return rank.getRankPower() >= server.getReservedRank().getRankPower();
 
             }
-
-            case ADMIN: {
+            case ADMIN -> {
 
                 return rank == Rank.ADMINISTRATEUR;
 
             }
-
         }
 
         return false;

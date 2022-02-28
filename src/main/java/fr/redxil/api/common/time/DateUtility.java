@@ -8,14 +8,11 @@
 
 package fr.redxil.api.common.time;
 
-import fr.redxil.api.common.API;
-
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
 
 public class DateUtility {
 
@@ -64,9 +61,7 @@ public class DateUtility {
         if (timeUnit != null) {
             timeArgs = timeArgs.replace(Character.valueOf(timeArgs.charAt(timeArgs.length() - 1)).toString(), "");
             try {
-                long value = Integer.parseInt(timeArgs) * getTimeStampLong(timeUnit);
-                API.getInstance().getPluginEnabler().printLog(Level.INFO, Long.valueOf(value).toString());
-                return value;
+                return Integer.parseInt(timeArgs) * getTimeStampLong(timeUnit);
             } catch (NumberFormatException ignored) {
             }
         }
