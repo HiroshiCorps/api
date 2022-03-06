@@ -120,27 +120,23 @@ public interface Game {
 
     /**
      * The current server map name
+     *
      * @return Map name
      */
-    String getMap();
+    String getWorldName();
 
     /**
      * Change the server map name
+     *
      * @param map The new map name
      */
-    void setMap(String map);
+    void setWorldName(String map);
 
     /**
      * Force game to start
      * @param apiPlayerModerator player who forced
      */
     void forceStart(APIPlayerModerator apiPlayerModerator);
-
-    /**
-     * Force game to stop the start procedure
-     * @param apiPlayerModerator player who forced
-     */
-    void forceStopStart(APIPlayerModerator apiPlayerModerator);
 
     /**
      * Force game to end
@@ -161,9 +157,10 @@ public interface Game {
 
     /**
      * Get list of ingame player
+     *
      * @return ingame player list
      */
-    List<UUID> getPlayers();
+    List<UUID> getConnectedPlayers();
 
     /**
      * Get list of ingame player spectator

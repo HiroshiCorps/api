@@ -55,7 +55,7 @@ public class TestGame extends GameBuilder {
     @Override
     public boolean start() {
         Game game = API.getInstance().getGame();
-        if (game.getPlayers().size() < game.getMinPlayer() || !game.getInConnectPlayer().isEmpty())
+        if (game.getConnectedPlayers().size() < game.getMinPlayer() || !game.getInConnectPlayer().isEmpty())
             return false;
         game.setGameState(GameState.START);
         timerSystem.setPeriod(1, TimeUnit.SECONDS);
