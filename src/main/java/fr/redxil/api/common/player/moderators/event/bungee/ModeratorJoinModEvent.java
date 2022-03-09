@@ -10,6 +10,9 @@ package fr.redxil.api.common.player.moderators.event.bungee;
 
 import fr.redxil.api.common.player.moderators.APIPlayerModerator;
 
+/**
+ * This Event is called when Moderator goes to the moderator mod
+ */
 public class ModeratorJoinModEvent {
 
     private final APIPlayerModerator moderator;
@@ -19,15 +22,29 @@ public class ModeratorJoinModEvent {
         this.moderator = moderator;
     }
 
+    /**
+     * Check if operation is Cancelled
+     *
+     * @return true if operation is cancelled
+     */
     public boolean isCancelled() {
         return this.cancelled;
     }
 
+    /**
+     * Set the operation to cancelled or not
+     */
     public void setCancelled(boolean b) {
         this.cancelled = b;
     }
 
+    /**
+     * Get the moderator
+     *
+     * @return the apiModeratorClass related to the moderator
+     */
     public APIPlayerModerator getModerator() {
         return moderator;
     }
+
 }

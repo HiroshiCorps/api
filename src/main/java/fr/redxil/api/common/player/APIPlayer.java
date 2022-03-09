@@ -40,8 +40,6 @@ public interface APIPlayer extends APIOfflinePlayer {
 
     void setRealRank(Rank rank, Timestamp timestamp);
 
-    Timestamp getRankTimeStamp();
-
     Timestamp getRealRankTimeStamp();
 
     void restoreRealData();

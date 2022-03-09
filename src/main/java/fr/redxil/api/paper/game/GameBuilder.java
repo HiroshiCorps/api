@@ -18,7 +18,6 @@ import fr.redxil.api.common.group.team.Team;
 import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.server.Server;
 import fr.redxil.api.paper.game.chest.ChestSystem;
-import fr.redxil.api.paper.game.managers.FilesAPI;
 import fr.redxil.api.paper.game.pmmanager.PMListen;
 import fr.redxil.api.paper.utils.ActionBar;
 import fr.redxil.api.paper.utils.Title;
@@ -26,7 +25,6 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.*;
 import java.util.List;
 
 public abstract class GameBuilder {
@@ -43,9 +41,6 @@ public abstract class GameBuilder {
 
         this.plugin = plugin;
         this.chestsManager = new ChestSystem();
-
-        String config = FilesAPI.CONFIG.getFileName();
-        saveResourceAs(config, config);
     }
 
     public static GameBuilder getGameBuilder() {
@@ -77,49 +72,6 @@ public abstract class GameBuilder {
 
     public boolean hasTeams() {
         return !API.getInstance().getTeamManager().getTeamList(API.getInstance().getGame()).isEmpty();
-    }
-
-    private void saveResourceAs(String resourcePath, String outputPath) {
-        JavaPlugin plugin = this.getPlugin();
-
-        if (resourcePath == null || resourcePath.isEmpty()) {
-            throw new IllegalArgumentException("ResourcePath cannot be null or empty");
-        }
-
-        InputStream in = getPlugin().getResource(resourcePath);
-
-        if (in == null) {
-            throw new IllegalArgumentException("The resource '" + resourcePath + "' cannot be found in plugin jar");
-        }
-
-        if (!plugin.getDataFolder().exists() && !plugin.getDataFolder().mkdir()) {
-            plugin.getLogger().severe("Failed to make directory");
-        }
-
-        File outFile = new File(plugin.getDataFolder(), outputPath);
-
-        try {
-            if (!outFile.exists()) {
-                plugin.getLogger().info("The " + resourcePath + " was not found, creation in progress...");
-
-                OutputStream out = new FileOutputStream(outFile);
-                byte[] buf = new byte[1024];
-                int n;
-
-                while ((n = in.read(buf)) >= 0) {
-                    out.write(buf, 0, n);
-                }
-
-                out.close();
-                in.close();
-
-                if (!outFile.exists()) {
-                    plugin.getLogger().severe("Unable to copy file");
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public abstract void onPlayerJoin(Player player);

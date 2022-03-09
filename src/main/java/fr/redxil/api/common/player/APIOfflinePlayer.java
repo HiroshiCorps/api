@@ -34,6 +34,8 @@ public interface APIOfflinePlayer {
 
     void setRank(Rank rank, Timestamp timestamp);
 
+    Timestamp getRankTimeStamp();
+
     boolean hasPermission(long l);
 
     /// <!-------------------- APIPlayer part --------------------!>

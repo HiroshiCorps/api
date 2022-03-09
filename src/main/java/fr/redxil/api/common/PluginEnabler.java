@@ -15,20 +15,56 @@ import java.util.logging.Level;
 
 public interface PluginEnabler {
 
+    /**
+     * Event called when API is online and ready
+     */
     void onAPIEnabled();
 
+    /**
+     * Event called when API turns to offline
+     */
     void onAPIDisabled();
 
+    /**
+     * Get the serverID
+     *
+     * @return the ip of the current server
+     */
     IpInfo getServerIp();
 
+    /**
+     * Get if the server is a proxy server
+     *
+     * @return true if Server is Proxy server
+     */
     boolean isVelocity();
 
+    /**
+     * Get the dat folder for the plugin
+     *
+     * @return the specific plugin folder
+     */
     File getPluginDataFolder();
 
+    /**
+     * Get the current CORE version
+     *
+     * @return CORE version
+     */
     String getPluginVersion();
 
+    /**
+     * Get server max player
+     *
+     * @return the max player of the server
+     */
     int getMaxPlayer();
 
+    /**
+     * Get the server version
+     *
+     * @return server version
+     */
     String getServerVersion();
 
     /**
