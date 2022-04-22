@@ -32,7 +32,7 @@ public interface ServerManager {
 
     Server getServer(long serverID);
 
-    Server initServer(ServerType serverType, String name, IpInfo ipInfo);
+    Server createServer(ServerType serverType, String name, IpInfo ipInfo);
 
     Server initServer(ServerType serverType, Long serverID, IpInfo ipInfo);
 
