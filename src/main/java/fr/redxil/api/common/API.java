@@ -24,7 +24,6 @@ import fr.redxil.api.common.sql.SQLConnection;
 public abstract class API {
 
     private static API instance;
-    private static boolean enabled = false;
     private final PluginEnabler plugin;
 
     /**
@@ -78,6 +77,8 @@ public abstract class API {
      */
     public abstract Server getServer();
 
+    public abstract String getServerName();
+
     public abstract GameManager getGameManager();
 
     /**
@@ -119,19 +120,6 @@ public abstract class API {
 
     public long getResponse() {
         return System.currentTimeMillis();
-    }
-
-    public static boolean isEnabled() {
-        return enabled;
-    }
-
-    public static void setEnabled(boolean enabled) {
-        if(API.enabled == enabled)
-            return;
-        API.enabled = enabled;
-        if(enabled)
-            getInstance().getPluginEnabler().onAPIEnabled();
-        else getInstance().getPluginEnabler().onAPIDisabled();
     }
 
 }

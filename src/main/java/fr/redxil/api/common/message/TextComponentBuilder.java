@@ -86,15 +86,17 @@ public abstract class TextComponentBuilder {
 
     public abstract TextComponentBuilder setHover(String hover);
 
-    public abstract void sendTo(UUID uuid);
-
-    public void sendTo(APIPlayer apiPlayer) {
-        if (apiPlayer == null)
-            return;
-        sendTo(apiPlayer.getUUID());
+    public void sendTo(UUID uuid) {
+        API.getInstance().getPluginEnabler().sendMessage(uuid, toString());
     }
 
-    public abstract void sendTo(String name);
+    public void sendTo(APIPlayer apiPlayer) {
+        API.getInstance().getPluginEnabler().sendMessage(apiPlayer, toString());
+    }
+
+    public void sendTo(String name) {
+        API.getInstance().getPluginEnabler().sendMessage(name, toString());
+    }
 
     public void sendToID(Long id) {
         sendTo(API.getInstance().getPlayerManager().getPlayer(id));

@@ -9,11 +9,14 @@
 package fr.redxil.api.common;
 
 import fr.redline.pms.utils.IpInfo;
+import fr.redxil.api.common.player.APIPlayer;
 
 import java.io.File;
+import java.util.UUID;
 import java.util.logging.Level;
 
 public interface PluginEnabler {
+
 
     /**
      * Event called when API is online and ready
@@ -24,6 +27,12 @@ public interface PluginEnabler {
      * Event called when API turns to offline
      */
     void onAPIDisabled();
+
+    void onAPILoadFail();
+
+    boolean isPluginEnabled();
+
+    void setPluginEnable(boolean value);
 
     /**
      * Get the serverID
@@ -75,5 +84,11 @@ public interface PluginEnabler {
      * @param text  Log test
      */
     void printLog(Level level, String text);
+
+    void sendMessage(APIPlayer apiPlayer, String message);
+
+    void sendMessage(String pseudo, String message);
+
+    void sendMessage(UUID uuid, String message);
 
 }

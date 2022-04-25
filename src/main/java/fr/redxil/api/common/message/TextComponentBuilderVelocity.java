@@ -8,15 +8,10 @@
 
 package fr.redxil.api.common.message;
 
-import com.velocitypowered.api.proxy.Player;
-import fr.redxil.api.velocity.Velocity;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.format.TextColor;
-
-import java.util.Optional;
-import java.util.UUID;
 
 public class TextComponentBuilderVelocity extends TextComponentBuilder {
 
@@ -76,18 +71,6 @@ public class TextComponentBuilderVelocity extends TextComponentBuilder {
     public TextComponentBuilder setHover(String hover) {
         this.component = component.hoverEvent(Component.text(hover).asHoverEvent());
         return this;
-    }
-
-    @Override
-    public void sendTo(UUID uuid) {
-        Optional<Player> player = Velocity.getInstance().getProxyServer().getPlayer(uuid);
-        player.ifPresent((player1 -> player1.sendMessage(this.getFinalTextComponent())));
-    }
-
-    @Override
-    public void sendTo(String name) {
-        Optional<Player> player = Velocity.getInstance().getProxyServer().getPlayer(name);
-        player.ifPresent((player1 -> player1.sendMessage(this.getFinalTextComponent())));
     }
 
     @Override

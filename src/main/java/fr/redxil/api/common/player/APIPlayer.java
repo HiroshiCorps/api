@@ -19,6 +19,8 @@ import java.util.List;
 
 public interface APIPlayer extends APIOfflinePlayer {
 
+    void sendMessage(String message);
+
     /// <!-------------------- APIPlayer part --------------------!>
 
     void unloadPlayer();
@@ -52,7 +54,11 @@ public interface APIPlayer extends APIOfflinePlayer {
 
     /// <!-------------------- Server part --------------------!>
 
+    String getServerName();
+
     Server getServer();
+
+    String getBungeeServerName();
 
     Server getBungeeServer();
 

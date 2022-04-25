@@ -32,9 +32,9 @@ public interface ServerManager {
 
     Server getServer(long serverID);
 
-    Server createServer(ServerType serverType, String name, IpInfo ipInfo);
+    Server createServer(ServerType serverType, String name, IpInfo ipInfo, int maxPlayer);
 
-    Server initServer(ServerType serverType, Long serverID, IpInfo ipInfo);
+    Server loadServer(ServerType serverType, Long serverID, IpInfo ipInfo);
 
     Server getConnectableServer(APIPlayer apiPlayer, ServerType serverType);
 
