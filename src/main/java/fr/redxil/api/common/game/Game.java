@@ -43,30 +43,35 @@ public interface Game {
 
     /**
      * Change the minimum player needed
+     *
      * @param n the number of player
      */
     void setMinPlayer(int n);
 
     /**
      * Get the maximum player needed
+     *
      * @return Maximum player needed to start
      */
     int getMaxPlayer();
 
     /**
      * Change the minimum player needed
+     *
      * @param n the number of player
      */
     void setMaxPlayer(int n);
 
     /**
      * Get maximum normal player authorize to spectate a game without participating to it
+     *
      * @return the max number of player
      */
     int getMaxPlayerSpec();
 
     /**
      * Set maximum normal player authorize to spectate a game without participating to it
+     *
      * @param n the number of player
      */
     void setMaxPlayerSpec(int n);
@@ -75,18 +80,21 @@ public interface Game {
 
     /**
      * Check if game is running or not
+     *
      * @return the actual game state
      */
     GameState getGameState();
 
     /**
      * Change the GameState
+     *
      * @param gameState the new GameState
      */
     void setGameState(GameState gameState);
 
     /**
      * Check if current gameState is on specific list
+     *
      * @param gameState The list of gameState to check
      * @return true if current gameState is in list
      */
@@ -94,12 +102,12 @@ public interface Game {
 
     /**
      * The loaded game
+     *
      * @return The game enum that contains game default settings
      */
     GameEnum getGame();
 
     /**
-     *
      * @return the sub game name
      */
     String getSubGames();
@@ -108,12 +116,14 @@ public interface Game {
 
     /**
      * Check if uuid is in player list
+     *
      * @param playerUUID the player uuid
      */
     boolean isPlayer(UUID playerUUID);
 
     /**
      * Check if uuid is in spectator list
+     *
      * @param playerUUID the player uuid
      */
     boolean isSpectator(UUID playerUUID);
@@ -134,22 +144,25 @@ public interface Game {
 
     /**
      * Force game to start
+     *
      * @param apiPlayerModerator player who forced
      */
     void forceStart(APIPlayerModerator apiPlayerModerator);
 
     /**
      * Force game to end
+     *
      * @param apiPlayerModerator player who forced
-     * @param reason Reason why game was stopped
+     * @param reason             Reason why game was stopped
      */
     boolean forceEnd(APIPlayerModerator apiPlayerModerator, String reason);
 
     /**
      * Force game to end with winner
+     *
      * @param apiPlayerModerator player who forced
-     * @param team The winner team
-     * @param reason Reason why game was stopped
+     * @param team               The winner team
+     * @param reason             Reason why game was stopped
      */
     boolean forceWin(APIPlayerModerator apiPlayerModerator, Team team, String reason);
 
@@ -164,32 +177,37 @@ public interface Game {
 
     /**
      * Get list of ingame player spectator
+     *
      * @return ingame player spectator list
      */
     List<UUID> getPlayerSpectators();
 
     /**
      * Get list of moderator player spectator
+     *
      * @return moderator player spectator list
      */
     List<UUID> getModeratorSpectators();
 
     /**
      * Get player registered for the game but not connected to the server
+     *
      * @return list of not connected player
      */
     List<UUID> getInConnectPlayer();
 
     /**
      * Change player between player and spectator
+     *
      * @param player Player to switch
-     * @param bool Spectator or not
+     * @param bool   Spectator or not
      * @return true if player had been changed
      */
     boolean setSpectator(UUID player, boolean bool);
 
     /**
      * Check if not registered player can access
+     *
      * @param apiPlayer player who want to register for the game
      * @param spectator register has spectator or not
      * @return true if player can access server
@@ -198,6 +216,7 @@ public interface Game {
 
     /**
      * Player want to register to game
+     *
      * @param apiPlayer player who want to register for the game
      * @param spectator register has spectator or not
      * @return true if player can access server
@@ -206,6 +225,7 @@ public interface Game {
 
     /**
      * Check if server is waiting for the player to connect
+     *
      * @param player player to check
      * @return true if player is waited
      */
@@ -213,6 +233,7 @@ public interface Game {
 
     /**
      * Check if player is allow to connect to server
+     *
      * @param playerUUID player to check
      * @return true is authorize
      */

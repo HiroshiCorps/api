@@ -16,23 +16,23 @@ public class Chest {
     final Location location;
     final ChestLegendary chestLegendary;
 
-    public Chest(Location location, ChestLegendary chestLegendary){
+    public Chest(Location location, ChestLegendary chestLegendary) {
         this.location = location;
         this.chestLegendary = chestLegendary;
     }
 
-    public Location getChestLocation(){
+    public Location getChestLocation() {
         return location;
     }
 
-    public ChestLegendary getChestLegendary(){
+    public ChestLegendary getChestLegendary() {
         return chestLegendary;
     }
 
-    public org.bukkit.block.Chest getChest(){
+    public org.bukkit.block.Chest getChest() {
 
         Block block = location.getBlock();
-        if(block.getState() instanceof org.bukkit.block.Chest)
+        if (block.getState() instanceof org.bukkit.block.Chest)
             return (org.bukkit.block.Chest) block.getState();
 
         return null;

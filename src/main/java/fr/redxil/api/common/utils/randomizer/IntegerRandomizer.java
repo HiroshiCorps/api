@@ -10,11 +10,11 @@ package fr.redxil.api.common.utils.randomizer;
 
 import java.util.Random;
 
-public class IntegerRandomizer implements Randomizer<Integer>{
+public class IntegerRandomizer implements Randomizer<Integer> {
 
     final int min, max;
 
-    public IntegerRandomizer(int min, int max){
+    public IntegerRandomizer(int min, int max) {
         this.max = max;
         this.min = min;
     }

@@ -11,7 +11,6 @@ package fr.redxil.api.common.group.team;
 import fr.redxil.api.common.game.Game;
 import fr.redxil.api.common.message.Color;
 import fr.redxil.api.common.player.APIPlayer;
-import fr.redxil.api.common.server.Server;
 
 import java.util.List;
 import java.util.UUID;
@@ -55,7 +54,7 @@ public interface TeamManager {
     /**
      * Check if player his in a team
      *
-     * @param game The game to check
+     * @param game      The game to check
      * @param apiPlayer The player to ckeck
      * @return true if the player his in a team
      */
@@ -81,7 +80,7 @@ public interface TeamManager {
     /**
      * Check if a team exist with an id
      *
-     * @param game The game to check
+     * @param game     The game to check
      * @param teamName Check if team exist with the team name
      * @return true if the team exist
      */
@@ -90,7 +89,7 @@ public interface TeamManager {
     /**
      * Get team thanks to the team id
      *
-     * @param game The game to check
+     * @param game     The game to check
      * @param teamName team to get
      * @return Team interface if the team exist
      */
@@ -99,7 +98,7 @@ public interface TeamManager {
     /**
      * Create team with a name
      *
-     * @param game The game to check
+     * @param game      The game to check
      * @param name      Name of the team
      * @param maxPlayer Number max of player
      * @return Team interface, null if a team already exist with this name
@@ -109,7 +108,7 @@ public interface TeamManager {
     /**
      * Create team with a name
      *
-     * @param game The game to check
+     * @param game      The game to check
      * @param name      Name of the team
      * @param maxPlayer Number max of player
      * @param color     Team color
@@ -125,7 +124,7 @@ public interface TeamManager {
     Team getPlayerTeam(Game game, UUID uuid);
 
     /**
-     * @param game The game to check
+     * @param game      The game to check
      * @param apiPlayer the player
      * @return Team interface if player has team, if no, null
      */

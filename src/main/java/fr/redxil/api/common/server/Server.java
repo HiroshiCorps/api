@@ -58,7 +58,6 @@ public interface Server {
     void setReservedRank(Rank rank);
 
 
-
     ServerStatus getServerStatus();
 
     void setServerStatus(ServerStatus serverStatus);
@@ -67,7 +66,6 @@ public interface Server {
     ServerAccess getServerAccess();
 
     void setServerAccess(ServerAccess serverAccess);
-
 
 
     boolean isHostServer();

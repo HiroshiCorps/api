@@ -18,47 +18,47 @@ public class ChestSystem {
     public final HashMap<ChestLegendary, List<Items>> itemsByLegendary = new HashMap<>();
     public final Random random = new Random();
 
-    public List<Chest> getChests(ChestLegendary chestLegendary){
+    public List<Chest> getChests(ChestLegendary chestLegendary) {
 
         return chestByLegendary.get(chestLegendary);
 
     }
 
-    public List<Items> getItems(ChestLegendary chestLegendary){
+    public List<Items> getItems(ChestLegendary chestLegendary) {
 
         return itemsByLegendary.get(chestLegendary);
 
     }
 
-    public void addChest(Collection<Chest> chests){
+    public void addChest(Collection<Chest> chests) {
 
         chests.forEach((chest) -> chestByLegendary.computeIfAbsent(chest.getChestLegendary(), k -> new ArrayList<>()).add(chest));
 
     }
 
-    public void addItems(Collection<Items> items){
+    public void addItems(Collection<Items> items) {
 
         items.forEach((item) -> itemsByLegendary.computeIfAbsent(item.getLegendary(), k -> new ArrayList<>()).add(item));
 
     }
 
-    public boolean hadChance(Items items){
+    public boolean hadChance(Items items) {
 
         return items.getPercentage() >= 100 || random.nextInt(101) <= items.getPercentage();
 
     }
 
-    public void fillChest(ChestLegendary chestLegendary){
+    public void fillChest(ChestLegendary chestLegendary) {
 
-        for(Chest chest : getChests(chestLegendary)){
+        for (Chest chest : getChests(chestLegendary)) {
 
             org.bukkit.block.Chest bukkitChest = chest.getChest();
 
-            if(bukkitChest == null) continue;
+            if (bukkitChest == null) continue;
 
             bukkitChest.getBlockInventory().clear();
             ListRandomizer<Integer> integerRandomizer = new ListRandomizer<>();
-            for(int i = 0; i<bukkitChest.getInventory().getSize(); i++)
+            for (int i = 0; i < bukkitChest.getInventory().getSize(); i++)
                 integerRandomizer.addItem(i);
 
             getItems(chestLegendary).forEach((item) -> {
@@ -72,9 +72,9 @@ public class ChestSystem {
 
     }
 
-    public void fillChest(){
+    public void fillChest() {
 
-        for(ChestLegendary chestLegendary : ChestLegendary.values())
+        for (ChestLegendary chestLegendary : ChestLegendary.values())
             fillChest(chestLegendary);
 
     }

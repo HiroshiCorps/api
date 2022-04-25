@@ -4,40 +4,40 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-public class PercentRandomizer<K> implements Randomizer<K>{
+public class PercentRandomizer<K> implements Randomizer<K> {
 
     Map<K, Integer> kChanceMap;
 
-    public PercentRandomizer(){
+    public PercentRandomizer() {
         this.kChanceMap = new HashMap<>();
     }
 
-    public PercentRandomizer(Map<K, Integer> kChanceMap){
+    public PercentRandomizer(Map<K, Integer> kChanceMap) {
         this.kChanceMap = kChanceMap;
     }
 
-    public void addItem(K k, Integer chance){
+    public void addItem(K k, Integer chance) {
         kChanceMap.put(k, chance);
     }
 
-    private int calcSum(){
+    private int calcSum() {
         int sum = 0;
-        for(int values : kChanceMap.values())
-            sum+=values;
+        for (int values : kChanceMap.values())
+            sum += values;
         return sum;
     }
 
     @Override
-    public K getRandom(){
+    public K getRandom() {
 
-        if(kChanceMap.isEmpty())
+        if (kChanceMap.isEmpty())
             return null;
 
-        int randVal = new Random().nextInt(calcSum()+1);
+        int randVal = new Random().nextInt(calcSum() + 1);
         int sumMin = 0;
-        for(Map.Entry<K,Integer> entry : kChanceMap.entrySet()){
+        for (Map.Entry<K, Integer> entry : kChanceMap.entrySet()) {
 
-            if(sumMin<=randVal && randVal<=sumMin+entry.getValue())
+            if (sumMin <= randVal && randVal <= sumMin + entry.getValue())
                 return entry.getKey();
             else sumMin += entry.getValue();
 
@@ -46,7 +46,7 @@ public class PercentRandomizer<K> implements Randomizer<K>{
 
     }
 
-    public K getRandomAndRemove(){
+    public K getRandomAndRemove() {
 
         K k = getRandom();
 

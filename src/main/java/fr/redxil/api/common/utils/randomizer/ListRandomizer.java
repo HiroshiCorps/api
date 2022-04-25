@@ -13,24 +13,24 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
-public class ListRandomizer<K>  implements Randomizer<K>{
+public class ListRandomizer<K> implements Randomizer<K> {
 
     List<K> randomizer = new ArrayList<>();
 
-    public void addItem(K k){
+    public void addItem(K k) {
         randomizer.add(k);
     }
 
-    public void addAllItem(Collection<K> kList){
+    public void addAllItem(Collection<K> kList) {
         randomizer.addAll(kList);
     }
 
     @Override
-    public K getRandom(){
+    public K getRandom() {
         return randomizer.get(new Random().nextInt(randomizer.size()));
     }
 
-    public K getRandomAndRemove(){
+    public K getRandomAndRemove() {
         K k = getRandom();
         randomizer.remove(k);
         return k;

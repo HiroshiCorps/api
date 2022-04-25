@@ -16,13 +16,13 @@ public class Items {
     final ChestLegendary chestLegendary;
     final int percentage;
 
-    public Items(ItemStack itemStack, ChestLegendary chestLegendary, int percentage){
+    public Items(ItemStack itemStack, ChestLegendary chestLegendary, int percentage) {
         this.itemStack = itemStack;
         this.chestLegendary = chestLegendary;
         this.percentage = percentage;
     }
 
-    public ItemStack getItemStack(){
+    public ItemStack getItemStack() {
         return itemStack;
     }
 

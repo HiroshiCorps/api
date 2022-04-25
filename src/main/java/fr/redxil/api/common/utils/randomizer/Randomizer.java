@@ -8,7 +8,7 @@
 
 package fr.redxil.api.common.utils.randomizer;
 
-public interface Randomizer<K>{
+public interface Randomizer<K> {
 
     K getRandom();
 
