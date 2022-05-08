@@ -34,6 +34,8 @@ public interface ServerManager {
 
     Server createServer(ServerType serverType, String name, IpInfo ipInfo, int maxPlayer);
 
+    Server initServer(ServerType serverType, String name, IpInfo ipInfo, int maxPlayer);
+
     Server loadServer(ServerType serverType, Long serverID, IpInfo ipInfo);
 
     Server getConnectableServer(APIPlayer apiPlayer, ServerType serverType);
