@@ -58,7 +58,7 @@ public interface APIPlayer extends APIOfflinePlayer {
 
     Server getServer();
 
-    String getBungeeServerName();
+    long getBungeeServerID();
 
     Server getBungeeServer();
 

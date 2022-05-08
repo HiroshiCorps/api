@@ -18,11 +18,12 @@ import fr.redxil.api.common.server.type.ServerStatus;
 import fr.redxil.api.common.server.type.ServerType;
 
 import java.util.Collection;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface Server {
 
-    String getServerName();
+    Optional<String> getServerName();
 
     void setServerName(String serverName);
 
@@ -31,7 +32,7 @@ public interface Server {
     long getServerID();
 
 
-    int getMaxPlayers();
+    Optional<Integer> getMaxPlayers();
 
     void setMaxPlayers(int players);
 

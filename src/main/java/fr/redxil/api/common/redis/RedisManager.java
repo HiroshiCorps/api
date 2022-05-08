@@ -27,7 +27,7 @@ public interface RedisManager {
 
     void setRedisString(String key, String value);
 
-    long getRedisLong(String key);
+    Long getRedisLong(String key);
 
     void setRedisLong(String key, long value);
 
@@ -37,9 +37,9 @@ public interface RedisManager {
 
     void setRedisDouble(String key, double value);
 
-    double getRedisDouble(String key);
+    Double getRedisDouble(String key);
 
-    boolean getRedisBoolean(String key);
+    Boolean getRedisBoolean(String key);
 
     void setRedisBoolean(String key, boolean value);
 
