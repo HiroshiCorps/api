@@ -8,8 +8,6 @@
 
 package fr.redxil.api.common.server.type;
 
-import fr.redxil.api.common.API;
-import fr.redxil.api.common.game.Game;
 import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.player.rank.Rank;
 import fr.redxil.api.common.server.Server;
@@ -19,7 +17,7 @@ import java.util.UUID;
 public enum ServerAccess {
 
     OPEN,
-    GAME,
+    LIMITED,
     MAINTENANCE,
     RANK_SPECIFIC,
     RANK_SPECIFIC_MIN,
@@ -43,18 +41,9 @@ public enum ServerAccess {
     private boolean canAccess(Server server, ServerAccess serverAccess, UUID name, Rank rank) {
 
         switch (serverAccess) {
-            case OPEN -> {
+            case OPEN, LIMITED -> {
 
                 return true;
-
-            }
-            case GAME -> {
-
-                Game game = API.getInstance().getGame();
-                if (game == null)
-                    return false;
-
-                return game.isAllowConnectServer(name);
 
             }
             case MAINTENANCE -> {

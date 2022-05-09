@@ -9,8 +9,6 @@
 package fr.redxil.api.common.server;
 
 import fr.redline.pms.utils.IpInfo;
-import fr.redxil.api.common.game.Game;
-import fr.redxil.api.common.game.Host;
 import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.player.rank.Rank;
 import fr.redxil.api.common.server.type.ServerAccess;
@@ -67,14 +65,5 @@ public interface Server {
     ServerAccess getServerAccess();
 
     void setServerAccess(ServerAccess serverAccess);
-
-
-    boolean isHostServer();
-
-    boolean isGameServer();
-
-    Game getGame();
-
-    Host getHost();
 
 }

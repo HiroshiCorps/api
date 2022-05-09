@@ -11,13 +11,13 @@ package fr.redxil.api.common.server.type;
 public enum ServerType {
 
     HUB("HUB", ServerAccess.OPEN),
-    HOST("HOST", ServerAccess.GAME),
+    HOST("HOST", ServerAccess.LIMITED),
     PRIVATE("PRIVATE", ServerAccess.RANK_SPECIFIC),
-    GAME("GAME", ServerAccess.GAME),
+    GAME("GAME", ServerAccess.LIMITED),
     VELOCITY("VELOCITY", ServerAccess.OPEN);
 
-    String name;
-    ServerAccess serverAccess;
+    final String name;
+    final ServerAccess serverAccess;
 
     ServerType(String name, ServerAccess serverAccess) {
         this.name = name;

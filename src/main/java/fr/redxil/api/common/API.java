@@ -8,11 +8,6 @@
 
 package fr.redxil.api.common;
 
-import fr.redxil.api.common.game.Game;
-import fr.redxil.api.common.game.GameManager;
-import fr.redxil.api.common.game.Host;
-import fr.redxil.api.common.group.party.PartyManager;
-import fr.redxil.api.common.group.team.TeamManager;
 import fr.redxil.api.common.player.APIPlayerManager;
 import fr.redxil.api.common.player.moderators.ModeratorManager;
 import fr.redxil.api.common.redis.RedisManager;
@@ -44,8 +39,6 @@ public abstract class API {
     public static API getInstance() {
         return instance;
     }
-
-    public abstract PartyManager getPartyManager();
 
     public abstract RedisManager getRedisManager();
 
@@ -79,8 +72,6 @@ public abstract class API {
 
     public abstract String getServerName();
 
-    public abstract GameManager getGameManager();
-
     /**
      * Get the root plugin of the API
      *
@@ -94,17 +85,7 @@ public abstract class API {
 
     public abstract SQLConnection getSQLConnection();
 
-    public abstract Host getHost();
-
-    public abstract boolean isHostServer();
-
-    public abstract Game getGame();
-
-    public abstract boolean isGameServer();
-
     public abstract void shutdown();
-
-    public abstract TeamManager getTeamManager();
 
     public abstract long getServerID();
 

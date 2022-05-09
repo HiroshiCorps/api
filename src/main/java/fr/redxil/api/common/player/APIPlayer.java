@@ -8,7 +8,6 @@
 
 package fr.redxil.api.common.player;
 
-import fr.redxil.api.common.group.party.Party;
 import fr.redxil.api.common.player.data.SanctionInfo;
 import fr.redxil.api.common.player.moderators.APIPlayerModerator;
 import fr.redxil.api.common.player.rank.Rank;
@@ -69,12 +68,6 @@ public interface APIPlayer extends APIOfflinePlayer {
     SanctionInfo kickPlayer(String reason, APIPlayerModerator author);
 
     boolean isFreeze();
-
-    /// <!-------------------- Party part --------------------!>
-
-    boolean hasParty();
-
-    Party getParty();
 
     /// <!-------------------- Temp part --------------------!>
 
