@@ -12,6 +12,7 @@ import fr.redline.pms.utils.IpInfo;
 import fr.redxil.api.common.player.data.LinkData;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 
@@ -142,5 +143,9 @@ public interface APIPlayerManager {
      * @return LinkData if the link exist
      */
     LinkData getLink(int linkID);
+
+    Map<String, Long> getNameToLongMap();
+
+    Map<String, Long> getUUIDToLongMap();
 
 }

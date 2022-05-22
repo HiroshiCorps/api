@@ -9,35 +9,24 @@
 package fr.redxil.api.common.player.moderators;
 
 import fr.redxil.api.common.player.APIOfflinePlayer;
-import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.utils.SanctionType;
 
 import java.util.UUID;
 
 public interface APIPlayerModerator {
 
-    /// <!-------------------- APIPlayer part --------------------!>
-
-    APIPlayer getAPIPlayer();
-
     /**
      * @return This function return the MemberId of the moderator
      */
     long getMemberID();
 
-    /**
-     * @return This function return the current UUID of the moderator
-     */
+    void disconnectModerator();
+
     UUID getUUID();
 
     String getName();
 
-    void disconnectModerator();
-
-
     boolean isModeratorMod();
-
-    boolean isConnected();
 
     boolean hasCible();
 

@@ -9,14 +9,13 @@
 package fr.redxil.api.common.player.moderators;
 
 import fr.redxil.api.common.message.TextComponentBuilder;
-import fr.redxil.api.common.player.APIPlayer;
 
 import java.util.Collection;
 import java.util.UUID;
 
 public interface ModeratorManager {
 
-    APIPlayerModerator loadModerator(APIPlayer apiPlayer);
+    APIPlayerModerator loadModerator(long id, UUID memberID, String name);
 
     /**
      * Get the moderator with this name / nick
@@ -25,14 +24,6 @@ public interface ModeratorManager {
      * @return APIPlayerModerator or null if player is not loaded or not a moderator
      */
     APIPlayerModerator getModerator(String name);
-
-    /**
-     * Get the moderator with the APIPlayer
-     *
-     * @param apiPlayer Of course, the APIPlayer
-     * @return APIPlayerModerator or null if player is not loaded or not a moderator
-     */
-    APIPlayerModerator getModerator(APIPlayer apiPlayer);
 
     /**
      * Get the moderator with the MemberId
@@ -58,14 +49,6 @@ public interface ModeratorManager {
     Collection<Long> getLoadedModerator();
 
     void sendToModerators(TextComponentBuilder tcb);
-
-    /**
-     * Check if a APIPlayer is a server moderator
-     *
-     * @param apiPlayer Of course the APIPlayer
-     * @return True if the APIPlayer is a moderator
-     */
-    boolean isModerator(APIPlayer apiPlayer);
 
     /**
      * Check if a player is a server moderator

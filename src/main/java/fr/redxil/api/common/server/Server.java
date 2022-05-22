@@ -9,7 +9,6 @@
 package fr.redxil.api.common.server;
 
 import fr.redline.pms.utils.IpInfo;
-import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.player.rank.Rank;
 import fr.redxil.api.common.server.type.ServerAccess;
 import fr.redxil.api.common.server.type.ServerStatus;
@@ -41,20 +40,12 @@ public interface Server {
     void shutdown();
 
 
-    void setPlayerInServer(APIPlayer apiPlayer);
+    void setPlayerConnected(UUID uuid, boolean connected);
 
-    void removePlayerInServer(UUID uuid);
 
-    Collection<APIPlayer> getPlayerList();
-
-    Collection<UUID> getPlayerUUIDList();
+    Collection<UUID> getPlayerList();
 
     int getConnectedPlayer();
-
-
-    Rank getReservedRank();
-
-    void setReservedRank(Rank rank);
 
 
     ServerStatus getServerStatus();
@@ -65,5 +56,17 @@ public interface Server {
     ServerAccess getServerAccess();
 
     void setServerAccess(ServerAccess serverAccess);
+
+    /// RANK_SPECIFIC / RANK_SPECIFIC_MIN
+
+    Rank getReservedRank();
+
+    void setReservedRank(Rank rank);
+
+    /// LIMITED
+
+    void setAllowedConnect(UUID uuid, boolean value);
+
+    boolean getAllowedConnect(UUID uuid);
 
 }
