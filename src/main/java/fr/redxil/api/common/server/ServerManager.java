@@ -12,17 +12,18 @@ import fr.redline.pms.utils.IpInfo;
 import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.server.type.ServerType;
 
-import java.util.List;
+import java.util.Collection;
+import java.util.Map;
 
 public interface ServerManager {
 
-    List<String> getListServerName();
+    Collection<String> getListServerName();
 
-    List<Long> getListServerID();
+    Collection<Long> getListServerID();
 
-    List<Server> getListServer();
+    Collection<Server> getListServer();
 
-    List<Server> getListServer(ServerType serverType);
+    Collection<Server> getListServer(ServerType serverType);
 
     boolean isServerExist(String name);
 
@@ -39,5 +40,7 @@ public interface ServerManager {
     Server loadServer(ServerType serverType, Long serverID, IpInfo ipInfo);
 
     Server getConnectableServer(APIPlayer apiPlayer, ServerType serverType);
+
+    Map<String, Long> getNameToLongMap();
 
 }
