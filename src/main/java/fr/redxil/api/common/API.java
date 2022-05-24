@@ -91,6 +91,8 @@ public abstract class API {
 
     public abstract boolean dataConnected();
 
+    public abstract boolean isOnlineMod();
+
     public boolean isVelocity() {
         return plugin.isVelocity();
     }

@@ -28,6 +28,8 @@ public interface APIPlayerModerator {
 
     boolean isModeratorMod();
 
+    void setModeratorMod(boolean value);
+
     boolean hasCible();
 
     String getCible();
@@ -36,6 +38,8 @@ public interface APIPlayerModerator {
 
 
     boolean isVanish();
+
+    void setVanish(boolean value);
 
     void printSanction(APIOfflinePlayer aop, SanctionType sanctionType);
 
