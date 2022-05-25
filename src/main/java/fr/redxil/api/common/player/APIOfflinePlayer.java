@@ -20,6 +20,7 @@ import fr.redxil.api.common.utils.SanctionType;
 import javax.annotation.Nullable;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface APIOfflinePlayer {
@@ -70,11 +71,11 @@ public interface APIOfflinePlayer {
 
     void loadSanction();
 
-    SanctionInfo banPlayer(String reason, long time, APIPlayerModerator author);
+    Optional<SanctionInfo> banPlayer(String reason, long time, APIPlayerModerator author);
 
-    SanctionInfo mutePlayer(String reason, long time, APIPlayerModerator author);
+    Optional<SanctionInfo> mutePlayer(String reason, long time, APIPlayerModerator author);
 
-    SanctionInfo warnPlayer(String reason, APIPlayerModerator author);
+    Optional<SanctionInfo> warnPlayer(String reason, APIPlayerModerator author);
 
     List<SanctionInfo> getSanction();
 
@@ -84,7 +85,7 @@ public interface APIOfflinePlayer {
 
     boolean isBan();
 
-    SanctionInfo getLastSanction(SanctionType sanctionType);
+    Optional<SanctionInfo> getLastSanction(SanctionType sanctionType);
 
     boolean unBan(APIPlayerModerator mod);
 
@@ -98,9 +99,9 @@ public interface APIOfflinePlayer {
 
     void removeSetting(String settingName);
 
-    Setting createSetting(String settingName, String settingValue);
+    Optional<Setting> createSetting(String settingName, String settingValue);
 
-    Setting getSetting(String settingsName);
+    Optional<Setting> getSetting(String settingsName);
 
     /// <!-------------------- Link part --------------------!>
 
@@ -108,9 +109,9 @@ public interface APIOfflinePlayer {
 
     List<LinkData> getLinks(LinkUsage linkUsage, @Nullable APIOfflinePlayer apiOfflinePlayer, String... linkType);
 
-    LinkData getLink(LinkUsage linkUsage, @Nullable APIOfflinePlayer apiOfflinePlayer, String... linkType);
+    Optional<LinkData> getLink(LinkUsage linkUsage, @Nullable APIOfflinePlayer apiOfflinePlayer, String... linkType);
 
-    LinkData createLink(APIOfflinePlayer apiOfflinePlayer, String linkType);
+    Optional<LinkData> createLink(APIOfflinePlayer apiOfflinePlayer, String linkType);
 
     IpInfo getIP();
 

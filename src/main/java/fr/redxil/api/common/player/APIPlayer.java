@@ -15,6 +15,7 @@ import fr.redxil.api.common.server.Server;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 
 public interface APIPlayer extends APIOfflinePlayer {
 
@@ -65,7 +66,7 @@ public interface APIPlayer extends APIOfflinePlayer {
 
     /// <!-------------------- Sanction part --------------------!>
 
-    SanctionInfo kickPlayer(String reason, APIPlayerModerator author);
+    Optional<SanctionInfo> kickPlayer(String reason, APIPlayerModerator author);
 
     boolean isFreeze();
 

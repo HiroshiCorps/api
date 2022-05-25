@@ -11,11 +11,13 @@ package fr.redxil.api.common.player.moderators;
 import fr.redxil.api.common.message.TextComponentBuilder;
 
 import java.util.Collection;
+import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface ModeratorManager {
 
-    APIPlayerModerator loadModerator(long id, UUID memberID, String name);
+    Optional<APIPlayerModerator> loadModerator(long id, UUID memberID, String name);
 
     /**
      * Get the moderator with this name / nick
@@ -23,7 +25,7 @@ public interface ModeratorManager {
      * @param name This need to be the name of the player / nick supported but take more query on redis
      * @return APIPlayerModerator or null if player is not loaded or not a moderator
      */
-    APIPlayerModerator getModerator(String name);
+    Optional<APIPlayerModerator> getModerator(String name);
 
     /**
      * Get the moderator with the MemberId
@@ -31,7 +33,7 @@ public interface ModeratorManager {
      * @param id this need to be the MemberId of the APIPlayer
      * @return APIPlayerModerator or null if player is not loaded or not a moderator
      */
-    APIPlayerModerator getModerator(long id);
+    Optional<APIPlayerModerator> getModerator(long id);
 
     /**
      * Get the moderator with this UUID, please prefer ModeratorManager.getModerator(MemberID) if you can
@@ -39,7 +41,7 @@ public interface ModeratorManager {
      * @param uuid this need to be the UUID of the APIPlayer
      * @return APIPlayerModerator or null if player is not loaded or not a moderator
      */
-    APIPlayerModerator getModerator(UUID uuid);
+    Optional<APIPlayerModerator> getModerator(UUID uuid);
 
     /**
      * Get a list of the connected moderator
@@ -47,6 +49,10 @@ public interface ModeratorManager {
      * @return The MemberId of the connected Moderator
      */
     Collection<Long> getLoadedModerator();
+
+    Map<String, Long> getStringToLongModerator();
+
+    Map<String, Long> getUUIDToLongModerator();
 
     void sendToModerators(TextComponentBuilder tcb);
 
@@ -75,5 +81,9 @@ public interface ModeratorManager {
     boolean isModerator(String name);
 
     boolean isLoaded(long memberID);
+
+    boolean isLoaded(UUID uuid);
+
+    boolean isLoaded(String name);
 
 }

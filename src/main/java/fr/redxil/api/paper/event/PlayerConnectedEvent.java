@@ -8,7 +8,6 @@
 
 package fr.redxil.api.paper.event;
 
-import fr.redxil.api.common.API;
 import fr.redxil.api.common.player.APIPlayer;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -18,12 +17,10 @@ public class PlayerConnectedEvent extends Event implements Cancellable {
 
     private static final HandlerList handlers = new HandlerList();
 
-    private final org.bukkit.entity.Player player;
     private final APIPlayer apiPlayer;
 
-    public PlayerConnectedEvent(org.bukkit.entity.Player player) {
-        this.player = player;
-        this.apiPlayer = API.getInstance().getPlayerManager().getPlayer(player.getUniqueId());
+    public PlayerConnectedEvent(APIPlayer player) {
+        this.apiPlayer = player;
     }
 
     public static HandlerList getHandlerList() {
@@ -32,11 +29,7 @@ public class PlayerConnectedEvent extends Event implements Cancellable {
 
     @Override
     public HandlerList getHandlers() {
-        return null;
-    }
-
-    public org.bukkit.entity.Player getPlayer() {
-        return this.player;
+        return new HandlerList();
     }
 
     public APIPlayer getAPIPlayer() {

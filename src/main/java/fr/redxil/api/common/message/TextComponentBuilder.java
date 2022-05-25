@@ -99,7 +99,7 @@ public abstract class TextComponentBuilder {
     }
 
     public void sendToID(Long id) {
-        sendTo(API.getInstance().getPlayerManager().getPlayer(id));
+        API.getInstance().getPlayerManager().getPlayer(id).ifPresent(this::sendTo);
     }
 
     public void sendToUUIDs(Collection<UUID> uuid) {
