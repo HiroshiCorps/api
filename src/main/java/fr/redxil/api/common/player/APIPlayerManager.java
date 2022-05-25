@@ -11,10 +11,7 @@ package fr.redxil.api.common.player;
 import fr.redline.pms.utils.IpInfo;
 import fr.redxil.api.common.player.data.LinkData;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 import java.util.function.BiConsumer;
 
 public interface APIPlayerManager {
@@ -95,7 +92,7 @@ public interface APIPlayerManager {
      */
     boolean isLoadedPlayer(UUID uuid);
 
-    List<Long> getLoadedPlayer();
+    Collection<Long> getLoadedPlayer();
 
     /**
      * When player loaded, if he has some linkType link, the BiConsumer will be used
