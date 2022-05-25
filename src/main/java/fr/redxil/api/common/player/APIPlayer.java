@@ -24,8 +24,6 @@ public interface APIPlayer extends APIOfflinePlayer {
 
     void unloadPlayer();
 
-    boolean isLogin();
-
 
     boolean isNick();
 
@@ -55,6 +53,8 @@ public interface APIPlayer extends APIOfflinePlayer {
 
     String getServerName();
 
+    void setServerName(String name);
+
     Server getServer();
 
     long getBungeeServerID();
@@ -68,6 +68,10 @@ public interface APIPlayer extends APIOfflinePlayer {
     SanctionInfo kickPlayer(String reason, APIPlayerModerator author);
 
     boolean isFreeze();
+
+    long getFreeze();
+
+    void setFreeze(long playerModerator);
 
     /// <!-------------------- Temp part --------------------!>
 
