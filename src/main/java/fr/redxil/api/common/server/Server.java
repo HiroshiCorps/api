@@ -26,6 +26,8 @@ public interface Server {
 
     ServerType getServerType();
 
+    void setServerType(ServerType serverType);
+
     long getServerID();
 
 
@@ -68,5 +70,7 @@ public interface Server {
     void setAllowedConnect(UUID uuid, boolean value);
 
     boolean getAllowedConnect(UUID uuid);
+
+    void setServerIP(IpInfo ipInfo);
 
 }

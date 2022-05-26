@@ -14,6 +14,7 @@ import fr.redxil.api.common.server.type.ServerType;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Optional;
 
 public interface ServerManager {
 
@@ -29,17 +30,15 @@ public interface ServerManager {
 
     boolean isServerExist(long serverID);
 
-    Server getServer(String name);
+    Optional<Server> getServer(String name);
 
-    Server getServer(long serverID);
+    Optional<Server> getServer(long serverID);
 
-    Server createServer(ServerType serverType, String name, IpInfo ipInfo, int maxPlayer);
+    Optional<Server> createServer(ServerType serverType, String name, IpInfo ipInfo, int maxPlayer);
 
-    Server initServer(ServerType serverType, String name, IpInfo ipInfo, int maxPlayer);
+    Optional<Server> createServer(ServerType serverType, Long serverID, String name, IpInfo ipInfo, int maxPlayer);
 
-    Server loadServer(ServerType serverType, Long serverID, IpInfo ipInfo);
-
-    Server getConnectableServer(APIPlayer apiPlayer, ServerType serverType);
+    Optional<Server> getConnectableServer(APIPlayer apiPlayer, ServerType serverType);
 
     Map<String, Long> getNameToLongMap();
 
