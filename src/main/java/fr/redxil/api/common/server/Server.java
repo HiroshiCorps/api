@@ -61,7 +61,7 @@ public interface Server {
 
     /// RANK_SPECIFIC / RANK_SPECIFIC_MIN
 
-    Rank getReservedRank();
+    Optional<Rank> getReservedRank();
 
     void setReservedRank(Rank rank);
 

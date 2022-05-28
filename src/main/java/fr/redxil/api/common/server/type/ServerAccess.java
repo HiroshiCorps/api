@@ -53,12 +53,12 @@ public enum ServerAccess {
             }
             case RANK_SPECIFIC -> {
 
-                return rank == server.getReservedRank();
+                return rank == server.getReservedRank().orElse(Rank.JOUEUR);
 
             }
             case RANK_SPECIFIC_MIN -> {
 
-                return rank.getRankPower() >= server.getReservedRank().getRankPower();
+                return rank.getRankPower() >= server.getReservedRank().orElse(Rank.JOUEUR).getRankPower();
 
             }
             case ADMIN -> {
