@@ -11,7 +11,6 @@ package fr.redxil.api.common.player;
 import fr.redxil.api.common.player.data.SanctionInfo;
 import fr.redxil.api.common.player.moderators.APIPlayerModerator;
 import fr.redxil.api.common.player.rank.Rank;
-import fr.redxil.api.common.server.Server;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -56,11 +55,7 @@ public interface APIPlayer extends APIOfflinePlayer {
 
     void setServerName(String name);
 
-    Server getServer();
-
     long getBungeeServerID();
-
-    Server getBungeeServer();
 
     void switchServer(long serverID);
 
