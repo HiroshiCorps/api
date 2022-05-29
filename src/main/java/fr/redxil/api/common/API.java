@@ -16,6 +16,8 @@ import fr.redxil.api.common.server.ServerManager;
 import fr.redxil.api.common.server.type.ServerType;
 import fr.redxil.api.common.sql.SQLConnection;
 
+import java.util.Optional;
+
 public abstract class API {
 
     private static API instance;
@@ -40,7 +42,7 @@ public abstract class API {
         return instance;
     }
 
-    public abstract RedisManager getRedisManager();
+    public abstract Optional<RedisManager> getRedisManager();
 
     /**
      * Get the instance of the player manager
@@ -83,7 +85,7 @@ public abstract class API {
 
     public abstract ServerType getServerType();
 
-    public abstract SQLConnection getSQLConnection();
+    public abstract Optional<SQLConnection> getSQLConnection();
 
     public abstract void shutdown();
 

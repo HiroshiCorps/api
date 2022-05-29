@@ -65,9 +65,9 @@ public interface APIPlayer extends APIOfflinePlayer {
 
     boolean isFreeze();
 
-    long getFreeze();
+    Long getFreeze();
 
-    void setFreeze(long playerModerator);
+    void setFreeze(Long playerModerator);
 
     /// <!-------------------- Temp part --------------------!>
 
@@ -78,5 +78,9 @@ public interface APIPlayer extends APIOfflinePlayer {
     Object getTempData(String key);
 
     List<String> getTempDataKeyList();
+
+    String getLastMSGPlayer();
+
+    void setLastMSGPlayer(String player);
 
 }
