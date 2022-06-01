@@ -41,27 +41,32 @@ public enum ServerAccess {
     private boolean canAccess(Server server, ServerAccess serverAccess, UUID name, Rank rank) {
 
         switch (serverAccess) {
-            case OPEN, LIMITED -> {
+            case LIMITED:{
 
                 return true;
 
             }
-            case MAINTENANCE -> {
+            case OPEN:{
+
+                return true;
+
+            }
+            case MAINTENANCE:{
 
                 return rank.isModeratorRank();
 
             }
-            case RANK_SPECIFIC -> {
+            case RANK_SPECIFIC:{
 
                 return rank == server.getReservedRank().orElse(Rank.JOUEUR);
 
             }
-            case RANK_SPECIFIC_MIN -> {
+            case RANK_SPECIFIC_MIN:{
 
                 return rank.getRankPower() >= server.getReservedRank().orElse(Rank.JOUEUR).getRankPower();
 
             }
-            case ADMIN -> {
+            case ADMIN:{
 
                 return rank == Rank.ADMINISTRATEUR;
 

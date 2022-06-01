@@ -36,6 +36,15 @@ public class DateUtility {
 
     public static long getTimeStampLong(TimeUnit s) {
         switch (s) {
+            case NANOSECONDS -> {
+                return 1L;
+            }
+            case MICROSECONDS -> {
+                return 10L;
+            }
+            case MILLISECONDS -> {
+                return 100L;
+            }
             case SECONDS -> {
                 return 1000L;
             }
