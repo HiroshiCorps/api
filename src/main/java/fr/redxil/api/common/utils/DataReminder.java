@@ -41,9 +41,14 @@ public interface DataReminder<K> {
 
     DataReminder<K> setData(K data);
 
+    DataReminder<K> lockData();
+
+    DataReminder<K> unlockData();
+
     class OnlineReminder<K> implements DataReminder<K> {
 
         final String location;
+        boolean locked = false;
 
         private OnlineReminder(String location) {
             this.location = location;
@@ -73,6 +78,25 @@ public interface DataReminder<K> {
             return this;
         }
 
+        @Override
+        public DataReminder<K> lockData(){
+            Optional<RedisManager> redis = API.getInstance().getRedisManager();
+            if (redis.isEmpty())
+                return this;
+            redis.get().getRedissonClient().getLock(getLocation()).lock();
+            return this;
+        }
+
+        @Override
+        public DataReminder<K> unlockData(){
+            Optional<RedisManager> redis = API.getInstance().getRedisManager();
+            if (redis.isEmpty())
+                return this;
+            redis.get().getRedissonClient().getLock(getLocation()).unlock();
+            return this;
+        }
+
+
     }
 
     class OfflineReminder<K> implements DataReminder<K> {
@@ -98,6 +122,16 @@ public interface DataReminder<K> {
         @Override
         public DataReminder<K> setData(K data) {
             this.data = data;
+            return this;
+        }
+
+        @Override
+        public DataReminder<K> lockData(){
+            return this;
+        }
+
+        @Override
+        public DataReminder<K> unlockData(){
             return this;
         }
 
@@ -132,6 +166,24 @@ public interface DataReminder<K> {
             return this;
         }
 
+        @Override
+        public DataReminder<List<K>> lockData(){
+            Optional<RedisManager> redis = API.getInstance().getRedisManager();
+            if (redis.isEmpty())
+                return this;
+            redis.get().getRedissonClient().getLock(getLocation()).lock();
+            return this;
+        }
+
+        @Override
+        public DataReminder<List<K>> unlockData(){
+            Optional<RedisManager> redis = API.getInstance().getRedisManager();
+            if (redis.isEmpty())
+                return this;
+            redis.get().getRedissonClient().getLock(getLocation()).unlock();
+            return this;
+        }
+
     }
 
     class OnlineMapReminder<K, V> implements DataReminder<Map<K, V>> {
@@ -160,6 +212,24 @@ public interface DataReminder<K> {
             Map<K, V> list = getData();
             list.clear();
             list.putAll(data);
+            return this;
+        }
+
+        @Override
+        public DataReminder<Map<K, V>> lockData(){
+            Optional<RedisManager> redis = API.getInstance().getRedisManager();
+            if (redis.isEmpty())
+                return this;
+            redis.get().getRedissonClient().getLock(getLocation()).lock();
+            return this;
+        }
+
+        @Override
+        public DataReminder<Map<K, V>> unlockData(){
+            Optional<RedisManager> redis = API.getInstance().getRedisManager();
+            if (redis.isEmpty())
+                return this;
+            redis.get().getRedissonClient().getLock(getLocation()).unlock();
             return this;
         }
 
