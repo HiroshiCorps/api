@@ -21,7 +21,8 @@ public enum TimeUnit {
                 break;
             case DAYS:
                 time *= 20 * 60 * 60 * 24;
-                break;
+            default:
+                time = 0;
         }
         return time;
     }
@@ -36,8 +37,9 @@ public enum TimeUnit {
                 return java.util.concurrent.TimeUnit.HOURS;
             case DAYS:
                 return java.util.concurrent.TimeUnit.DAYS;
+            default:
+                return null;
         }
-        return java.util.concurrent.TimeUnit.MILLISECONDS;
     }
 
 }

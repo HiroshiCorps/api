@@ -23,7 +23,7 @@ public class ModeratorLeaveModEvent extends Event {
 
     @Override
     public HandlerList getHandlers() {
-        return null;
+        return handlers;
     }
 
     public APIPlayerModerator getModerator() {

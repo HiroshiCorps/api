@@ -61,7 +61,7 @@ public class TimerSystem implements Runnable {
             startTimer();
     }
 
-    public double getValue(TimeUnit timeEnum) {
+    public Double getValue(TimeUnit timeEnum) {
         switch (timeEnum) {
             case MILLISECONDS: {
                 return milli;
@@ -75,8 +75,10 @@ public class TimerSystem implements Runnable {
             case HOURS: {
                 return hours;
             }
+            default:{
+                return null;
+            }
         }
-        return 0d;
     }
 
     public void setValue(double value, TimeUnit timeEnum) {
@@ -95,6 +97,9 @@ public class TimerSystem implements Runnable {
             }
             case HOURS: {
                 this.hours = value;
+                break;
+            }
+            default:{
                 break;
             }
         }
@@ -165,6 +170,9 @@ public class TimerSystem implements Runnable {
                     return false;
                 }
             }
+            default:{
+                break;
+            }
         }
         return false;
     }
@@ -193,8 +201,11 @@ public class TimerSystem implements Runnable {
             case HOURS: {
                 return getValue(timeUnit) != 0;
             }
+            default:{
+                return false;
+            }
         }
-        return false;
+        
     }
 
     @Override

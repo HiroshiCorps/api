@@ -19,11 +19,11 @@ public abstract class Scheduler implements Runnable {
         scheduledExecutor.shutdown();
     }
 
-    public ScheduledFuture scheduleAsyncDelayedTask(long delay, java.util.concurrent.TimeUnit timeUnit) {
+    public ScheduledFuture<?> scheduleAsyncDelayedTask(long delay, java.util.concurrent.TimeUnit timeUnit) {
         return scheduledExecutor.schedule(this, delay, timeUnit);
     }
 
-    public ScheduledFuture scheduleAsyncRepeatingTask(long start, long period, java.util.concurrent.TimeUnit timeUnit) {
+    public ScheduledFuture<?> scheduleAsyncRepeatingTask(long start, long period, java.util.concurrent.TimeUnit timeUnit) {
         return scheduledExecutor.scheduleAtFixedRate(this, start, period, timeUnit);
     }
 
