@@ -43,7 +43,7 @@ public enum ServerAccess {
         switch (serverAccess) {
             case LIMITED:{
 
-                return true;
+                return server.getAllowedConnect(name);
 
             }
             case OPEN:{
