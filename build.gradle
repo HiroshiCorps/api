@@ -20,6 +20,10 @@ repositories {
         dir "libs"
     }
 
+    flatDir {
+        dir "../../sad/build/libs"
+    }
+
     maven {
         url 'https://repo.velocitypowered.com/snapshots/'
     }
@@ -40,6 +44,7 @@ dependencies {
     implementation group: 'com.zaxxer', name: 'HikariCP', version: '4.0.3'
     implementation group: 'net.wesjd', name: 'anvilgui', version: '1.5.2-SNAPSHOT'
     implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.7.3'
+    implementation name: 'SAD-1.0-SNAPSHOT'
     implementation name: 'PluginMessageSystem-1.0-SNAPSHOT'
     implementation name: 'InteractInv-1.0-unstable'
     jar {
