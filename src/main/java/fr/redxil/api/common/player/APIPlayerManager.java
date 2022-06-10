@@ -146,4 +146,6 @@ public interface APIPlayerManager {
 
     Map<String, Long> getUUIDToLongMap();
 
+    APIPlayer getServerPlayer();
+
 }

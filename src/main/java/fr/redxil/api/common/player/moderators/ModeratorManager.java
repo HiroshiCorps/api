@@ -9,6 +9,7 @@
 package fr.redxil.api.common.player.moderators;
 
 import fr.redxil.api.common.message.TextComponentBuilder;
+import fr.redxil.api.common.player.APIPlayer;
 
 import java.util.Collection;
 import java.util.Map;
@@ -42,6 +43,14 @@ public interface ModeratorManager {
      * @return APIPlayerModerator or null if player is not loaded or not a moderator
      */
     Optional<APIPlayerModerator> getModerator(UUID uuid);
+
+    /**
+     * Get the moderator with this UUID, please prefer ModeratorManager.getModerator(MemberID) if you can
+     *
+     * @param apiPlayer this need to be the APIPlayer
+     * @return APIPlayerModerator or null if player is not loaded or not a moderator
+     */
+    Optional<APIPlayerModerator> getModerator(APIPlayer apiPlayer);
 
     /**
      * Get a list of the connected moderator
@@ -85,5 +94,7 @@ public interface ModeratorManager {
     boolean isLoaded(UUID uuid);
 
     boolean isLoaded(String name);
+
+    APIPlayerModerator getServerModerator();
 
 }

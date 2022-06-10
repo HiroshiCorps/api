@@ -74,7 +74,9 @@ public interface DataReminder<K> {
             if (redis.isEmpty())
                 return this;
             RBucket<K> object = redis.get().getRedissonClient().getBucket(location);
-            object.set(data);
+            if(data == null)
+                object.delete();
+            else object.set(data);
             return this;
         }
 

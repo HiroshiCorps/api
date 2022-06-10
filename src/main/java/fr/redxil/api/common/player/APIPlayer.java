@@ -39,7 +39,7 @@ public interface APIPlayer extends APIOfflinePlayer {
 
     void setRealRank(Rank rank, Timestamp timestamp);
 
-    Timestamp getRealRankTimeStamp();
+    Optional<Timestamp> getRealRankTimeStamp();
 
     void restoreRealData();
 
@@ -65,7 +65,7 @@ public interface APIPlayer extends APIOfflinePlayer {
 
     boolean isFreeze();
 
-    Long getFreeze();
+    Optional<Long> getFreeze();
 
     void setFreeze(Long playerModerator);
 
@@ -73,13 +73,13 @@ public interface APIPlayer extends APIOfflinePlayer {
 
     void addTempData(String key, Object object);
 
-    Object removeTempData(String key);
+    Optional<Object> removeTempData(String key);
 
-    Object getTempData(String key);
+    Optional<Object> getTempData(String key);
 
     List<String> getTempDataKeyList();
 
-    String getLastMSGPlayer();
+    Optional<String> getLastMSGPlayer();
 
     void setLastMSGPlayer(String player);
 

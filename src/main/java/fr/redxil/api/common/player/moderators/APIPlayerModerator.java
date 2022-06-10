@@ -11,6 +11,7 @@ package fr.redxil.api.common.player.moderators;
 import fr.redxil.api.common.player.APIOfflinePlayer;
 import fr.redxil.api.common.utils.SanctionType;
 
+import java.util.Optional;
 import java.util.UUID;
 
 public interface APIPlayerModerator {
@@ -32,7 +33,7 @@ public interface APIPlayerModerator {
 
     boolean hasCible();
 
-    String getCible();
+    Optional<String> getCible();
 
     void setCible(String value);
 

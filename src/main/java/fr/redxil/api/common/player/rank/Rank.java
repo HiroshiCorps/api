@@ -10,6 +10,13 @@ package fr.redxil.api.common.player.rank;
 
 public enum Rank {
 
+    SERVER(8, 999L, true,
+            "",
+            "",
+            "",
+            ""
+    ),
+
     ADMINISTRATEUR(7, 777L, true,
             "§c[Administrateur] ",
             "§8§l » §f",
