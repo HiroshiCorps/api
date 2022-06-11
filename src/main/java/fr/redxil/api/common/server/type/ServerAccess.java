@@ -11,6 +11,7 @@ package fr.redxil.api.common.server.type;
 import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.player.rank.Rank;
 import fr.redxil.api.common.server.Server;
+import fr.xilitra.hiroshisav.enums.ServerType;
 
 import java.util.UUID;
 
@@ -22,13 +23,6 @@ public enum ServerAccess {
     RANK_SPECIFIC,
     RANK_SPECIFIC_MIN,
     ADMIN;
-
-    public static ServerAccess getServerAccess(String string) {
-        for (ServerAccess serverAccess : values())
-            if (serverAccess.toString().equals(string))
-                return serverAccess;
-        return null;
-    }
 
     public boolean canAccess(Server server, APIPlayer apiOfflinePlayer) {
         return canAccess(server, this, apiOfflinePlayer.getUUID(), apiOfflinePlayer.getRank());
@@ -75,6 +69,20 @@ public enum ServerAccess {
 
         return false;
 
+    }
+
+    public static ServerAccess getAccessRelated(ServerType serverType){
+        switch (serverType){
+            case HUB, VELOCITY:
+                return ServerAccess.OPEN;
+            case HOST:
+                return ServerAccess.LIMITED;
+            case PRIVATE:
+                return ServerAccess.RANK_SPECIFIC;
+            case GAME:
+                return ServerAccess.LIMITED;
+        }
+        return ServerAccess.MAINTENANCE;
     }
 
 }

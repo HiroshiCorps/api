@@ -12,7 +12,7 @@ import fr.redline.pms.utils.IpInfo;
 import fr.redxil.api.common.player.rank.Rank;
 import fr.redxil.api.common.server.type.ServerAccess;
 import fr.redxil.api.common.server.type.ServerStatus;
-import fr.redxil.api.common.server.type.ServerType;
+import fr.xilitra.hiroshisav.enums.ServerType;
 
 import java.util.Collection;
 import java.util.Optional;

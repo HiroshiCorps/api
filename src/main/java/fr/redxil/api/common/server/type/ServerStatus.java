@@ -13,11 +13,4 @@ public enum ServerStatus {
     ONLINE,
     OFFLINE;
 
-    public static ServerStatus getServerStatus(String string) {
-        for (ServerStatus serverAccess : values())
-            if (serverAccess.toString().equals(string))
-                return serverAccess;
-        return null;
-    }
-
 }

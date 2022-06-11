@@ -10,7 +10,7 @@ package fr.redxil.api.common.server;
 
 import fr.redline.pms.utils.IpInfo;
 import fr.redxil.api.common.player.APIPlayer;
-import fr.redxil.api.common.server.type.ServerType;
+import fr.xilitra.hiroshisav.enums.ServerType;
 
 import java.util.Collection;
 import java.util.Map;

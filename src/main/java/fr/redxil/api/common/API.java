@@ -13,8 +13,8 @@ import fr.redxil.api.common.player.moderators.ModeratorManager;
 import fr.redxil.api.common.redis.RedisManager;
 import fr.redxil.api.common.server.Server;
 import fr.redxil.api.common.server.ServerManager;
-import fr.redxil.api.common.server.type.ServerType;
 import fr.redxil.api.common.sql.SQLConnection;
+import fr.xilitra.hiroshisav.enums.ServerType;
 
 import java.util.Optional;
 
