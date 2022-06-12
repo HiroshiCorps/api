@@ -14,7 +14,7 @@ public abstract class CommandSystem<C> {
 
     final String name;
     final BiConsumer<CommandContext<C>, String> executor;
-    Predicate<C> require;
+    Predicate<C> require = null;
     CommandSystem<C> then = null;
     List<CommandSystem<C>> argumentCreatorCreatorList = new ArrayList<>();
 
@@ -60,7 +60,8 @@ public abstract class CommandSystem<C> {
 
 
     protected <T extends ArgumentBuilder<C, T>> ArgumentBuilder<C, T> updateBuilder(ArgumentBuilder<C, T> builder) {
-        builder.then(then.build());
+        if(then != null)
+            builder.then(then.build());
         builder.executes(context -> {
             executor.accept(context, name);
             return 1;
@@ -71,9 +72,7 @@ public abstract class CommandSystem<C> {
     }
 
     protected CommandNode<C> updateNode(CommandNode<C> commandNode) {
-        for (CommandSystem<C> argumentCreator : argumentCreatorCreatorList) {
-            commandNode.addChild(argumentCreator.build());
-        }
+        argumentCreatorCreatorList.forEach(argCreator -> commandNode.addChild(argCreator.build()));
         return commandNode;
     }
 
