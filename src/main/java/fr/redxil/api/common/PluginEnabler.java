@@ -10,8 +10,10 @@ package fr.redxil.api.common;
 
 import fr.redline.pms.utils.IpInfo;
 import fr.redxil.api.common.player.APIPlayer;
+import fr.xilitra.hiroshisav.enums.ServerType;
 
 import java.io.File;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.logging.Level;
 
@@ -90,5 +92,7 @@ public interface PluginEnabler {
     void sendMessage(String pseudo, String message);
 
     void sendMessage(UUID uuid, String message);
+
+    ServerType getServerType();
 
 }

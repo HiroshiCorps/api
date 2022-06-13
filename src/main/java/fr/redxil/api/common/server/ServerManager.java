@@ -8,7 +8,6 @@
 
 package fr.redxil.api.common.server;
 
-import fr.redline.pms.utils.IpInfo;
 import fr.redxil.api.common.player.APIPlayer;
 import fr.xilitra.hiroshisav.enums.ServerType;
 
@@ -34,9 +33,9 @@ public interface ServerManager {
 
     Optional<Server> getServer(long serverID);
 
-    Optional<Server> createServer(ServerType serverType, String name, IpInfo ipInfo, int maxPlayer);
+    Optional<Server> createServer(ServerCreator serverCreator);
 
-    Optional<Server> createServer(ServerType serverType, Long serverID, String name, IpInfo ipInfo, int maxPlayer);
+    Optional<Server> loadServer(Long serverID, String serverName);
 
     Optional<Server> getConnectableServer(APIPlayer apiPlayer, ServerType serverType);
 

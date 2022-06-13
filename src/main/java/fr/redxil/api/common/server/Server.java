@@ -22,18 +22,12 @@ public interface Server {
 
     Optional<String> getServerName();
 
-    void setServerName(String serverName);
-
     ServerType getServerType();
-
-    void setServerType(ServerType serverType);
 
     long getServerID();
 
 
     Optional<Integer> getMaxPlayers();
-
-    void setMaxPlayers(int players);
 
     IpInfo getServerIP();
 
