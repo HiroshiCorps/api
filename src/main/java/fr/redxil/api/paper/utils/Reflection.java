@@ -20,7 +20,7 @@ public class Reflection {
 
             Method playSoundMethod = getMethod(player.getClass(), "playSound", Location.class, Sound.class, float.class, float.class);
             playSoundMethod.invoke(player, location, sound, volume, pitch);
-        }catch (Exception ex) {
+        } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
     }
@@ -28,7 +28,7 @@ public class Reflection {
     public static Class<?> getNMSClass(String className) {
         try {
             return PackageType.MINECRAFT_SERVER.getClass(className);
-        }catch (Exception ex) {
+        } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
     }
@@ -36,7 +36,7 @@ public class Reflection {
     public static Class<?> getOBCClass(String className) {
         try {
             return PackageType.CRAFTBUKKIT.getClass(className);
-        }catch (Exception ex) {
+        } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
     }

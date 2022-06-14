@@ -13,16 +13,16 @@ public class HostServerInfo extends ServerInfo {
     final TypeGame typeGame;
 
     public HostServerInfo(String serverName, IpInfo ipInfo, ServerStatus serverStatus, Boolean needGenerate, String serverMap, TypeGame typeGame, Long host) {
-        super(serverName, ipInfo, ServerType.HOST, serverStatus, ServerAccess.LIMITED, Rank.JOUEUR, needGenerate, serverMap, typeGame.getDefaultMaxNPSpec()+typeGame.getDefaultMaxP()+5);
+        super(serverName, ipInfo, ServerType.HOST, serverStatus, ServerAccess.LIMITED, Rank.JOUEUR, needGenerate, serverMap, typeGame.getDefaultMaxNPSpec() + typeGame.getDefaultMaxP() + 5);
         this.host = host;
         this.typeGame = typeGame;
     }
 
-    public Long getHost(){
+    public Long getHost() {
         return host;
     }
 
-    public TypeGame getTypeGame(){
+    public TypeGame getTypeGame() {
         return typeGame;
     }
 

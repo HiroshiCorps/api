@@ -18,16 +18,16 @@ public class DateUtility {
 
     public static TimeUnit getTimerUnit(char s) {
         switch (s) {
-            case 's' :{
+            case 's' -> {
                 return TimeUnit.SECONDS;
             }
-            case 'm' :{
+            case 'm' -> {
                 return TimeUnit.MINUTES;
             }
-            case 'h' :{
+            case 'h' -> {
                 return TimeUnit.HOURS;
             }
-            case 'j' :{
+            case 'j' -> {
                 return TimeUnit.DAYS;
             }
         }
@@ -36,25 +36,25 @@ public class DateUtility {
 
     public static long getTimeStampLong(TimeUnit s) {
         switch (s) {
-            case NANOSECONDS :{
+            case NANOSECONDS -> {
                 return 1L;
             }
-            case MICROSECONDS :{
+            case MICROSECONDS -> {
                 return 10L;
             }
-            case MILLISECONDS :{
+            case MILLISECONDS -> {
                 return 100L;
             }
-            case SECONDS :{
+            case SECONDS -> {
                 return 1000L;
             }
-            case MINUTES :{
+            case MINUTES -> {
                 return 60000L;
             }
-            case HOURS :{
+            case HOURS -> {
                 return 3600000L;
             }
-            case DAYS :{
+            case DAYS -> {
                 return 86400000L;
             }
         }

@@ -31,72 +31,76 @@ public class ServerInfo {
     }
 
     /**
-     *
      * Get the type of the server
-     * @return The ServerType
      *
+     * @return The ServerType
      */
 
-    public ServerType getServerType(){
+    public ServerType getServerType() {
         return serverType;
     }
 
 
     /**
      * Get the name of the server
+     *
      * @return The server name
      */
-    public String getServerName(){
+    public String getServerName() {
         return serverName;
     }
 
     /**
      * Get the name of the server
+     *
      * @return The server map
      */
-    public String getServerMap(){
+    public String getServerMap() {
         return serverMap;
     }
 
     /**
      * Get the server ip
+     *
      * @return The server ip
      */
-    public IpInfo getIpInfo(){
+    public IpInfo getIpInfo() {
         return ipInfo;
     }
 
     /**
      * Get eh max number of player
+     *
      * @return Max number of player
      */
-    public Integer getMaxPlayer(){
+    public Integer getMaxPlayer() {
         return maxPlayer;
     }
 
-    public ServerStatus getServerStatus(){
+    public ServerStatus getServerStatus() {
         return serverStatus;
     }
 
     /**
      * Get if the server need to be generated
+     *
      * @return True if the server need to be generated
      */
-    public Boolean needGenerate(){
+    public Boolean needGenerate() {
         return needGenerate;
     }
 
-    public ServerAccess getServerAccess(){
+    public ServerAccess getServerAccess() {
         return serverAccess;
     }
 
-    public Rank getRankAccess(){
+    public Rank getRankAccess() {
         return accessRank;
     }
 
     public static class HUBServerInfo extends ServerInfo {
         public HUBServerInfo(String serverName, IpInfo ipInfo, ServerStatus serverStatus, Boolean needGenerate, Integer maxPlayer) {
-            super(serverName, ipInfo, ServerType.HUB, serverStatus, ServerAccess.LIMITED, Rank.JOUEUR, needGenerate, "hub", maxPlayer+5);
+            super(serverName, ipInfo, ServerType.HUB, serverStatus, ServerAccess.LIMITED, Rank.JOUEUR, needGenerate, "hub", maxPlayer + 5);
         }
     }
 

@@ -12,11 +12,11 @@ public class GameServerInfo extends ServerInfo {
     final TypeGame typeGame;
 
     public GameServerInfo(String serverName, IpInfo ipInfo, ServerStatus serverStatus, Boolean needGenerate, String serverMap, TypeGame typeGame) {
-        super(serverName, ipInfo, ServerType.GAME, serverStatus, ServerAccess.LIMITED, Rank.JOUEUR, needGenerate, serverMap, typeGame.getDefaultMaxNPSpec()+typeGame.getDefaultMaxP()+5);
+        super(serverName, ipInfo, ServerType.GAME, serverStatus, ServerAccess.LIMITED, Rank.JOUEUR, needGenerate, serverMap, typeGame.getDefaultMaxNPSpec() + typeGame.getDefaultMaxP() + 5);
         this.typeGame = typeGame;
     }
 
-    public TypeGame getTypeGame(){
+    public TypeGame getTypeGame() {
         return typeGame;
     }
 

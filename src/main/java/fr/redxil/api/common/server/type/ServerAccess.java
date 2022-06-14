@@ -24,6 +24,14 @@ public enum ServerAccess {
     RANK_SPECIFIC_MIN,
     ADMIN;
 
+    public static ServerAccess getAccessRelated(ServerType serverType) {
+        return switch (serverType) {
+            case HUB, VELOCITY -> ServerAccess.OPEN;
+            case HOST, GAME -> ServerAccess.LIMITED;
+            case PRIVATE -> ServerAccess.RANK_SPECIFIC;
+        };
+    }
+
     public boolean canAccess(Server server, APIPlayer apiOfflinePlayer) {
         return canAccess(server, this, apiOfflinePlayer.getUUID(), apiOfflinePlayer.getRank());
     }
@@ -35,32 +43,32 @@ public enum ServerAccess {
     private boolean canAccess(Server server, ServerAccess serverAccess, UUID name, Rank rank) {
 
         switch (serverAccess) {
-            case LIMITED:{
+            case LIMITED: {
 
                 return server.getAllowedConnect(name);
 
             }
-            case OPEN:{
+            case OPEN: {
 
                 return true;
 
             }
-            case MAINTENANCE:{
+            case MAINTENANCE: {
 
                 return rank.isModeratorRank();
 
             }
-            case RANK_SPECIFIC:{
+            case RANK_SPECIFIC: {
 
                 return rank == server.getReservedRank().orElse(Rank.JOUEUR);
 
             }
-            case RANK_SPECIFIC_MIN:{
+            case RANK_SPECIFIC_MIN: {
 
                 return rank.getRankPower() >= server.getReservedRank().orElse(Rank.JOUEUR).getRankPower();
 
             }
-            case ADMIN:{
+            case ADMIN: {
 
                 return rank == Rank.ADMINISTRATEUR;
 
@@ -69,20 +77,6 @@ public enum ServerAccess {
 
         return false;
 
-    }
-
-    public static ServerAccess getAccessRelated(ServerType serverType){
-        switch (serverType){
-            case HUB, VELOCITY:
-                return ServerAccess.OPEN;
-            case HOST:
-                return ServerAccess.LIMITED;
-            case PRIVATE:
-                return ServerAccess.RANK_SPECIFIC;
-            case GAME:
-                return ServerAccess.LIMITED;
-        }
-        return ServerAccess.MAINTENANCE;
     }
 
 }

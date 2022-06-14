@@ -60,7 +60,7 @@ public abstract class CommandSystem<C> {
 
 
     protected <T extends ArgumentBuilder<C, T>> ArgumentBuilder<C, T> updateBuilder(ArgumentBuilder<C, T> builder) {
-        if(then != null)
+        if (then != null)
             builder.then(then.build());
         builder.executes(context -> {
             executor.accept(context, name);

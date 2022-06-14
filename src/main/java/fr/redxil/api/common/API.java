@@ -14,7 +14,6 @@ import fr.redxil.api.common.redis.RedisManager;
 import fr.redxil.api.common.server.Server;
 import fr.redxil.api.common.server.ServerManager;
 import fr.redxil.api.common.sql.SQLConnection;
-import fr.xilitra.hiroshisav.enums.ServerType;
 
 import java.util.Optional;
 
@@ -31,10 +30,9 @@ public abstract class API {
         return instance;
     }
 
-    public static boolean isAPIEnabled(){
+    public static boolean isAPIEnabled() {
         return getInstance() != null;
     }
-
 
 
     public abstract Optional<RedisManager> getRedisManager();

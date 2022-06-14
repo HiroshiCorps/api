@@ -87,7 +87,8 @@ public abstract class TextComponentBuilder {
     public abstract TextComponentBuilder setHover(String hover);
 
     public void sendTo(UUID uuid) {
-        if(uuid.toString().equals("a12345678-b123-1234-a123-1234567891011")) System.out.println(getFinalTextComponent().toString());
+        if (uuid.toString().equals("a12345678-b123-1234-a123-1234567891011"))
+            System.out.println(getFinalTextComponent().toString());
         else API.getInstance().getAPIEnabler().sendMessage(uuid, toString());
     }
 
@@ -96,12 +97,12 @@ public abstract class TextComponentBuilder {
     }
 
     public void sendTo(String name) {
-        if(name.equals("Server;")) System.out.println(getFinalTextComponent().toString());
+        if (name.equals("Server;")) System.out.println(getFinalTextComponent().toString());
         else API.getInstance().getAPIEnabler().sendMessage(name, toString());
     }
 
     public void sendToID(Long id) {
-        if(id == -5L) System.out.println(getFinalTextComponent().toString());
+        if (id == -5L) System.out.println(getFinalTextComponent().toString());
         else API.getInstance().getPlayerManager().getPlayer(id).ifPresent(this::sendTo);
     }
 

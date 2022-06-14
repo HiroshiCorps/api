@@ -74,14 +74,14 @@ public interface DataReminder<K> {
             if (redis.isEmpty())
                 return this;
             RBucket<K> object = redis.get().getRedissonClient().getBucket(location);
-            if(data == null)
+            if (data == null)
                 object.delete();
             else object.set(data);
             return this;
         }
 
         @Override
-        public DataReminder<K> lockData(){
+        public DataReminder<K> lockData() {
             Optional<RedisManager> redis = API.getInstance().getRedisManager();
             if (redis.isEmpty())
                 return this;
@@ -90,7 +90,7 @@ public interface DataReminder<K> {
         }
 
         @Override
-        public DataReminder<K> unlockData(){
+        public DataReminder<K> unlockData() {
             Optional<RedisManager> redis = API.getInstance().getRedisManager();
             if (redis.isEmpty())
                 return this;
@@ -128,12 +128,12 @@ public interface DataReminder<K> {
         }
 
         @Override
-        public DataReminder<K> lockData(){
+        public DataReminder<K> lockData() {
             return this;
         }
 
         @Override
-        public DataReminder<K> unlockData(){
+        public DataReminder<K> unlockData() {
             return this;
         }
 
@@ -169,7 +169,7 @@ public interface DataReminder<K> {
         }
 
         @Override
-        public DataReminder<List<K>> lockData(){
+        public DataReminder<List<K>> lockData() {
             Optional<RedisManager> redis = API.getInstance().getRedisManager();
             if (redis.isEmpty())
                 return this;
@@ -178,7 +178,7 @@ public interface DataReminder<K> {
         }
 
         @Override
-        public DataReminder<List<K>> unlockData(){
+        public DataReminder<List<K>> unlockData() {
             Optional<RedisManager> redis = API.getInstance().getRedisManager();
             if (redis.isEmpty())
                 return this;
@@ -218,7 +218,7 @@ public interface DataReminder<K> {
         }
 
         @Override
-        public DataReminder<Map<K, V>> lockData(){
+        public DataReminder<Map<K, V>> lockData() {
             Optional<RedisManager> redis = API.getInstance().getRedisManager();
             if (redis.isEmpty())
                 return this;
@@ -227,7 +227,7 @@ public interface DataReminder<K> {
         }
 
         @Override
-        public DataReminder<Map<K, V>> unlockData(){
+        public DataReminder<Map<K, V>> unlockData() {
             Optional<RedisManager> redis = API.getInstance().getRedisManager();
             if (redis.isEmpty())
                 return this;

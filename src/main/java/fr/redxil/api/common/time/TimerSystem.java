@@ -63,19 +63,19 @@ public class TimerSystem implements Runnable {
 
     public Double getValue(TimeUnit timeEnum) {
         switch (timeEnum) {
-            case MILLISECONDS: {
+            case MILLISECONDS -> {
                 return milli;
             }
-            case SECONDS: {
+            case SECONDS -> {
                 return sec;
             }
-            case MINUTES: {
+            case MINUTES -> {
                 return min;
             }
-            case HOURS: {
+            case HOURS -> {
                 return hours;
             }
-            default:{
+            default -> {
                 return null;
             }
         }
@@ -83,31 +83,26 @@ public class TimerSystem implements Runnable {
 
     public void setValue(double value, TimeUnit timeEnum) {
         switch (timeEnum) {
-            case MILLISECONDS: {
+            case MILLISECONDS -> {
                 this.milli = value;
-                break;
             }
-            case SECONDS: {
+            case SECONDS -> {
                 this.sec = value;
-                break;
             }
-            case MINUTES: {
+            case MINUTES -> {
                 this.min = value;
-                break;
             }
-            case HOURS: {
+            case HOURS -> {
                 this.hours = value;
-                break;
             }
-            default:{
-                break;
+            default -> {
             }
         }
     }
 
     public boolean remove(int time, TimeUnit timeEnum) {
         switch (timeEnum) {
-            case MILLISECONDS: {
+            case MILLISECONDS -> {
 
                 if (milli - time > 0) {
                     milli -= time;
@@ -124,8 +119,7 @@ public class TimerSystem implements Runnable {
                 return true;
 
             }
-
-            case SECONDS: {
+            case SECONDS -> {
 
                 if (sec - time > 0) {
                     sec -= time;
@@ -142,8 +136,7 @@ public class TimerSystem implements Runnable {
                 return true;
 
             }
-
-            case MINUTES: {
+            case MINUTES -> {
 
                 if (min - time > 0) {
                     min -= time;
@@ -160,8 +153,7 @@ public class TimerSystem implements Runnable {
                 return true;
 
             }
-
-            case HOURS: {
+            case HOURS -> {
                 if (hours - time != 0) {
                     hours -= time;
                     return true;
@@ -170,8 +162,7 @@ public class TimerSystem implements Runnable {
                     return false;
                 }
             }
-            default:{
-                break;
+            default -> {
             }
         }
         return false;
@@ -183,29 +174,29 @@ public class TimerSystem implements Runnable {
 
     private boolean canStart(TimeUnit timeUnit) {
         switch (timeUnit) {
-            case MILLISECONDS: {
+            case MILLISECONDS -> {
                 if (getValue(timeUnit) != 0)
                     return true;
                 else return canStart(TimeUnit.SECONDS);
             }
-            case SECONDS: {
+            case SECONDS -> {
                 if (getValue(timeUnit) != 0)
                     return true;
                 else return canStart(TimeUnit.MINUTES);
             }
-            case MINUTES: {
+            case MINUTES -> {
                 if (getValue(timeUnit) != 0)
                     return true;
                 else return canStart(TimeUnit.HOURS);
             }
-            case HOURS: {
+            case HOURS -> {
                 return getValue(timeUnit) != 0;
             }
-            default:{
+            default -> {
                 return false;
             }
         }
-        
+
     }
 
     @Override

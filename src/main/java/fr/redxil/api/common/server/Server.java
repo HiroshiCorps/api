@@ -31,40 +31,36 @@ public interface Server {
 
     IpInfo getServerIP();
 
+    void setServerIP(IpInfo ipInfo);
+
     boolean isOnline();
 
     void shutdown();
 
-
     void setPlayerConnected(UUID uuid, boolean connected);
-
 
     Collection<UUID> getPlayerList();
 
     int getConnectedPlayer();
 
-
     ServerStatus getServerStatus();
 
     void setServerStatus(ServerStatus serverStatus);
 
-
     ServerAccess getServerAccess();
-
-    void setServerAccess(ServerAccess serverAccess);
 
     /// RANK_SPECIFIC / RANK_SPECIFIC_MIN
 
+    void setServerAccess(ServerAccess serverAccess);
+
     Optional<Rank> getReservedRank();
 
-    void setReservedRank(Rank rank);
-
     /// LIMITED
+
+    void setReservedRank(Rank rank);
 
     void setAllowedConnect(UUID uuid, boolean value);
 
     boolean getAllowedConnect(UUID uuid);
-
-    void setServerIP(IpInfo ipInfo);
 
 }
