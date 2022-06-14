@@ -95,4 +95,6 @@ public interface PluginEnabler {
 
     ServerType getServerType();
 
+    Optional<String> getServerMap();
+
 }

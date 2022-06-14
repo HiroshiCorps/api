@@ -20,18 +20,7 @@ import java.util.Optional;
 
 public abstract class API {
 
-    private static API instance;
-    private final PluginEnabler plugin;
-
-    /**
-     * Constructor
-     *
-     * @param plugin Root plugin
-     */
-    public API(PluginEnabler plugin) {
-        instance = this;
-        this.plugin = plugin;
-    }
+    protected static API instance;
 
     /**
      * Get the instance of the API
@@ -79,9 +68,7 @@ public abstract class API {
      *
      * @return Root plugin instance
      */
-    public PluginEnabler getPluginEnabler() {
-        return this.plugin;
-    }
+    public abstract PluginEnabler getPluginEnabler();
 
     public abstract ServerType getServerType();
 
@@ -95,9 +82,7 @@ public abstract class API {
 
     public abstract boolean isOnlineMod();
 
-    public boolean isVelocity() {
-        return plugin.isVelocity();
-    }
+    public abstract boolean isVelocity();
 
     public boolean isSpigot() {
         return !isVelocity();
