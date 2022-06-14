@@ -20,7 +20,7 @@ import java.util.Optional;
 
 public abstract class API {
 
-    protected static API instance;
+    protected static API instance = null;
 
     /**
      * Get the instance of the API
@@ -30,6 +30,12 @@ public abstract class API {
     public static API getInstance() {
         return instance;
     }
+
+    public static boolean isAPIEnabled(){
+        return getInstance() != null;
+    }
+
+
 
     public abstract Optional<RedisManager> getRedisManager();
 
@@ -83,10 +89,6 @@ public abstract class API {
     public abstract boolean isOnlineMod();
 
     public abstract boolean isVelocity();
-
-    public boolean isSpigot() {
-        return !isVelocity();
-    }
 
     public long getResponse() {
         return System.currentTimeMillis();
