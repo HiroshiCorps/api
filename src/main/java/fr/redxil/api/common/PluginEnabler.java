@@ -44,13 +44,6 @@ public interface PluginEnabler {
     IpInfo getServerIp();
 
     /**
-     * Get if the server is a proxy server
-     *
-     * @return true if Server is Proxy server
-     */
-    boolean isVelocity();
-
-    /**
      * Get the dat folder for the plugin
      *
      * @return the specific plugin folder
