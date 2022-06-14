@@ -9,6 +9,7 @@
 package fr.redxil.api.common.server;
 
 import fr.redxil.api.common.player.APIPlayer;
+import fr.redxil.api.common.server.creator.ServerInfo;
 import fr.xilitra.hiroshisav.enums.ServerType;
 
 import java.util.Collection;
@@ -33,7 +34,7 @@ public interface ServerManager {
 
     Optional<Server> getServer(long serverID);
 
-    Optional<Server> createServer(ServerCreator serverCreator);
+    Optional<Server> createServer(ServerInfo serverInfo);
 
     Optional<Server> loadServer(Long serverID, String serverName);
 

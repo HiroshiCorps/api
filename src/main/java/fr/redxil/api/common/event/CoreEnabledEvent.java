@@ -1,16 +1,16 @@
 package fr.redxil.api.common.event;
 
-import fr.redxil.api.common.PluginEnabler;
+import fr.redxil.api.common.APIEnabler;
 
 public class CoreEnabledEvent {
 
-    PluginEnabler enabler;
+    APIEnabler enabler;
 
-    public CoreEnabledEvent(PluginEnabler enabler) {
+    public CoreEnabledEvent(APIEnabler enabler) {
         this.enabler = enabler;
     }
 
-    public PluginEnabler getPluginEnabler() {
+    public APIEnabler getAPIEnabler() {
         return enabler;
     }
 

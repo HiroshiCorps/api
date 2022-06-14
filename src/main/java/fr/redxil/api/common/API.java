@@ -74,9 +74,7 @@ public abstract class API {
      *
      * @return Root plugin instance
      */
-    public abstract PluginEnabler getPluginEnabler();
-
-    public abstract ServerType getServerType();
+    public abstract APIEnabler getAPIEnabler();
 
     public abstract Optional<SQLConnection> getSQLConnection();
 

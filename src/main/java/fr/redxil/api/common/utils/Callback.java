@@ -1,3 +1,4 @@
+
 /*
  *  Copyright (C) GIMENEZ Nino and PHILIPPE Nelson - All Rights Reserved
  *  Unauthorized copying or modification of this file, via any medium is strictly prohibited
@@ -6,7 +7,7 @@
  *
  */
 
-package fr.redxil.api.common;
+package fr.redxil.api.common.utils;
 
 public interface Callback<T> {
 

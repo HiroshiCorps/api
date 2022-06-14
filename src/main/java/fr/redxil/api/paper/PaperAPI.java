@@ -1,6 +1,6 @@
 package fr.redxil.api.paper;
 
-import fr.redxil.api.common.PluginEnabler;
+import fr.redxil.api.common.APIEnabler;
 
 public abstract class PaperAPI {
     static PaperAPI instance;
@@ -13,5 +13,5 @@ public abstract class PaperAPI {
         PaperAPI.instance = this;
     }
 
-    public abstract void startAPI(PluginEnabler pluginEnabler);
+    public abstract void startAPI(APIEnabler APIEnabler);
 }

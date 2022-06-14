@@ -8,16 +8,14 @@
 
 package fr.redxil.api.common;
 
-import fr.redline.pms.utils.IpInfo;
 import fr.redxil.api.common.player.APIPlayer;
-import fr.xilitra.hiroshisav.enums.ServerType;
+import fr.redxil.api.common.server.creator.ServerInfo;
 
 import java.io.File;
-import java.util.Optional;
 import java.util.UUID;
 import java.util.logging.Level;
 
-public interface PluginEnabler {
+public interface APIEnabler {
 
 
     /**
@@ -37,13 +35,6 @@ public interface PluginEnabler {
     void setPluginEnable(boolean value);
 
     /**
-     * Get the serverID
-     *
-     * @return the ip of the current server
-     */
-    IpInfo getServerIp();
-
-    /**
      * Get the dat folder for the plugin
      *
      * @return the specific plugin folder
@@ -56,13 +47,6 @@ public interface PluginEnabler {
      * @return CORE version
      */
     String getPluginVersion();
-
-    /**
-     * Get server max player
-     *
-     * @return the max player of the server
-     */
-    int getMaxPlayer();
 
     /**
      * Get the server version
@@ -86,8 +70,6 @@ public interface PluginEnabler {
 
     void sendMessage(UUID uuid, String message);
 
-    ServerType getServerType();
-
-    Optional<String> getServerMap();
+    ServerInfo getServerInfo();
 
 }

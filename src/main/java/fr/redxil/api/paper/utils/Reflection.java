@@ -20,26 +20,24 @@ public class Reflection {
 
             Method playSoundMethod = getMethod(player.getClass(), "playSound", Location.class, Sound.class, float.class, float.class);
             playSoundMethod.invoke(player, location, sound, volume, pitch);
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | NoSuchFieldException e) {
-            e.printStackTrace();
+        }catch (Exception ex) {
+            throw new RuntimeException(ex);
         }
     }
 
     public static Class<?> getNMSClass(String className) {
         try {
             return PackageType.MINECRAFT_SERVER.getClass(className);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
+        }catch (Exception ex) {
+            throw new RuntimeException(ex);
         }
     }
 
     public static Class<?> getOBCClass(String className) {
         try {
             return PackageType.CRAFTBUKKIT.getClass(className);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
+        }catch (Exception ex) {
+            throw new RuntimeException(ex);
         }
     }
 
@@ -54,16 +52,14 @@ public class Reflection {
             Object playerConnection = playerConnectionField.get(entityPlayer);
 
             sendPacketMethod.invoke(playerConnection, packet);
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
         }
     }
 
     public static Method makeMethod(Class<?> clazz, String methodName, Class<?>... paramaters) {
         try {
             return clazz.getDeclaredMethod(methodName, paramaters);
-        } catch (NoSuchMethodException ex) {
-            return null;
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
@@ -75,8 +71,6 @@ public class Reflection {
         method.setAccessible(true);
         try {
             return (T) method.invoke(instance, paramaters);
-        } catch (InvocationTargetException ex) {
-            throw new RuntimeException(ex.getCause());
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
@@ -86,8 +80,6 @@ public class Reflection {
     public static <T> Constructor<T> makeConstructor(Class<?> clazz, Class<?>... paramaterTypes) {
         try {
             return (Constructor<T>) clazz.getConstructor(paramaterTypes);
-        } catch (NoSuchMethodException ex) {
-            return null;
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
@@ -156,7 +148,7 @@ public class Reflection {
         try {
             return getMethod(obj.getClass(), "getHandle").invoke(obj);
         } catch (Exception e) {
-            API.getInstance().getPluginEnabler().printLog(Level.INFO, "Reflection failed for getHandle Entity.");
+            API.getInstance().getAPIEnabler().printLog(Level.INFO, "Reflection failed for getHandle Entity.");
             e.printStackTrace();
             return null;
         }

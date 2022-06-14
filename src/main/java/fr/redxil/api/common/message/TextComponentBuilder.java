@@ -88,7 +88,7 @@ public abstract class TextComponentBuilder {
 
     public void sendTo(UUID uuid) {
         if(uuid.toString().equals("a12345678-b123-1234-a123-1234567891011")) System.out.println(getFinalTextComponent().toString());
-        else API.getInstance().getPluginEnabler().sendMessage(uuid, toString());
+        else API.getInstance().getAPIEnabler().sendMessage(uuid, toString());
     }
 
     public void sendTo(APIPlayer apiPlayer) {
@@ -97,7 +97,7 @@ public abstract class TextComponentBuilder {
 
     public void sendTo(String name) {
         if(name.equals("Server;")) System.out.println(getFinalTextComponent().toString());
-        else API.getInstance().getPluginEnabler().sendMessage(name, toString());
+        else API.getInstance().getAPIEnabler().sendMessage(name, toString());
     }
 
     public void sendToID(Long id) {

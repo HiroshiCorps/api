@@ -9,7 +9,7 @@
 package fr.redxil.api.common.sql;
 
 import fr.redline.pms.utils.IpInfo;
-import fr.redxil.api.common.Callback;
+import fr.redxil.api.common.utils.Callback;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
