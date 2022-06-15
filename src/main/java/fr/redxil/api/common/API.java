@@ -94,20 +94,7 @@ public abstract class API {
     public abstract PartyManager getPartyManager();
 
     public abstract GameManager getGameManager();
-
-    public abstract Optional<Host> getHost();
-
-    public abstract boolean isHostServer();
-
-    public abstract Optional<Game> getGame();
-
-    public abstract boolean isGameServer();
-
     public abstract TeamManager getTeamManager(Long game);
-
-    public TeamManager getTeamManager(Game game) {
-        return getTeamManager(game.getGameID());
-    }
 
     public long getResponse() {
         return System.currentTimeMillis();

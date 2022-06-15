@@ -50,7 +50,7 @@ public abstract class GameBuilder {
 
     public void initGame(TypeGame gameEnum) throws GameInitError {
 
-        Optional<Game> gameOptional = API.getInstance().getGame();
+        Optional<Game> gameOptional = API.getInstance().getGameManager().getGameByServerID(API.getInstance().getServerID());
         if (gameOptional.isEmpty())
             throw new GameInitError("Game not init, consider creating game with GameManager.createGame / GameManager.createHost");
 
@@ -75,8 +75,8 @@ public abstract class GameBuilder {
     }
 
     public boolean hasTeams() {
-        Optional<Game> gameOptional = API.getInstance().getGame();
-        return gameOptional.filter(game -> !API.getInstance().getTeamManager(game).getTeamList().isEmpty()).isPresent();
+        Optional<Game> gameOptional = API.getInstance().getGameManager().getGameByServerID(API.getInstance().getServerID());
+        return gameOptional.filter(game -> !API.getInstance().getTeamManager(game.getGameID()).getTeamList().isEmpty()).isPresent();
     }
 
     public abstract void onPlayerJoin(Player player);

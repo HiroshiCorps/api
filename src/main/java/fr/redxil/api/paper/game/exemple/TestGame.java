@@ -34,7 +34,7 @@ public class TestGame extends GameBuilder {
     @Override
     public void onPlayerLeave(Player player) {
 
-        Optional<Game> gameOptional = API.getInstance().getGame();
+        Optional<Game> gameOptional = API.getInstance().getGameManager().getGameByServerID(API.getInstance().getServerID());
         gameOptional.ifPresent(game -> {
             if (game.getGameState() == GameState.START)
                 stopStart();
@@ -57,7 +57,7 @@ public class TestGame extends GameBuilder {
 
     @Override
     public boolean start() {
-        Optional<Game> gameOptional = API.getInstance().getGame();
+        Optional<Game> gameOptional = API.getInstance().getGameManager().getGameByServerID(API.getInstance().getServerID());
         if (gameOptional.isEmpty())
             return false;
         Game game = gameOptional.get();
@@ -76,7 +76,7 @@ public class TestGame extends GameBuilder {
 
     @Override
     public boolean stopStart() {
-        Optional<Game> gameOptional = API.getInstance().getGame();
+        Optional<Game> gameOptional = API.getInstance().getGameManager().getGameByServerID(API.getInstance().getServerID());
         if (gameOptional.isEmpty())
             return false;
         Game game = gameOptional.get();
@@ -128,7 +128,7 @@ public class TestGame extends GameBuilder {
     }
 
     public void startTimerFinish() {
-        Optional<Game> gameOptional = API.getInstance().getGame();
+        Optional<Game> gameOptional = API.getInstance().getGameManager().getGameByServerID(API.getInstance().getServerID());
         gameOptional.ifPresent(game -> game.setGameState(GameState.GAME));
         timerSystem.setValue(10, TimeUnit.MINUTES);
         /*
