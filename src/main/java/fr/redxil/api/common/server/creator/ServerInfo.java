@@ -11,18 +11,18 @@ public class ServerInfo {
     final ServerType serverType;
     final String serverName;
     final String serverMap;
-    final IpInfo ipInfo;
+    final IpInfo port;
     final Integer maxPlayer;
     final ServerStatus serverStatus;
     final Boolean needGenerate;
-    final ServerAccess serverAccess;
-    final Rank accessRank;
+    ServerAccess serverAccess;
+    Rank accessRank;
 
-    ServerInfo(String serverName, IpInfo ipInfo, ServerType serverType, ServerStatus serverStatus, ServerAccess serverAccess, Rank accessRank, Boolean needGenerate, String serverMap, Integer maxPlayer) {
+    ServerInfo(String serverName, IpInfo port, ServerType serverType, ServerStatus serverStatus, ServerAccess serverAccess, Rank accessRank, Boolean needGenerate, String serverMap, Integer maxPlayer) {
         this.serverType = serverType;
         this.serverName = serverName;
         this.serverMap = serverMap;
-        this.ipInfo = ipInfo;
+        this.port = port;
         this.maxPlayer = maxPlayer;
         this.serverStatus = serverStatus;
         this.needGenerate = needGenerate;
@@ -65,7 +65,7 @@ public class ServerInfo {
      * @return The server ip
      */
     public IpInfo getIpInfo() {
-        return ipInfo;
+        return port;
     }
 
     /**
@@ -98,10 +98,9 @@ public class ServerInfo {
         return accessRank;
     }
 
-    public static class HUBServerInfo extends ServerInfo {
-        public HUBServerInfo(String serverName, IpInfo ipInfo, ServerStatus serverStatus, Boolean needGenerate, Integer maxPlayer) {
-            super(serverName, ipInfo, ServerType.HUB, serverStatus, ServerAccess.LIMITED, Rank.JOUEUR, needGenerate, "hub", maxPlayer + 5);
-        }
+    public void setServerAccess(ServerAccess serverAccess, Rank rank){
+        this.serverAccess = serverAccess;
+        this.accessRank = rank;
     }
 
 }

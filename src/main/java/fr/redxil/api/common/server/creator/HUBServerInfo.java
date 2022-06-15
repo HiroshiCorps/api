@@ -7,7 +7,7 @@ import fr.redxil.api.common.server.type.ServerStatus;
 import fr.xilitra.hiroshisav.enums.ServerType;
 
 public class HUBServerInfo extends ServerInfo {
-    public HUBServerInfo(String serverName, IpInfo ipInfo, ServerStatus serverStatus, Boolean needGenerate, Integer maxPlayer) {
-        super(serverName, ipInfo, ServerType.HUB, serverStatus, ServerAccess.LIMITED, Rank.JOUEUR, needGenerate, "hub", maxPlayer + 5);
+    public HUBServerInfo(String serverName, IpInfo port, ServerStatus serverStatus, Boolean needGenerate, Integer maxPlayer) {
+        super(serverName, port, ServerType.HUB, serverStatus, ServerAccess.LIMITED, Rank.JOUEUR, needGenerate, "hub", maxPlayer + 5);
     }
 }

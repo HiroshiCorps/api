@@ -8,6 +8,11 @@
 
 package fr.redxil.api.common;
 
+import fr.redxil.api.common.game.Game;
+import fr.redxil.api.common.game.GameManager;
+import fr.redxil.api.common.game.Host;
+import fr.redxil.api.common.group.party.PartyManager;
+import fr.redxil.api.common.group.team.TeamManager;
 import fr.redxil.api.common.player.APIPlayerManager;
 import fr.redxil.api.common.player.moderators.ModeratorManager;
 import fr.redxil.api.common.redis.RedisManager;
@@ -85,6 +90,24 @@ public abstract class API {
     public abstract boolean isOnlineMod();
 
     public abstract boolean isVelocity();
+
+    public abstract PartyManager getPartyManager();
+
+    public abstract GameManager getGameManager();
+
+    public abstract Optional<Host> getHost();
+
+    public abstract boolean isHostServer();
+
+    public abstract Optional<Game> getGame();
+
+    public abstract boolean isGameServer();
+
+    public abstract TeamManager getTeamManager(Long game);
+
+    public TeamManager getTeamManager(Game game) {
+        return getTeamManager(game.getGameID());
+    }
 
     public long getResponse() {
         return System.currentTimeMillis();

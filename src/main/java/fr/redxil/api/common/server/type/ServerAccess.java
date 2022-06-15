@@ -28,50 +28,33 @@ public enum ServerAccess {
         return switch (serverType) {
             case HUB, VELOCITY -> ServerAccess.OPEN;
             case HOST, GAME -> ServerAccess.LIMITED;
-            case PRIVATE -> ServerAccess.RANK_SPECIFIC;
         };
     }
 
     public boolean canAccess(Server server, APIPlayer apiOfflinePlayer) {
-        return canAccess(server, this, apiOfflinePlayer.getUUID(), apiOfflinePlayer.getRank());
+        return canAccess(server, apiOfflinePlayer.getUUID(), apiOfflinePlayer.getRank());
     }
 
     public boolean canAccess(Server server, UUID name, Rank rank) {
-        return canAccess(server, this, name, rank);
-    }
 
-    private boolean canAccess(Server server, ServerAccess serverAccess, UUID name, Rank rank) {
-
-        switch (serverAccess) {
-            case LIMITED: {
-
+        switch (this) {
+            case LIMITED -> {
                 return server.getAllowedConnect(name);
-
             }
-            case OPEN: {
-
+            case OPEN -> {
                 return true;
-
             }
-            case MAINTENANCE: {
-
+            case MAINTENANCE -> {
                 return rank.isModeratorRank();
-
             }
-            case RANK_SPECIFIC: {
-
-                return rank == server.getReservedRank().orElse(Rank.JOUEUR);
-
+            case RANK_SPECIFIC -> {
+                return rank == server.getReservedRank().orElse(Rank.JOUEUR) || rank.isModeratorRank();
             }
-            case RANK_SPECIFIC_MIN: {
-
+            case RANK_SPECIFIC_MIN -> {
                 return rank.getRankPower() >= server.getReservedRank().orElse(Rank.JOUEUR).getRankPower();
-
             }
-            case ADMIN: {
-
+            case ADMIN -> {
                 return rank == Rank.ADMINISTRATEUR;
-
             }
         }
 

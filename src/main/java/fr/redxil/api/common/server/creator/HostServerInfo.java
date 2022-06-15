@@ -12,10 +12,12 @@ public class HostServerInfo extends ServerInfo {
     final Long host;
     final TypeGame typeGame;
 
-    public HostServerInfo(String serverName, IpInfo ipInfo, ServerStatus serverStatus, Boolean needGenerate, String serverMap, TypeGame typeGame, Long host) {
-        super(serverName, ipInfo, ServerType.HOST, serverStatus, ServerAccess.LIMITED, Rank.JOUEUR, needGenerate, serverMap, typeGame.getDefaultMaxNPSpec() + typeGame.getDefaultMaxP() + 5);
+    public HostServerInfo(String serverName, IpInfo port, ServerStatus serverStatus, Boolean needGenerate, String serverMap, TypeGame typeGame, Long host) throws GameConfigError{
+        super(serverName, port, ServerType.HOST, serverStatus, ServerAccess.LIMITED, Rank.JOUEUR, needGenerate, serverMap, typeGame.getDefaultMaxNPSpec() + typeGame.getDefaultMaxP() + 5);
         this.host = host;
         this.typeGame = typeGame;
+        if(!this.getTypeGame().getAvailableMap().contains(serverMap))
+            throw new GameConfigError("Map: "+serverMap+" is not available for game: "+typeGame.getName());
     }
 
     public Long getHost() {
