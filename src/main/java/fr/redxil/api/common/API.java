@@ -8,9 +8,7 @@
 
 package fr.redxil.api.common;
 
-import fr.redxil.api.common.game.Game;
 import fr.redxil.api.common.game.GameManager;
-import fr.redxil.api.common.game.Host;
 import fr.redxil.api.common.group.party.PartyManager;
 import fr.redxil.api.common.group.team.TeamManager;
 import fr.redxil.api.common.player.APIPlayerManager;
@@ -94,6 +92,7 @@ public abstract class API {
     public abstract PartyManager getPartyManager();
 
     public abstract GameManager getGameManager();
+
     public abstract TeamManager getTeamManager(Long game);
 
     public long getResponse() {

@@ -104,7 +104,7 @@ public abstract class GameBuilder {
     public abstract void forceWin(Player player, String reason);
 
     public void broadcastTitle(String title, String subtitle) {
-        Bukkit.getOnlinePlayers().forEach(player -> player.spigot().sendMessage(ChatMessageType.SYSTEM, TextComponent.fromLegacyText(title+"\n"+subtitle)));
+        Bukkit.getOnlinePlayers().forEach(player -> player.spigot().sendMessage(ChatMessageType.SYSTEM, TextComponent.fromLegacyText(title + "\n" + subtitle)));
     }
 
     public void broadcastMessage(String message) {
@@ -121,7 +121,7 @@ public abstract class GameBuilder {
     }
 
     public void broadcastTitle(Collection<Player> players, String title, String subtitle) {
-        players.forEach(player -> player.spigot().sendMessage(ChatMessageType.SYSTEM, TextComponent.fromLegacyText(title+"\n"+subtitle)));
+        players.forEach(player -> player.spigot().sendMessage(ChatMessageType.SYSTEM, TextComponent.fromLegacyText(title + "\n" + subtitle)));
     }
 
     public void broadcastMessage(Collection<Player> players, String message) {

@@ -9,8 +9,8 @@
 package fr.redxil.api.common.game;
 
 import fr.redxil.api.common.game.utils.GameState;
+import fr.redxil.api.common.game.utils.PlayerState;
 import fr.redxil.api.common.group.team.Team;
-import fr.redxil.api.common.server.PlayerState;
 import fr.xilitra.hiroshisav.enums.TypeGame;
 
 import javax.annotation.Nullable;

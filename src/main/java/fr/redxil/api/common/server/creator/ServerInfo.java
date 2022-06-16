@@ -98,7 +98,7 @@ public class ServerInfo {
         return accessRank;
     }
 
-    public void setServerAccess(ServerAccess serverAccess, Rank rank){
+    public void setServerAccess(ServerAccess serverAccess, Rank rank) {
         this.serverAccess = serverAccess;
         this.accessRank = rank;
     }
