@@ -2,6 +2,7 @@ package fr.redxil.api.paper.game.exemple;
 
 import fr.redxil.api.common.API;
 import fr.redxil.api.common.game.Game;
+import fr.redxil.api.common.game.error.GameCreateError;
 import fr.redxil.api.common.game.error.GameInitError;
 import fr.redxil.api.common.game.utils.GameState;
 import fr.redxil.api.common.game.utils.PlayerState;
@@ -21,7 +22,7 @@ public class TestGame extends GameBuilder {
 
     TimerSystem timerSystem = new TimerSystem();
 
-    public TestGame(JavaPlugin plugin) throws GameInitError {
+    public TestGame(JavaPlugin plugin) throws GameInitError, GameCreateError {
         super(plugin, TypeGame.UHC6P);
     }
 
@@ -126,6 +127,11 @@ public class TestGame extends GameBuilder {
             player.setGameMode(GameMode.SPECTATOR);
             player.sendMessage("Partie gagné de force par l'équipe: " + winner.getDisplayName());
         });
+    }
+
+    @Override
+    public boolean defaultOfflineHost() {
+        return false;
     }
 
     public void startTimerFinish() {

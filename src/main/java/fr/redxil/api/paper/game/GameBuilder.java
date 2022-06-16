@@ -11,6 +11,7 @@ package fr.redxil.api.paper.game;
 import fr.redxil.api.common.API;
 import fr.redxil.api.common.game.Game;
 import fr.redxil.api.common.game.Host;
+import fr.redxil.api.common.game.error.GameCreateError;
 import fr.redxil.api.common.game.error.GameInitError;
 import fr.redxil.api.common.game.utils.GameState;
 import fr.redxil.api.common.group.team.Team;
@@ -35,7 +36,7 @@ public abstract class GameBuilder {
     private final JavaPlugin plugin;
     private final ChestSystem chestsManager;
 
-    public GameBuilder(JavaPlugin plugin, TypeGame gameEnum) throws GameInitError {
+    public GameBuilder(JavaPlugin plugin, TypeGame gameEnum) throws GameInitError, GameCreateError {
         gameBuilder = this;
 
         initGame(gameEnum);
@@ -48,11 +49,23 @@ public abstract class GameBuilder {
         return Optional.ofNullable(gameBuilder);
     }
 
-    public void initGame(TypeGame gameEnum) throws GameInitError {
+    public void initGame(TypeGame gameEnum) throws GameInitError, GameCreateError {
 
         Optional<Game> gameOptional = API.getInstance().getGameManager().getGameByServerID(API.getInstance().getServerID());
+        if (gameOptional.isEmpty()) {
+            if (API.getInstance().isOnlineMod())
+                throw new GameInitError("Game not init, consider creating game with GameManager.createGame / GameManager.createHost");
+            else if (defaultOfflineHost()) {
+                Optional<Host> optionalHost = API.getInstance().getGameManager().createHost(API.getInstance().getServerID(), 1L, gameEnum);
+                if (optionalHost.isPresent()) {
+                    gameOptional = Optional.of(optionalHost.get());
+                }
+            } else
+                gameOptional = API.getInstance().getGameManager().createGame(API.getInstance().getServerID(), gameEnum);
+        }
+
         if (gameOptional.isEmpty())
-            throw new GameInitError("Game not init, consider creating game with GameManager.createGame / GameManager.createHost");
+            return;
 
         Game game = gameOptional.get();
 
@@ -67,8 +80,10 @@ public abstract class GameBuilder {
             if (apiPlayer.isPresent())
                 apiPlayer.get().switchServer(server.getServerID());
             else {
-                game.setGameState(GameState.CRASHED);
-                throw new GameInitError("Missing host");
+                if (API.getInstance().isOnlineMod()) {
+                    game.setGameState(GameState.CRASHED);
+                    throw new GameInitError("Missing host");
+                }
             }
         }
 
@@ -102,6 +117,13 @@ public abstract class GameBuilder {
     public abstract void forceWin(Team team, String reason);
 
     public abstract void forceWin(Player player, String reason);
+
+    /**
+     * Used for Offline test purpose
+     *
+     * @return True if for host
+     */
+    public abstract boolean defaultOfflineHost();
 
     public void broadcastTitle(String title, String subtitle) {
         Bukkit.getOnlinePlayers().forEach(player -> player.spigot().sendMessage(ChatMessageType.SYSTEM, TextComponent.fromLegacyText(title + "\n" + subtitle)));
