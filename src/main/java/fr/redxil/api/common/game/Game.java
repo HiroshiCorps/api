@@ -10,8 +10,10 @@ package fr.redxil.api.common.game;
 
 import fr.redxil.api.common.game.utils.GameState;
 import fr.redxil.api.common.group.team.Team;
+import fr.redxil.api.common.server.PlayerState;
 import fr.xilitra.hiroshisav.enums.TypeGame;
 
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -110,6 +112,13 @@ public interface Game {
      *
      * @param playerUUID the player uuid
      */
+    boolean isRegistered(UUID playerUUID);
+
+    /**
+     * Check if uuid is in player list
+     *
+     * @param playerUUID the player uuid
+     */
     boolean isPlayer(UUID playerUUID);
 
     /**
@@ -160,41 +169,15 @@ public interface Game {
     /// <!-------------------- Player Part --------------------!>
 
     /**
-     * Get list of ingame player
-     *
-     * @return ingame player list
-     */
-    List<UUID> getConnectedPlayers();
-
-    /**
-     * Get list of ingame player spectator
-     *
-     * @return ingame player spectator list
-     */
-    List<UUID> getPlayerSpectators();
-
-    /**
-     * Get player registered for the game but not connected to the server
-     *
-     * @return list of not connected player
-     */
-    List<UUID> getInConnectPlayer();
-
-    /**
      * Get all player
      *
      * @return list of player
      */
-    List<UUID> getPlayerList();
+    List<UUID> getPlayerList(PlayerState... playerState);
 
-    /**
-     * Change player between player and spectator
-     *
-     * @param player Player to switch
-     * @param bool   Spectator or not
-     * @return true if player had been changed
-     */
-    boolean setSpectator(UUID player, boolean bool);
+    void setPlayerState(UUID player, @Nullable PlayerState playerState);
+
+    PlayerState getPlayerState(UUID player);
 
     /**
      * Check if not registered player can access
@@ -214,13 +197,7 @@ public interface Game {
      */
     boolean joinGame(UUID uuid, boolean spectator);
 
-    /**
-     * Check if server is waiting for the player to connect
-     *
-     * @param player player to check
-     * @return true if player is waited
-     */
-    boolean isInConnectPlayer(UUID player);
+    boolean quitGame(UUID uuid);
 
 
     /// <!-------------------- Settings part --------------------!>

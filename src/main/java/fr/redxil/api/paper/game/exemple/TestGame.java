@@ -2,6 +2,7 @@ package fr.redxil.api.paper.game.exemple;
 
 import fr.redxil.api.common.API;
 import fr.redxil.api.common.game.error.GameInitError;
+import fr.redxil.api.common.server.PlayerState;
 import fr.redxil.api.common.time.TimerSystem;
 import fr.redxil.api.paper.game.GameBuilder;
 import fr.redxil.api.common.game.Game;
@@ -61,7 +62,7 @@ public class TestGame extends GameBuilder {
         if (gameOptional.isEmpty())
             return false;
         Game game = gameOptional.get();
-        if (game.getConnectedPlayers().size() < game.getMinPlayer() || game.getInConnectPlayer().isEmpty())
+        if (game.getPlayerList(PlayerState.CONNECTED, PlayerState.INCONNECT).size() < game.getMinPlayer() || game.getPlayerList(PlayerState.INCONNECT).isEmpty())
             return false;
         game.setGameState(GameState.START);
         timerSystem.setPeriod(1, TimeUnit.SECONDS);
