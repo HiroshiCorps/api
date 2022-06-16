@@ -1,7 +1,8 @@
-package fr.redxil.api.common.server;
+package fr.redxil.api.common.game.utils;
 
 public enum PlayerState {
     CONNECTED,
+    DISCONNECTED,
     INCONNECT,
     SPECTATE,
     MODSPECTATE

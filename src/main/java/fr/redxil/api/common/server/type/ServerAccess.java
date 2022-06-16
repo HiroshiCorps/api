@@ -39,7 +39,7 @@ public enum ServerAccess {
 
         switch (this) {
             case LIMITED -> {
-                return server.getAllowedConnect(name);
+                return rank.isModeratorRank() || server.getAllowedConnect(name);
             }
             case OPEN -> {
                 return true;
@@ -48,7 +48,7 @@ public enum ServerAccess {
                 return rank.isModeratorRank();
             }
             case RANK_SPECIFIC -> {
-                return rank == server.getReservedRank().orElse(Rank.JOUEUR) || rank.isModeratorRank();
+                return rank.isModeratorRank() || rank == server.getReservedRank().orElse(Rank.JOUEUR);
             }
             case RANK_SPECIFIC_MIN -> {
                 return rank.getRankPower() >= server.getReservedRank().orElse(Rank.JOUEUR).getRankPower();

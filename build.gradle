@@ -21,7 +21,7 @@ repositories {
     }
 
     flatDir {
-        dir "../../sad/build/libs"
+        dir "../sad/build/libs"
     }
 
     maven {
