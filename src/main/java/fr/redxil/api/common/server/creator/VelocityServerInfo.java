@@ -8,7 +8,7 @@ import fr.xilitra.hiroshisav.enums.ServerType;
 
 public class VelocityServerInfo extends ServerInfo {
 
-    VelocityServerInfo(String serverName, IpInfo port, ServerStatus serverStatus, Boolean needGenerate, String serverMap, Integer maxPlayer) {
+    public VelocityServerInfo(String serverName, IpInfo port, ServerStatus serverStatus, Boolean needGenerate, String serverMap, Integer maxPlayer) {
         super(serverName, port, ServerType.VELOCITY, serverStatus, ServerAccess.OPEN, Rank.JOUEUR, needGenerate, serverMap, maxPlayer);
     }
 }
