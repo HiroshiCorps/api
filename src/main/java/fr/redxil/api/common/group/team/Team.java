@@ -41,7 +41,7 @@ public interface Team {
      *
      */
 
-    long getGameID();
+    long getServerID();
 
     String getTeamName();
 

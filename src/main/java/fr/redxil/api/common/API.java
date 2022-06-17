@@ -93,7 +93,7 @@ public abstract class API {
 
     public abstract GameManager getGameManager();
 
-    public abstract TeamManager getTeamManager(Long game);
+    public abstract TeamManager getTeamManager(Long serverID);
 
     public long getResponse() {
         return System.currentTimeMillis();

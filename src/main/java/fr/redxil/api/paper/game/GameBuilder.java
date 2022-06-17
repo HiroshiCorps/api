@@ -90,8 +90,7 @@ public abstract class GameBuilder {
     }
 
     public boolean hasTeams() {
-        Optional<Game> gameOptional = API.getInstance().getGameManager().getGameByServerID(API.getInstance().getServerID());
-        return gameOptional.filter(game -> !API.getInstance().getTeamManager(game.getGameID()).getTeamList().isEmpty()).isPresent();
+        return !API.getInstance().getTeamManager(API.getInstance().getServerID()).getTeamList().isEmpty();
     }
 
     public abstract void onPlayerJoin(Player player);
