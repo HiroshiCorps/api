@@ -1,0 +1,17 @@
+package fr.redxil.api.common;
+
+public enum APILoadError {
+
+    SERVER_INFO_MISSING,
+
+    REDIS_CONNECT_ERROR,
+    REDIS_INFO_MISSING,
+
+    SQL_CONNECT_ERROR,
+    SQL_INFO_MISSING,
+
+    REDIS_SQL_INFO_MISSING,
+
+    LOAD_SERVER_ERROR,
+    CREATE_SERVER_ERROR
+}

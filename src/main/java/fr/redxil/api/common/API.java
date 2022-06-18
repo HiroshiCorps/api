@@ -8,6 +8,7 @@
 
 package fr.redxil.api.common;
 
+import fr.redline.pms.utils.IpInfo;
 import fr.redxil.api.common.game.GameManager;
 import fr.redxil.api.common.group.party.PartyManager;
 import fr.redxil.api.common.group.team.TeamManager;
@@ -83,8 +84,6 @@ public abstract class API {
 
     public abstract long getServerID();
 
-    public abstract boolean dataConnected();
-
     public abstract boolean isOnlineMod();
 
     public abstract boolean isVelocity();
@@ -94,6 +93,10 @@ public abstract class API {
     public abstract GameManager getGameManager();
 
     public abstract TeamManager getTeamManager(Long serverID);
+
+    public abstract void loadDB();
+
+    public abstract IpInfo getConnectIpInfo();
 
     public long getResponse() {
         return System.currentTimeMillis();

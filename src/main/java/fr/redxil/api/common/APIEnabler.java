@@ -28,7 +28,7 @@ public interface APIEnabler {
      */
     void onAPIDisabled();
 
-    void onAPILoadFail();
+    void onAPILoadFail(APILoadError apiLoadError);
 
     boolean isPluginEnabled();
 
