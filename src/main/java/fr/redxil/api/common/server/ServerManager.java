@@ -36,7 +36,7 @@ public interface ServerManager {
 
     Optional<Server> createServer(ServerInfo serverInfo);
 
-    Optional<Server> loadServer(Long serverID, String serverName);
+    Optional<Server> loadServer(Long serverID);
 
     Optional<Server> getConnectableServer(APIPlayer apiPlayer, ServerType serverType);
 
