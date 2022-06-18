@@ -14,12 +14,8 @@ import fr.redxil.api.common.group.party.PartyManager;
 import fr.redxil.api.common.group.team.TeamManager;
 import fr.redxil.api.common.player.APIPlayerManager;
 import fr.redxil.api.common.player.moderators.ModeratorManager;
-import fr.redxil.api.common.redis.RedisManager;
 import fr.redxil.api.common.server.Server;
 import fr.redxil.api.common.server.ServerManager;
-import fr.redxil.api.common.sql.SQLConnection;
-
-import java.util.Optional;
 
 public abstract class API {
 
@@ -37,9 +33,6 @@ public abstract class API {
     public static boolean isAPIEnabled() {
         return getInstance() != null;
     }
-
-
-    public abstract Optional<RedisManager> getRedisManager();
 
     /**
      * Get the instance of the player manager
@@ -77,8 +70,6 @@ public abstract class API {
      * @return Root plugin instance
      */
     public abstract APIEnabler getAPIEnabler();
-
-    public abstract Optional<SQLConnection> getSQLConnection();
 
     public abstract void shutdown();
 
