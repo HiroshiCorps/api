@@ -1,5 +1,7 @@
 package fr.redxil.api.paper;
 
+import java.io.File;
+
 public abstract class PaperAPI {
     static PaperAPI instance;
 
@@ -10,4 +12,6 @@ public abstract class PaperAPI {
     public static PaperAPI getInstance() {
         return instance;
     }
+
+    abstract public File getCoreFile();
 }

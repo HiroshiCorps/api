@@ -1,6 +1,5 @@
 package fr.redxil.api.paper.utils;
 
-import fr.redxil.api.common.API;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Sound;
@@ -10,17 +9,18 @@ import java.lang.reflect.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.logging.Level;
 
 public class Reflection {
     public static void playSound(Player player, Location location, String soundName, float volume, float pitch) {
         try {
             Class<?> soundClass = getClass("org.bukkit.Sound");
+            assert soundClass != null;
             Sound sound = (Sound) soundClass.getField(soundName).get(null);
 
             Method playSoundMethod = getMethod(player.getClass(), "playSound", Location.class, Sound.class, float.class, float.class);
             playSoundMethod.invoke(player, location, sound, volume, pitch);
-        } catch (Exception ex) {
+        } catch (NullPointerException | NoSuchMethodException | InvocationTargetException | IllegalAccessException |
+                 NoSuchFieldException ex) {
             throw new RuntimeException(ex);
         }
     }
@@ -52,7 +52,7 @@ public class Reflection {
             Object playerConnection = playerConnectionField.get(entityPlayer);
 
             sendPacketMethod.invoke(playerConnection, packet);
-        } catch (Exception ex) {
+        } catch (NullPointerException | InvocationTargetException | NoSuchMethodException | IllegalAccessException ex) {
             throw new RuntimeException(ex);
         }
     }
@@ -148,7 +148,6 @@ public class Reflection {
         try {
             return getMethod(obj.getClass(), "getHandle").invoke(obj);
         } catch (Exception e) {
-            API.getInstance().getAPIEnabler().printLog(Level.INFO, "Reflection failed for getHandle Entity.");
             e.printStackTrace();
             return null;
         }

@@ -78,8 +78,6 @@ public abstract class API {
 
     public abstract boolean isOnlineMod();
 
-    public abstract boolean isVelocity();
-
     public abstract PartyManager getPartyManager();
 
     public abstract GameManager getGameManager();

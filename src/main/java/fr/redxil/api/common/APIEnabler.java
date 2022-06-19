@@ -10,10 +10,11 @@ package fr.redxil.api.common;
 
 import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.server.creator.ServerInfo;
+import fr.redxil.api.paper.PaperAPI;
 
 import java.io.File;
 import java.util.UUID;
-import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public interface APIEnabler {
 
@@ -37,11 +38,22 @@ public interface APIEnabler {
     void setPluginEnable(boolean value);
 
     /**
-     * Get the dat folder for the plugin
+     * Get the data folder for the plugin
      *
      * @return the specific plugin folder
      */
     File getPluginDataFolder();
+
+    /**
+     * Get the data folder for the Core plugin
+     *
+     * @return the specific plugin folder
+     */
+    default File getCoreDataFolder() {
+        if (isVelocity())
+            return getPluginDataFolder();
+        else return PaperAPI.getInstance().getCoreFile();
+    }
 
     /**
      * Get the current CORE version
@@ -57,14 +69,7 @@ public interface APIEnabler {
      */
     String getServerVersion();
 
-    /**
-     * Log a given message at the current level into
-     * the console
-     *
-     * @param level Log level
-     * @param text  Log test
-     */
-    void printLog(Level level, String text);
+    Logger getLogger();
 
     void sendMessage(APIPlayer apiPlayer, String message);
 
@@ -73,5 +78,9 @@ public interface APIEnabler {
     void sendMessage(UUID uuid, String message);
 
     ServerInfo getServerInfo();
+
+    default boolean isVelocity() {
+        return false;
+    }
 
 }
