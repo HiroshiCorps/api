@@ -20,6 +20,7 @@ import fr.redxil.api.common.server.ServerManager;
 public abstract class API {
 
     protected static API instance = null;
+    protected static boolean enabled = false;
 
     /**
      * Get the instance of the API
@@ -31,7 +32,7 @@ public abstract class API {
     }
 
     public static boolean isAPIEnabled() {
-        return getInstance() != null;
+        return enabled && instance != null;
     }
 
     /**
@@ -85,7 +86,7 @@ public abstract class API {
 
     public abstract TeamManager getTeamManager(Long serverID);
 
-    public abstract void loadDB();
+    public abstract void initPhase(APIPhaseInit apiPhaseInit, APIEnabler apiEnabler);
 
     public abstract IpInfo getConnectIpInfo();
 
