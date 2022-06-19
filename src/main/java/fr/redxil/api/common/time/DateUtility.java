@@ -8,10 +8,11 @@
 
 package fr.redxil.api.common.time;
 
+import javax.annotation.Nullable;
 import java.sql.Timestamp;
 import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 public class DateUtility {
@@ -34,90 +35,76 @@ public class DateUtility {
         return null;
     }
 
-    public static long getTimeStampLong(TimeUnit s) {
+    public static Timestamp getTimeStamp(TimeUnit s) {
         switch (s) {
             case NANOSECONDS -> {
-                return 1L;
+                return new Timestamp(1L);
             }
             case MICROSECONDS -> {
-                return 10L;
+                return new Timestamp(10L);
             }
             case MILLISECONDS -> {
-                return 100L;
+                return new Timestamp(100L);
             }
             case SECONDS -> {
-                return 1000L;
+                return new Timestamp(1000L);
             }
             case MINUTES -> {
-                return 60000L;
+                return new Timestamp(60000L);
             }
             case HOURS -> {
-                return 3600000L;
+                return new Timestamp(3600000L);
             }
             case DAYS -> {
-                return 86400000L;
+                return new Timestamp(86400000L);
             }
         }
-        return 0L;
+        return null;
     }
 
-    public static long toTimeStamp(String timeArgs) {
-
-        if (timeArgs.equals("perm"))
-            return -1L;
+    public static Optional<Timestamp> toTimeStamp(String timeArgs) {
 
         TimeUnit timeUnit = getTimerUnit(timeArgs.charAt(timeArgs.length() - 1));
         if (timeUnit != null) {
             timeArgs = timeArgs.replace(Character.valueOf(timeArgs.charAt(timeArgs.length() - 1)).toString(), "");
             try {
-                return Integer.parseInt(timeArgs) * getTimeStampLong(timeUnit);
+                Timestamp timestamp = getTimeStamp(timeUnit);
+                assert timestamp != null;
+                return Optional.of(new Timestamp(Integer.parseInt(timeArgs) * timestamp.getTime()));
             } catch (NumberFormatException ignored) {
             }
         }
 
-        return -2L;
+        return Optional.empty();
 
     }
 
-    public static long addToCurrentTimeStamp(long timeArgs) {
+    public static Timestamp addToCurrentTimeStamp(Timestamp timeArgs) {
 
-        long durationTime = getCurrentTimeStamp();
-        if (timeArgs == -1L) return -1L;
-        return durationTime + timeArgs;
+        return sumTimeStamp(getCurrentTimeStamp(), timeArgs);
 
     }
 
-    public static long sumTimeStamp(long timeArgs1, long timeArgs2) {
+    public static Timestamp sumTimeStamp(Timestamp timeArgs1, Timestamp timeArgs2) {
 
-        if (timeArgs1 == -1L || timeArgs2 == -1L) return -1L;
-
-        return timeArgs1 + timeArgs2;
+        return new Timestamp(timeArgs1.getTime() + timeArgs2.getTime());
 
     }
 
-    public static long getCurrentTimeStamp() {
+    public static Timestamp getCurrentTimeStamp() {
 
-        return new Timestamp(System.currentTimeMillis()).getTime();
+        return new Timestamp(System.currentTimeMillis());
 
     }
 
-    public static boolean isANumber(String value) {
-        try {
-            Integer.parseInt(value);
-            return true;
-        } catch (NumberFormatException ignored) {
-            return false;
-        }
-    }
+    public static String getMessage(@Nullable Timestamp time) {
 
-    public static String getMessage(long time) {
-
-        if (time < 0)
+        if (time == null)
             return "permanent";
         else
             return DateFormat.getDateTimeInstance(
                     DateFormat.SHORT, DateFormat.SHORT,
-                    Locale.FRANCE).format(new Date(time).getTime());
+                    Locale.FRANCE).format(time.getTime());
 
     }
 

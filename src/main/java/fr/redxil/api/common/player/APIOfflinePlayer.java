@@ -71,9 +71,9 @@ public interface APIOfflinePlayer {
 
     void loadSanction();
 
-    Optional<SanctionInfo> banPlayer(String reason, long time, APIPlayerModerator author);
+    Optional<SanctionInfo> banPlayer(String reason, Timestamp time, APIPlayerModerator author);
 
-    Optional<SanctionInfo> mutePlayer(String reason, long time, APIPlayerModerator author);
+    Optional<SanctionInfo> mutePlayer(String reason, Timestamp time, APIPlayerModerator author);
 
     Optional<SanctionInfo> warnPlayer(String reason, APIPlayerModerator author);
 

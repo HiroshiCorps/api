@@ -11,6 +11,9 @@ package fr.redxil.api.common.player.data;
 import fr.redxil.api.common.message.TextComponentBuilder;
 import fr.redxil.api.common.utils.SanctionType;
 
+import java.sql.Timestamp;
+import java.util.Optional;
+
 public interface SanctionInfo {
 
 
@@ -24,15 +27,15 @@ public interface SanctionInfo {
 
     String getReason();
 
-    Long getCanceller();
+    Optional<Long> getCanceller();
 
     void setCanceller(long playerID);
 
     boolean isCancelled();
 
-    long getSanctionDateTS();
+    Timestamp getSanctionDateTS();
 
-    long getSanctionEndTS();
+    Optional<Timestamp> getSanctionEndTS();
 
     boolean hasSanctionEnd();
 
