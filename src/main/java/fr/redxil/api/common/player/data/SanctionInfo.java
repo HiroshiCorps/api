@@ -17,11 +17,11 @@ import java.util.Optional;
 public interface SanctionInfo {
 
 
-    Integer getSanctionID();
+    Optional<Long> getSanctionID();
 
-    long getTargetID();
+    Long getTargetID();
 
-    long getAuthorID();
+    Long getAuthorID();
 
     SanctionType getSanctionType();
 

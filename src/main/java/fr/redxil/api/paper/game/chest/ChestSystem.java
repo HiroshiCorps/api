@@ -52,9 +52,11 @@ public class ChestSystem {
 
         for (Chest chest : getChests(chestLegendary)) {
 
-            org.bukkit.block.Chest bukkitChest = chest.getChest();
+            Optional<org.bukkit.block.Chest> bukkitChestOpt = chest.getChest();
 
-            if (bukkitChest == null) continue;
+            if (bukkitChestOpt.isEmpty()) continue;
+
+            org.bukkit.block.Chest bukkitChest = bukkitChestOpt.get();
 
             bukkitChest.getBlockInventory().clear();
             ListRandomizer<Integer> integerRandomizer = new ListRandomizer<>();

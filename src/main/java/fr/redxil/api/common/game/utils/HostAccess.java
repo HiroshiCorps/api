@@ -8,6 +8,8 @@
 
 package fr.redxil.api.common.game.utils;
 
+import java.util.Optional;
+
 public enum HostAccess {
     OPEN("open"),
     FRIEND("friend"),
@@ -19,11 +21,11 @@ public enum HostAccess {
         this.name = name;
     }
 
-    public static HostAccess getStatus(String name) {
+    public static Optional<HostAccess> getStatus(String name) {
         for (HostAccess hs : values())
             if (hs.toString().equals(name))
-                return hs;
-        return null;
+                return Optional.of(hs);
+        return Optional.empty();
     }
 
     public String toString() {

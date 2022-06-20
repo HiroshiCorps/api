@@ -8,6 +8,8 @@
 
 package fr.redxil.api.common.player.rank;
 
+import java.util.Optional;
+
 public enum Rank {
 
     SERVER(8, 999L, true,
@@ -94,18 +96,18 @@ public enum Rank {
         this.scoreboardString = scoreboardString;
     }
 
-    public static Rank getRank(long power) {
+    public static Optional<Rank> getRank(long power) {
         for (Rank rank : Rank.values())
             if (rank.getRankPower() == power)
-                return rank;
-        return null;
+                return Optional.of(rank);
+        return Optional.empty();
     }
 
-    public static Rank getRank(String name) {
+    public static Optional<Rank> getRank(String name) {
         for (Rank rank : Rank.values())
             if (rank.getRankName().equals(name))
-                return rank;
-        return null;
+                return Optional.of(rank);
+        return Optional.empty();
     }
 
     public String getScoreboardString() {

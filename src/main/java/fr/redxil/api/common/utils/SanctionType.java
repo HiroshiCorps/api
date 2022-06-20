@@ -8,6 +8,8 @@
 
 package fr.redxil.api.common.utils;
 
+import java.util.Optional;
+
 public enum SanctionType {
 
     BAN(1),
@@ -21,25 +23,25 @@ public enum SanctionType {
         this.id = id;
     }
 
-    public static SanctionType getSanctionType(int id) {
+    public static Optional<SanctionType> getSanctionType(int id) {
 
         for (SanctionType st : values())
             if (st.getID() == id)
-                return st;
+                return Optional.of(st);
 
-        return null;
+        return Optional.empty();
 
     }
 
-    public static SanctionType getSanctionType(String name) {
+    public static Optional<SanctionType> getSanctionType(String name) {
 
         name = name.toUpperCase();
 
         for (SanctionType st : values())
             if (st.getName().equals(name))
-                return st;
+                return Optional.of(st);
 
-        return null;
+        return Optional.empty();
 
     }
 

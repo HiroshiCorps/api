@@ -10,6 +10,8 @@ package fr.redxil.api.common.group.party;
 
 import net.md_5.bungee.api.ChatColor;
 
+import java.util.Optional;
+
 public enum PartyRank {
     OWNER("Owner", ChatColor.GOLD, 100),
     ADMIN("Admin", ChatColor.RED, 50),
@@ -25,11 +27,11 @@ public enum PartyRank {
         this.rankName = name;
     }
 
-    public static PartyRank getPartyRank(String rankName) {
+    public static Optional<PartyRank> getPartyRank(String rankName) {
         for (PartyRank pr : values())
             if (pr.getRankName().equals(rankName))
-                return pr;
-        return null;
+                return Optional.of(pr);
+        return Optional.empty();
     }
 
     public String getRankName() {

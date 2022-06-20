@@ -8,6 +8,8 @@
 
 package fr.redxil.api.common.game.utils;
 
+import java.util.Optional;
+
 public enum GameState {
 
     WAITING("WAIT"),
@@ -22,12 +24,12 @@ public enum GameState {
         this.name = name;
     }
 
-    public static GameState getState(String name) {
+    public static Optional<GameState> getState(String name) {
         for (GameState gs : values())
             if (gs.getName().equals(name))
-                return gs;
+                return Optional.of(gs);
 
-        return null;
+        return Optional.empty();
     }
 
     public String getName() {

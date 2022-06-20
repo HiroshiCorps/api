@@ -8,6 +8,7 @@
 
 package fr.redxil.api.common.time;
 
+import java.util.Optional;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -61,42 +62,32 @@ public class TimerSystem implements Runnable {
             startTimer();
     }
 
-    public Double getValue(TimeUnit timeEnum) {
+    public Optional<Double> getValue(TimeUnit timeEnum) {
         switch (timeEnum) {
             case MILLISECONDS -> {
-                return milli;
+                return Optional.of(milli);
             }
             case SECONDS -> {
-                return sec;
+                return Optional.of(sec);
             }
             case MINUTES -> {
-                return min;
+                return Optional.of(min);
             }
             case HOURS -> {
-                return hours;
+                return Optional.of(hours);
             }
             default -> {
-                return null;
+                return Optional.empty();
             }
         }
     }
 
     public void setValue(double value, TimeUnit timeEnum) {
         switch (timeEnum) {
-            case MILLISECONDS -> {
-                this.milli = value;
-            }
-            case SECONDS -> {
-                this.sec = value;
-            }
-            case MINUTES -> {
-                this.min = value;
-            }
-            case HOURS -> {
-                this.hours = value;
-            }
-            default -> {
-            }
+            case MILLISECONDS -> this.milli = value;
+            case SECONDS -> this.sec = value;
+            case MINUTES -> this.min = value;
+            case HOURS -> this.hours = value;
         }
     }
 
@@ -173,24 +164,25 @@ public class TimerSystem implements Runnable {
     }
 
     private boolean canStart(TimeUnit timeUnit) {
+        Optional<Double> value = getValue(timeUnit);
         switch (timeUnit) {
             case MILLISECONDS -> {
-                if (getValue(timeUnit) != 0)
+                if (value.isPresent() && value.get() != 0)
                     return true;
                 else return canStart(TimeUnit.SECONDS);
             }
             case SECONDS -> {
-                if (getValue(timeUnit) != 0)
+                if (value.isPresent() && value.get() != 0)
                     return true;
                 else return canStart(TimeUnit.MINUTES);
             }
             case MINUTES -> {
-                if (getValue(timeUnit) != 0)
+                if (value.isPresent() && value.get() != 0)
                     return true;
                 else return canStart(TimeUnit.HOURS);
             }
             case HOURS -> {
-                return getValue(timeUnit) != 0;
+                return value.isPresent() && value.get() != 0;
             }
             default -> {
                 return false;

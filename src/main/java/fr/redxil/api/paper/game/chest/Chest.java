@@ -11,6 +11,8 @@ package fr.redxil.api.paper.game.chest;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 
+import java.util.Optional;
+
 public class Chest {
 
     final Location location;
@@ -29,13 +31,13 @@ public class Chest {
         return chestLegendary;
     }
 
-    public org.bukkit.block.Chest getChest() {
+    public Optional<org.bukkit.block.Chest> getChest() {
 
         Block block = location.getBlock();
         if (block.getState() instanceof org.bukkit.block.Chest)
-            return (org.bukkit.block.Chest) block.getState();
+            return Optional.of((org.bukkit.block.Chest) block.getState());
 
-        return null;
+        return Optional.empty();
 
     }
 

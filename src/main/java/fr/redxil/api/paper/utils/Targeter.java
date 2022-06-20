@@ -4,24 +4,26 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
+import java.util.Optional;
+
 /*
  * Code from https://bukkit.org/threads/get-entity-player-is-looking.300661/
  */
 
 public class Targeter {
 
-    public static Player getTargetPlayer(final Player player) {
+    public static Optional<Player> getTargetPlayer(final Player player) {
         return getTarget(player, player.getWorld().getPlayers());
     }
 
-    public static Entity getTargetEntity(final Entity entity) {
+    public static Optional<Entity> getTargetEntity(final Entity entity) {
         return getTarget(entity, entity.getWorld().getEntities());
     }
 
-    public static <T extends Entity> T getTarget(final Entity entity,
-                                                 final Iterable<T> entities) {
+    public static <T extends Entity> Optional<T> getTarget(final Entity entity,
+                                                           final Iterable<T> entities) {
         if (entity == null)
-            return null;
+            return Optional.empty();
         T target = null;
         final double threshold = 1;
         for (final T other : entities) {
@@ -38,7 +40,7 @@ public class Targeter {
                     target = other;
             }
         }
-        return target;
+        return Optional.ofNullable(target);
     }
 
 }

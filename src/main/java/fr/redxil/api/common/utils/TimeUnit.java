@@ -1,5 +1,7 @@
 package fr.redxil.api.common.utils;
 
+import java.util.Optional;
+
 public enum TimeUnit {
 
     TICKS,
@@ -8,38 +10,24 @@ public enum TimeUnit {
     HOURS,
     DAYS;
 
-    public static int convertToTick(int time, TimeUnit unitTime) {
-        switch (unitTime) {
-            case SECONDS:
-                time *= 20;
-                break;
-            case MINUTES:
-                time *= 20 * 60;
-                break;
-            case HOURS:
-                time *= 20 * 60 * 60;
-                break;
-            case DAYS:
-                time *= 20 * 60 * 60 * 24;
-            default:
-                time = 0;
-        }
-        return time;
+    public static Optional<Integer> convertToTick(int time, TimeUnit unitTime) {
+        return switch (unitTime) {
+            case SECONDS -> Optional.of(time * 20);
+            case MINUTES -> Optional.of(time * 20 * 60);
+            case HOURS -> Optional.of(time * 20 * 60 * 60);
+            case DAYS -> Optional.of(time * 20 * 60 * 60 * 24);
+            default -> Optional.empty();
+        };
     }
 
-    public java.util.concurrent.TimeUnit toJavaTimeUnit() {
-        switch (this) {
-            case SECONDS:
-                return java.util.concurrent.TimeUnit.SECONDS;
-            case MINUTES:
-                return java.util.concurrent.TimeUnit.MINUTES;
-            case HOURS:
-                return java.util.concurrent.TimeUnit.HOURS;
-            case DAYS:
-                return java.util.concurrent.TimeUnit.DAYS;
-            default:
-                return null;
-        }
+    public Optional<java.util.concurrent.TimeUnit> toJavaTimeUnit() {
+        return switch (this) {
+            case SECONDS -> Optional.of(java.util.concurrent.TimeUnit.SECONDS);
+            case MINUTES -> Optional.of(java.util.concurrent.TimeUnit.MINUTES);
+            case HOURS -> Optional.of(java.util.concurrent.TimeUnit.HOURS);
+            case DAYS -> Optional.of(java.util.concurrent.TimeUnit.DAYS);
+            default -> Optional.empty();
+        };
     }
 
 }

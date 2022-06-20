@@ -8,6 +8,8 @@
 
 package fr.redxil.api.common.group.party;
 
+import java.util.Optional;
+
 public enum PartyAccess {
     CLOSE("close"),
     INVITE("invite"),
@@ -19,11 +21,11 @@ public enum PartyAccess {
         this.rankName = name;
     }
 
-    public static PartyAccess getPartyAccess(String rankName) {
+    public static Optional<PartyAccess> getPartyAccess(String rankName) {
         for (PartyAccess pr : values())
             if (pr.getAccessName().equals(rankName))
-                return pr;
-        return null;
+                return Optional.of(pr);
+        return Optional.empty();
     }
 
     public String getAccessName() {

@@ -10,6 +10,7 @@ package fr.redxil.api.common.group.party;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface Party {
@@ -52,7 +53,7 @@ public interface Party {
      * @param apiPlayer UUID du joueur
      * @return Retourne le rank du joueur apiPlayer
      */
-    PartyRank getPartyRank(UUID apiPlayer);
+    Optional<PartyRank> getPartyRank(UUID apiPlayer);
 
     /**
      * @return etat de la partie ( si elle est ouverte, fermé, ou avec invitation)

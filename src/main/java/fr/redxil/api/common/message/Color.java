@@ -8,6 +8,8 @@
 
 package fr.redxil.api.common.message;
 
+import java.util.Optional;
+
 public enum Color {
     BLACK('0', 0, 0, 0),
     DARK_BLUE('1', 0, 0, 170),
@@ -37,14 +39,14 @@ public enum Color {
         this.blue = b;
     }
 
-    public static Color getByChar(char car) {
+    public static Optional<Color> getByChar(char car) {
         for (Color color : values())
             if (color.getChar() == car)
-                return color;
-        return null;
+                return Optional.of(color);
+        return Optional.empty();
     }
 
-    public static Color getByMOTD(String motd) {
+    public static Optional<Color> getByMOTD(String motd) {
         return getByChar(motd.charAt(motd.length() - 1));
     }
 

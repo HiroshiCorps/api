@@ -17,60 +17,60 @@ import java.util.concurrent.TimeUnit;
 
 public class DateUtility {
 
-    public static TimeUnit getTimerUnit(char s) {
+    public static Optional<TimeUnit> getTimerUnit(char s) {
         switch (s) {
             case 's' -> {
-                return TimeUnit.SECONDS;
+                return Optional.of(TimeUnit.SECONDS);
             }
             case 'm' -> {
-                return TimeUnit.MINUTES;
+                return Optional.of(TimeUnit.MINUTES);
             }
             case 'h' -> {
-                return TimeUnit.HOURS;
+                return Optional.of(TimeUnit.HOURS);
             }
             case 'j' -> {
-                return TimeUnit.DAYS;
+                return Optional.of(TimeUnit.DAYS);
             }
         }
-        return null;
+        return Optional.empty();
     }
 
-    public static Timestamp getTimeStamp(TimeUnit s) {
+    public static Optional<Timestamp> getTimeStamp(TimeUnit s) {
         switch (s) {
             case NANOSECONDS -> {
-                return new Timestamp(1L);
+                return Optional.of(new Timestamp(1L));
             }
             case MICROSECONDS -> {
-                return new Timestamp(10L);
+                return Optional.of(new Timestamp(10L));
             }
             case MILLISECONDS -> {
-                return new Timestamp(100L);
+                return Optional.of(new Timestamp(100L));
             }
             case SECONDS -> {
-                return new Timestamp(1000L);
+                return Optional.of(new Timestamp(1000L));
             }
             case MINUTES -> {
-                return new Timestamp(60000L);
+                return Optional.of(new Timestamp(60000L));
             }
             case HOURS -> {
-                return new Timestamp(3600000L);
+                return Optional.of(new Timestamp(3600000L));
             }
             case DAYS -> {
-                return new Timestamp(86400000L);
+                return Optional.of(new Timestamp(86400000L));
             }
         }
-        return null;
+        return Optional.empty();
     }
 
     public static Optional<Timestamp> toTimeStamp(String timeArgs) {
 
-        TimeUnit timeUnit = getTimerUnit(timeArgs.charAt(timeArgs.length() - 1));
-        if (timeUnit != null) {
+        Optional<TimeUnit> timeUnit = getTimerUnit(timeArgs.charAt(timeArgs.length() - 1));
+        if (timeUnit.isPresent()) {
             timeArgs = timeArgs.replace(Character.valueOf(timeArgs.charAt(timeArgs.length() - 1)).toString(), "");
             try {
-                Timestamp timestamp = getTimeStamp(timeUnit);
-                assert timestamp != null;
-                return Optional.of(new Timestamp(Integer.parseInt(timeArgs) * timestamp.getTime()));
+                Optional<Timestamp> timestamp = getTimeStamp(timeUnit.get());
+                if (timestamp.isPresent())
+                    return Optional.of(new Timestamp(Integer.parseInt(timeArgs) * timestamp.get().getTime()));
             } catch (NumberFormatException ignored) {
             }
         }

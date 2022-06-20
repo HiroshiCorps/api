@@ -8,6 +8,8 @@
 
 package fr.redxil.api.common.player.moderators;
 
+import java.util.Optional;
+
 public enum Actions {
 
     BAN("ban"), MUTE("mute"), KICK("kick"), WARN("warn");
@@ -18,13 +20,13 @@ public enum Actions {
         this.name = name;
     }
 
-    public static Actions getAction(String name) {
+    public static Optional<Actions> getAction(String name) {
         for (Actions action : Actions.values()) {
             if (action.getName().equalsIgnoreCase(name)) {
-                return action;
+                return Optional.of(action);
             }
         }
-        return null;
+        return Optional.empty();
     }
 
     public String getName() {
