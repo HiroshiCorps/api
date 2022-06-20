@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class TimerSystem implements Runnable {
 
     double milli = 0d, sec = 0d, min = 0d, hours = 0d;
-    ScheduledExecutorService timer;
+    ScheduledExecutorService timer = null;
     TimerListener timerListener = null;
     int period = 1;
     TimeUnit timeUnit = TimeUnit.SECONDS;
