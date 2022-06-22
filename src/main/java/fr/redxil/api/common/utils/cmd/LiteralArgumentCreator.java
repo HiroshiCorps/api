@@ -1,15 +1,12 @@
 package fr.redxil.api.common.utils.cmd;
 
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.tree.LiteralCommandNode;
-
-import java.util.function.BiConsumer;
 
 public class LiteralArgumentCreator<C> extends CommandSystem<C> {
 
-    public LiteralArgumentCreator(String name, BiConsumer<CommandContext<C>, String> executor) {
-        super(name, executor);
+    public LiteralArgumentCreator(String name) {
+        super(name);
     }
 
     @Override

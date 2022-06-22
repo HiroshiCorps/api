@@ -13,13 +13,16 @@ import java.util.function.Predicate;
 public abstract class CommandSystem<C> {
 
     final String name;
-    final BiConsumer<CommandContext<C>, String> executor;
+    BiConsumer<CommandContext<C>, String> executor;
     Predicate<C> require = null;
     CommandSystem<C> then = null;
     List<CommandSystem<C>> argumentCreatorCreatorList = new ArrayList<>();
 
-    protected CommandSystem(String name, BiConsumer<CommandContext<C>, String> executor) {
+    protected CommandSystem(String name) {
         this.name = name;
+    }
+
+    public void setExecutor(BiConsumer<CommandContext<C>, String> executor) {
         this.executor = executor;
     }
 
@@ -28,14 +31,23 @@ public abstract class CommandSystem<C> {
         return this;
     }
 
+    public ArgumentCreator<C> createArgument(String argName, ArgumentType<?> argumentType, BiConsumer<CommandContext<C>, String> executor) {
+        ArgumentCreator<C> arg = new ArgumentCreator<>(argName, argumentType);
+        arg.setExecutor(executor);
+        addArgument(arg);
+        return arg;
+    }
+
     public ArgumentCreator<C> createThen(String argName, ArgumentType<?> argumentType, BiConsumer<CommandContext<C>, String> executor) {
-        ArgumentCreator<C> arg = new ArgumentCreator<>(argName, argumentType, executor);
+        ArgumentCreator<C> arg = new ArgumentCreator<>(argName, argumentType);
+        arg.setExecutor(executor);
         setThen(arg);
         return arg;
     }
 
     public LiteralArgumentCreator<C> createLiteralThen(String argName, BiConsumer<CommandContext<C>, String> executor) {
-        LiteralArgumentCreator<C> arg = new LiteralArgumentCreator<>(argName, executor);
+        LiteralArgumentCreator<C> arg = new LiteralArgumentCreator<>(argName);
+        arg.setExecutor(executor);
         setThen(arg);
         return arg;
     }
@@ -47,7 +59,8 @@ public abstract class CommandSystem<C> {
     }
 
     public LiteralArgumentCreator<C> createLiteralArgument(String argName, BiConsumer<CommandContext<C>, String> executor) {
-        LiteralArgumentCreator<C> arg = new LiteralArgumentCreator<>(argName, executor);
+        LiteralArgumentCreator<C> arg = new LiteralArgumentCreator<>(argName);
+        arg.setExecutor(executor);
         addArgument(arg);
         return arg;
     }
@@ -59,7 +72,7 @@ public abstract class CommandSystem<C> {
     }
 
 
-    protected <T extends ArgumentBuilder<C, T>> ArgumentBuilder<C, T> updateBuilder(ArgumentBuilder<C, T> builder) {
+    protected <T extends ArgumentBuilder<C, T>> void updateBuilder(ArgumentBuilder<C, T> builder) {
         if (then != null)
             builder.then(then.build());
         builder.executes(context -> {
@@ -68,7 +81,6 @@ public abstract class CommandSystem<C> {
         });
         if (require != null)
             builder.requires(require);
-        return builder;
     }
 
     protected CommandNode<C> updateNode(CommandNode<C> commandNode) {
@@ -77,5 +89,9 @@ public abstract class CommandSystem<C> {
     }
 
     public abstract CommandNode<C> build();
+
+    public String getName() {
+        return this.name;
+    }
 
 }

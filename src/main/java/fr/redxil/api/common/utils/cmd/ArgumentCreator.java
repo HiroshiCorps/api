@@ -2,19 +2,16 @@ package fr.redxil.api.common.utils.cmd;
 
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
 import com.mojang.brigadier.tree.CommandNode;
-
-import java.util.function.BiConsumer;
 
 public class ArgumentCreator<C> extends CommandSystem<C> {
 
     ArgumentType<?> argumentType;
     SuggestionProvider<C> suggestionProvider = null;
 
-    public ArgumentCreator(String name, ArgumentType<?> argumentType, BiConsumer<CommandContext<C>, String> executor) {
-        super(name, executor);
+    public ArgumentCreator(String name, ArgumentType<?> argumentType) {
+        super(name);
         this.argumentType = argumentType;
     }
 
