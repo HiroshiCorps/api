@@ -81,7 +81,7 @@ public class TextComponentBuilderSpigot extends TextComponentBuilder {
 
     @Override
     public TextComponent getFinalTextComponent() {
-        return ((TextComponentBuilderSpigot) getFinalTextComponentBuilder()).getFinalTextComponent();
+        return ((TextComponentBuilderSpigot) getFinalTextComponentBuilder()).getTextComponent();
     }
 
 }

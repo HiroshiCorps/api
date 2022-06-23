@@ -8,7 +8,6 @@
 
 package fr.redxil.api.common;
 
-import fr.redxil.api.common.player.APIPlayer;
 import fr.redxil.api.common.server.creator.ServerInfo;
 import fr.redxil.api.paper.PaperAPI;
 
@@ -71,11 +70,9 @@ public interface APIEnabler {
 
     Logger getLogger();
 
-    void sendMessage(APIPlayer apiPlayer, String message);
+    boolean sendMessage(String pseudo, String message);
 
-    void sendMessage(String pseudo, String message);
-
-    void sendMessage(UUID uuid, String message);
+    boolean sendMessage(UUID uuid, String message);
 
     ServerInfo getServerInfo();
 
