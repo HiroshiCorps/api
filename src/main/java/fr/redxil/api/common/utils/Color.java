@@ -66,12 +66,8 @@ public enum Color {
         return blue;
     }
 
-    public java.awt.Color getColor() {
-        return new java.awt.Color(getRed(), getGreen(), getBlue());
-    }
-
     public String getMOTD() {
-        return "/uA00A7" + getChar();
+        return "§" + getChar();
     }
 
     @Override
