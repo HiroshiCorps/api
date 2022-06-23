@@ -8,7 +8,6 @@
 
 package fr.redxil.api.common.player.data;
 
-import fr.redxil.api.common.message.TextComponentBuilder;
 import fr.redxil.api.common.utils.SanctionType;
 
 import java.sql.Timestamp;
@@ -41,6 +40,6 @@ public interface SanctionInfo {
 
     boolean isEffective();
 
-    TextComponentBuilder getSancMessage();
+    String getSancMessage();
 
 }

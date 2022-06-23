@@ -8,7 +8,6 @@
 
 package fr.redxil.api.common.player.moderators;
 
-import fr.redxil.api.common.message.TextComponentBuilder;
 import fr.redxil.api.common.player.APIPlayer;
 
 import java.util.Collection;
@@ -63,7 +62,7 @@ public interface ModeratorManager {
 
     Map<String, Long> getUUIDToLongModerator();
 
-    void sendToModerators(TextComponentBuilder tcb);
+    void sendToModerators(String tcb);
 
     /**
      * Check if a player is a server moderator

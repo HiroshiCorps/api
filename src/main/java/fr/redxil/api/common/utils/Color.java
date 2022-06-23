@@ -6,7 +6,7 @@
  *
  */
 
-package fr.redxil.api.common.message;
+package fr.redxil.api.common.utils;
 
 import java.util.Optional;
 
