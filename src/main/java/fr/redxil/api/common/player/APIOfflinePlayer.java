@@ -17,7 +17,6 @@ import fr.redxil.api.common.player.moderators.APIPlayerModerator;
 import fr.redxil.api.common.player.rank.Rank;
 import fr.redxil.api.common.utils.SanctionType;
 
-import javax.annotation.Nullable;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
@@ -105,13 +104,13 @@ public interface APIOfflinePlayer {
 
     /// <!-------------------- Link part --------------------!>
 
-    boolean hasLinkWith(LinkUsage linkUsage, @Nullable APIOfflinePlayer apiOfflinePlayer, String... linkType);
+    boolean hasLinkWith(LinkUsage linkUsage, APIOfflinePlayer apiOfflinePlayer, String... linkType);
 
-    List<LinkData> getLinks(LinkUsage linkUsage, @Nullable APIOfflinePlayer apiOfflinePlayer, String... linkType);
+    List<LinkData> getLinks(LinkUsage linkUsage, APIOfflinePlayer apiOfflinePlayer, String... linkType);
 
-    Optional<LinkData> getLink(LinkUsage linkUsage, @Nullable APIOfflinePlayer apiOfflinePlayer, String... linkType);
+    Optional<LinkData> getLink(LinkUsage linkUsage, APIOfflinePlayer apiOfflinePlayer, String... linkType);
 
-    Optional<LinkData> createLink(APIOfflinePlayer apiOfflinePlayer, String linkType);
+    Optional<LinkData> createLink(LinkUsage linkUsage, APIOfflinePlayer apiOfflinePlayer, String linkType);
 
     IpInfo getIP();
 

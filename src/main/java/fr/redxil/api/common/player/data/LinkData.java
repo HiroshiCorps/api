@@ -4,13 +4,13 @@ public interface LinkData {
 
     int getLinkID();
 
-    long getFromPlayer();
+    long getPlayerSender();
 
-    long getToPlayer();
+    long getPlayerReceiver();
 
     String getLinkType();
 
-    void setLinkType(String linkType);
+    LinkUsage getLinkUsage();
 
     void deleteLink();
 
