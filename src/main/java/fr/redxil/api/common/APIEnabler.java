@@ -32,10 +32,6 @@ public interface APIEnabler {
 
     void onAPILoadFail(APIPhaseInit apiPhaseInit, APILoadError apiLoadError);
 
-    boolean isPluginEnabled();
-
-    void setPluginEnable(boolean value);
-
     /**
      * Get the data folder for the plugin
      *
