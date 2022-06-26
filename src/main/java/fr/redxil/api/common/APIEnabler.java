@@ -55,13 +55,6 @@ public interface APIEnabler {
     }
 
     /**
-     * Get the current CORE version
-     *
-     * @return CORE version
-     */
-    String getPluginVersion();
-
-    /**
      * Get the server version
      *
      * @return server version
