@@ -6,20 +6,20 @@
  *
  */
 
-package fr.redxil.api.paper.event;
+package fr.redxil.api.paper.event.connection;
 
-import fr.redxil.api.common.player.APIPlayer;
-import org.bukkit.event.Cancellable;
+import fr.redxil.api.common.player.APIOfflinePlayer;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
+import org.jetbrains.annotations.NotNull;
 
-public class PlayerConnectedEvent extends Event implements Cancellable {
+public class PlayerDisconnectedEvent extends Event {
 
     private static final HandlerList handlers = new HandlerList();
 
-    private final APIPlayer apiPlayer;
+    private final APIOfflinePlayer apiPlayer;
 
-    public PlayerConnectedEvent(APIPlayer player) {
+    public PlayerDisconnectedEvent(APIOfflinePlayer player) {
         this.apiPlayer = player;
     }
 
@@ -27,22 +27,13 @@ public class PlayerConnectedEvent extends Event implements Cancellable {
         return handlers;
     }
 
-    @Override
-    public HandlerList getHandlers() {
-        return new HandlerList();
-    }
-
-    public APIPlayer getAPIPlayer() {
+    public APIOfflinePlayer getAPIOfflinePlayer() {
         return this.apiPlayer;
     }
 
+    @NotNull
     @Override
-    public boolean isCancelled() {
-        return false;
-    }
-
-    @Override
-    public void setCancelled(boolean b) {
-
+    public HandlerList getHandlers() {
+        return handlers;
     }
 }

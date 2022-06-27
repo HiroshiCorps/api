@@ -6,7 +6,7 @@
  *
  */
 
-package fr.redxil.api.paper.event;
+package fr.redxil.api.paper.event.moderator;
 
 import fr.redxil.api.common.player.moderators.APIPlayerModerator;
 import org.bukkit.event.Event;

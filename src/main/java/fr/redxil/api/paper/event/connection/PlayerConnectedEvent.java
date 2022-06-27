@@ -6,17 +6,22 @@
  *
  */
 
-package fr.redxil.api.paper.event;
+package fr.redxil.api.paper.event.connection;
 
 import fr.redxil.api.common.player.APIPlayer;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
+import org.jetbrains.annotations.NotNull;
 
-public class AsyncPlayerConnectedEvent extends Event {
+public class PlayerConnectedEvent extends Event {
 
     private static final HandlerList handlers = new HandlerList();
 
-    private APIPlayer apiPlayer;
+    private final APIPlayer apiPlayer;
+
+    public PlayerConnectedEvent(APIPlayer player) {
+        this.apiPlayer = player;
+    }
 
     public static HandlerList getHandlerList() {
         return handlers;
@@ -26,6 +31,7 @@ public class AsyncPlayerConnectedEvent extends Event {
         return this.apiPlayer;
     }
 
+    @NotNull
     @Override
     public HandlerList getHandlers() {
         return handlers;

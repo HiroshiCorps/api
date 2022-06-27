@@ -6,27 +6,32 @@
  *
  */
 
-package fr.redxil.api.common.player.moderators.event.spigot;
+package fr.redxil.api.paper.event.moderator;
 
 import fr.redxil.api.common.player.moderators.APIPlayerModerator;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-public class ModeratorLeaveModEvent extends Event {
+public class PlayerQuitModerationEvent extends Event {
 
-    private static final HandlerList handlers = new HandlerList();
-    private final APIPlayerModerator moderator;
+    private static final HandlerList HANDLERS_LIST = new HandlerList();
+    APIPlayerModerator APIPlayer;
 
-    public ModeratorLeaveModEvent(APIPlayerModerator moderator) {
-        this.moderator = moderator;
+    public PlayerQuitModerationEvent(APIPlayerModerator APIPlayer) {
+        this.APIPlayer = APIPlayer;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS_LIST;
     }
 
     @Override
     public HandlerList getHandlers() {
-        return handlers;
+        return HANDLERS_LIST;
     }
 
-    public APIPlayerModerator getModerator() {
-        return moderator;
+    public APIPlayerModerator getAPIPlayerModerator() {
+        return APIPlayer;
     }
+
 }
