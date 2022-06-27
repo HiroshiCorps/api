@@ -8,9 +8,9 @@ public interface LinkData {
 
     long getPlayerReceiver();
 
-    String getLinkType();
+    String getLinkName();
 
-    LinkUsage getLinkUsage();
+    LinkType getLinkType();
 
     void deleteLink();
 

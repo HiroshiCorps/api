@@ -1,9 +1,6 @@
 package fr.redxil.api.common.player.data;
 
-public enum LinkUsage {
-
-    SENDER,
-    RECEIVER,
+public enum LinkType {
+    SENDER_RECEIVER,
     BOTH
-
 }

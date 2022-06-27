@@ -9,8 +9,8 @@
 package fr.redxil.api.common.player;
 
 import fr.redline.pms.utils.IpInfo;
+import fr.redxil.api.common.player.data.LinkCheck;
 import fr.redxil.api.common.player.data.LinkData;
-import fr.redxil.api.common.player.data.LinkUsage;
 import fr.redxil.api.common.player.data.SanctionInfo;
 import fr.redxil.api.common.player.data.Setting;
 import fr.redxil.api.common.player.moderators.APIPlayerModerator;
@@ -104,13 +104,13 @@ public interface APIOfflinePlayer {
 
     /// <!-------------------- Link part --------------------!>
 
-    boolean hasLinkWith(LinkUsage linkUsage, APIOfflinePlayer apiOfflinePlayer, String... linkType);
+    boolean hasLinkWith(LinkCheck linkCheck, APIOfflinePlayer apiOfflinePlayer, String... linkName);
 
-    List<LinkData> getLinks(LinkUsage linkUsage, APIOfflinePlayer apiOfflinePlayer, String... linkType);
+    List<LinkData> getLinks(LinkCheck linkCheck, APIOfflinePlayer apiOfflinePlayer, String... linkName);
 
-    Optional<LinkData> getLink(LinkUsage linkUsage, APIOfflinePlayer apiOfflinePlayer, String... linkType);
+    Optional<LinkData> getLink(LinkCheck linkCheck, APIOfflinePlayer apiOfflinePlayer, String... linkName);
 
-    Optional<LinkData> createLink(LinkUsage linkUsage, APIOfflinePlayer apiOfflinePlayer, String linkType);
+    Optional<LinkData> createLink(LinkCheck linkCheck, APIOfflinePlayer apiOfflinePlayer, String linkName);
 
     IpInfo getIP();
 
