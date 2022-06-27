@@ -26,25 +26,18 @@ public enum Rank {
             "§c§lAdmin "
     ),
 
-    RESPONSABLE(6, 50L, true,
-            "§c[Responsable] ",
+    STAFF(5, 40L, true,
+            "§c[Staff] ",
             "§8§l » §f",
-            "§c[Resp] ",
-            "§c§lResp "
-    ),
-
-    DEVELOPPEUR(5, 40L, true,
-            "§c[Développeur] ",
-            "§8§l » §f",
-            "§c[Dév] ",
-            "§c§lDév "
+            "§c[Staff] ",
+            "§c§lStaff "
     ),
 
     SILENT_MOD(4, 30L, true,
             "§7",
-            "§8§l » §f",
+            "§8§l » §7",
             "§7",
-            "§9Mod "
+            "§dMembre "
     ),
 
     MODERATEUR(3, 30L, true,
@@ -52,20 +45,6 @@ public enum Rank {
             "§8§l » §f",
             "§9[Modérateur] ",
             "§9§lMod "
-    ),
-
-    BUILDER(2, 20L, false,
-            "§2[Builder] ",
-            "§8§l » §f",
-            "§2[Builder] ",
-            "§2§lBuilder "
-    ),
-
-    ASSISTANT(1, 10L, false,
-            "§b[Assistant] ",
-            "§8§l » §7",
-            "§b[Assistant] ",
-            "§b§lAssistant "
     ),
 
     JOUEUR(0, 0L, false,
@@ -123,7 +102,7 @@ public enum Rank {
     }
 
     public final String getRankName() {
-        return this.toString();
+        return this.name();
     }
 
     public final Integer getID() {
